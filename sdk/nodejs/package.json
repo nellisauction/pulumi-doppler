@@ -8,7 +8,10 @@
         "category/utility"
     ],
     "homepage": "https://github.com/nellisauction/pulumi-doppler",
-    "repository": "https://github.com/nellisauction/pulumi-doppler",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nellisauction/pulumi-doppler.git"
+    },
     "license": "Apache-2.0",
     "scripts": {
         "build": "tsc"

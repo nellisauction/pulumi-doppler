@@ -50,6 +50,7 @@ build_nodejs: generate_nodejs
 		node -e "let p = require('./package.json'); \
 		         p.version = '$(PROVIDER_VERSION)'; \
 		         p.pulumi.version = '$(PROVIDER_VERSION)'; \
+		         p.repository = { type: 'git', url: 'git+https://github.com/nellisauction/pulumi-doppler.git' }; \
 		         require('fs').writeFileSync('./package.json', JSON.stringify(p, null, 4));" && \
 		npm run build && \
 		cp ../../README.md ../../LICENSE package.json package-lock.json ./bin/
