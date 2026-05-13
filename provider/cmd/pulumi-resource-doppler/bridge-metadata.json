@@ -1,1 +1,357 @@
-{}
+{
+    "auto-aliasing": {
+        "resources": {
+            "doppler_change_request_policy": {
+                "current": "doppler:index/changeRequestPolicy:ChangeRequestPolicy",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "required_reviewers": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "group_slugs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "user_slugs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "targets": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "project": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "config_names": {
+                                                "maxItemsOne": false
+                                            },
+                                            "environment_slugs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "doppler_config": {
+                "current": "doppler:index/config:Config",
+                "fields": {
+                    "inherits": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_environment": {
+                "current": "doppler:index/environment:Environment"
+            },
+            "doppler_group": {
+                "current": "doppler:index/group:Group"
+            },
+            "doppler_group_member": {
+                "current": "doppler:index/groupMember:GroupMember"
+            },
+            "doppler_group_members": {
+                "current": "doppler:index/groupMembers:GroupMembers",
+                "fields": {
+                    "user_slugs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_integration_aws_iam_user_keys": {
+                "current": "doppler:index/integrationAwsIamUserKeys:IntegrationAwsIamUserKeys"
+            },
+            "doppler_integration_aws_mssql": {
+                "current": "doppler:index/integrationAwsMssql:IntegrationAwsMssql"
+            },
+            "doppler_integration_aws_mysql": {
+                "current": "doppler:index/integrationAwsMysql:IntegrationAwsMysql"
+            },
+            "doppler_integration_aws_parameter_store": {
+                "current": "doppler:index/integrationAwsParameterStore:IntegrationAwsParameterStore"
+            },
+            "doppler_integration_aws_postgres": {
+                "current": "doppler:index/integrationAwsPostgres:IntegrationAwsPostgres"
+            },
+            "doppler_integration_aws_secrets_manager": {
+                "current": "doppler:index/integrationAwsSecretsManager:IntegrationAwsSecretsManager"
+            },
+            "doppler_integration_azure_vault_service_principal": {
+                "current": "doppler:index/integrationAzureVaultServicePrincipal:IntegrationAzureVaultServicePrincipal"
+            },
+            "doppler_integration_circleci": {
+                "current": "doppler:index/integrationCircleci:IntegrationCircleci"
+            },
+            "doppler_integration_cloudflare_tokens": {
+                "current": "doppler:index/integrationCloudflareTokens:IntegrationCloudflareTokens"
+            },
+            "doppler_integration_external_id": {
+                "current": "doppler:index/integrationExternalId:IntegrationExternalId"
+            },
+            "doppler_integration_flyio": {
+                "current": "doppler:index/integrationFlyio:IntegrationFlyio"
+            },
+            "doppler_integration_gcp_cloudsql_mysql": {
+                "current": "doppler:index/integrationGcpCloudsqlMysql:IntegrationGcpCloudsqlMysql"
+            },
+            "doppler_integration_gcp_cloudsql_postgres": {
+                "current": "doppler:index/integrationGcpCloudsqlPostgres:IntegrationGcpCloudsqlPostgres"
+            },
+            "doppler_integration_gcp_cloudsql_sqlserver": {
+                "current": "doppler:index/integrationGcpCloudsqlSqlserver:IntegrationGcpCloudsqlSqlserver"
+            },
+            "doppler_integration_gcp_secret_manager": {
+                "current": "doppler:index/integrationGcpSecretManager:IntegrationGcpSecretManager"
+            },
+            "doppler_integration_gcp_service_account_keys": {
+                "current": "doppler:index/integrationGcpServiceAccountKeys:IntegrationGcpServiceAccountKeys"
+            },
+            "doppler_integration_mongodb_atlas": {
+                "current": "doppler:index/integrationMongodbAtlas:IntegrationMongodbAtlas"
+            },
+            "doppler_integration_sendgrid": {
+                "current": "doppler:index/integrationSendgrid:IntegrationSendgrid"
+            },
+            "doppler_integration_terraform_cloud": {
+                "current": "doppler:index/integrationTerraformCloud:IntegrationTerraformCloud"
+            },
+            "doppler_integration_twilio": {
+                "current": "doppler:index/integrationTwilio:IntegrationTwilio"
+            },
+            "doppler_project": {
+                "current": "doppler:index/project:Project"
+            },
+            "doppler_project_member_group": {
+                "current": "doppler:index/projectMemberGroup:ProjectMemberGroup",
+                "fields": {
+                    "environments": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_project_member_service_account": {
+                "current": "doppler:index/projectMemberServiceAccount:ProjectMemberServiceAccount",
+                "fields": {
+                    "environments": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_project_member_user": {
+                "current": "doppler:index/projectMemberUser:ProjectMemberUser",
+                "fields": {
+                    "environments": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_project_role": {
+                "current": "doppler:index/projectRole:ProjectRole",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_rotated_secret_aws_iam_user_keys": {
+                "current": "doppler:index/rotatedSecretAwsIamUserKeys:RotatedSecretAwsIamUserKeys"
+            },
+            "doppler_rotated_secret_aws_mssql": {
+                "current": "doppler:index/rotatedSecretAwsMssql:RotatedSecretAwsMssql",
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_rotated_secret_aws_mysql": {
+                "current": "doppler:index/rotatedSecretAwsMysql:RotatedSecretAwsMysql",
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_rotated_secret_aws_postgres": {
+                "current": "doppler:index/rotatedSecretAwsPostgres:RotatedSecretAwsPostgres",
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_rotated_secret_cloudflare_tokens": {
+                "current": "doppler:index/rotatedSecretCloudflareTokens:RotatedSecretCloudflareTokens",
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_rotated_secret_gcp_cloudsql": {
+                "current": "doppler:index/rotatedSecretGcpCloudsql:RotatedSecretGcpCloudsql",
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_rotated_secret_gcp_service_account_keys": {
+                "current": "doppler:index/rotatedSecretGcpServiceAccountKeys:RotatedSecretGcpServiceAccountKeys"
+            },
+            "doppler_rotated_secret_mongodb_atlas": {
+                "current": "doppler:index/rotatedSecretMongodbAtlas:RotatedSecretMongodbAtlas",
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_rotated_secret_sendgrid": {
+                "current": "doppler:index/rotatedSecretSendgrid:RotatedSecretSendgrid",
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_rotated_secret_twilio": {
+                "current": "doppler:index/rotatedSecretTwilio:RotatedSecretTwilio"
+            },
+            "doppler_secret": {
+                "current": "doppler:index/secret:Secret"
+            },
+            "doppler_secrets_sync_aws_parameter_store": {
+                "current": "doppler:index/secretsSyncAwsParameterStore:SecretsSyncAwsParameterStore"
+            },
+            "doppler_secrets_sync_aws_secrets_manager": {
+                "current": "doppler:index/secretsSyncAwsSecretsManager:SecretsSyncAwsSecretsManager"
+            },
+            "doppler_secrets_sync_azure_vault": {
+                "current": "doppler:index/secretsSyncAzureVault:SecretsSyncAzureVault"
+            },
+            "doppler_secrets_sync_circleci": {
+                "current": "doppler:index/secretsSyncCircleci:SecretsSyncCircleci"
+            },
+            "doppler_secrets_sync_flyio": {
+                "current": "doppler:index/secretsSyncFlyio:SecretsSyncFlyio"
+            },
+            "doppler_secrets_sync_gcp_secret_manager": {
+                "current": "doppler:index/secretsSyncGcpSecretManager:SecretsSyncGcpSecretManager",
+                "fields": {
+                    "regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_secrets_sync_github_actions": {
+                "current": "doppler:index/secretsSyncGithubActions:SecretsSyncGithubActions"
+            },
+            "doppler_secrets_sync_github_codespaces": {
+                "current": "doppler:index/secretsSyncGithubCodespaces:SecretsSyncGithubCodespaces"
+            },
+            "doppler_secrets_sync_github_dependabot": {
+                "current": "doppler:index/secretsSyncGithubDependabot:SecretsSyncGithubDependabot"
+            },
+            "doppler_secrets_sync_terraform_cloud": {
+                "current": "doppler:index/secretsSyncTerraformCloud:SecretsSyncTerraformCloud"
+            },
+            "doppler_service_account": {
+                "current": "doppler:index/serviceAccount:ServiceAccount",
+                "fields": {
+                    "workplace_permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_service_account_identity": {
+                "current": "doppler:index/serviceAccountIdentity:ServiceAccountIdentity",
+                "fields": {
+                    "config_oidc": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "claims": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "doppler_service_account_token": {
+                "current": "doppler:index/serviceAccountToken:ServiceAccountToken"
+            },
+            "doppler_service_token": {
+                "current": "doppler:index/serviceToken:ServiceToken"
+            },
+            "doppler_trusted_ips": {
+                "current": "doppler:index/trustedIps:TrustedIps",
+                "fields": {
+                    "trusted_ips": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_webhook": {
+                "current": "doppler:index/webhook:Webhook",
+                "fields": {
+                    "authentication": {
+                        "maxItemsOne": true
+                    },
+                    "enabled_configs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_workplace_role": {
+                "current": "doppler:index/workplaceRole:WorkplaceRole",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "doppler_environments": {
+                "current": "doppler:index/getEnvironments:getEnvironments",
+                "fields": {
+                    "list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_group": {
+                "current": "doppler:index/getGroup:getGroup"
+            },
+            "doppler_secrets": {
+                "current": "doppler:index/getSecrets:getSecrets"
+            },
+            "doppler_user": {
+                "current": "doppler:index/getUser:getUser"
+            }
+        }
+    },
+    "auto-settings": {}
+}
