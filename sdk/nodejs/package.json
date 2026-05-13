@@ -1,0 +1,32 @@
+{
+    "name": "@nellisauction/pulumi-doppler",
+    "version": "0.0.0",
+    "description": "A Pulumi package for managing Doppler secrets and configuration.",
+    "keywords": [
+        "pulumi",
+        "doppler",
+        "category/utility"
+    ],
+    "homepage": "https://github.com/nellisauction/pulumi-doppler",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nellisauction/pulumi-doppler.git"
+    },
+    "license": "Apache-2.0",
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.142.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20",
+        "typescript": "^4.7.0"
+    },
+    "pulumi": {
+        "resource": true,
+        "name": "doppler",
+        "version": "0.0.0",
+        "server": "github://api.github.com/nellisauction/pulumi-doppler"
+    }
+}
