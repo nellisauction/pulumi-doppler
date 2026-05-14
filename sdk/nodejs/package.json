@@ -1,6 +1,6 @@
 {
     "name": "@nellisauction/pulumi-doppler",
-    "version": "0.1.0",
+    "version": "0.0.0",
     "description": "A Pulumi package for managing Doppler secrets and configuration.",
     "keywords": [
         "pulumi",
@@ -26,7 +26,7 @@
     "pulumi": {
         "resource": true,
         "name": "doppler",
-        "version": "0.1.0",
+        "version": "0.0.0",
         "server": "github://api.github.com/nellisauction/pulumi-doppler"
     }
 }
