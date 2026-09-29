@@ -54,7 +54,7 @@
         "variables": {
             "dopplerToken": {
                 "type": "string",
-                "description": "A Doppler token, either a personal or service token. This can also be set via the DOPPLER_TOKEN environment variable.",
+                "description": "A Doppler token, either a personal or service token. This can also be set via the DOPPLER_TOKEN environment variable. Only one of \u003cspan pulumi-lang-nodejs=\"`dopplerToken`\" pulumi-lang-dotnet=\"`DopplerToken`\" pulumi-lang-go=\"`dopplerToken`\" pulumi-lang-python=\"`doppler_token`\" pulumi-lang-yaml=\"`dopplerToken`\" pulumi-lang-java=\"`dopplerToken`\"\u003e`dopplerToken`\u003c/span\u003e or OIDC authentication (\u003cspan pulumi-lang-nodejs=\"`oidcIdentity`\" pulumi-lang-dotnet=\"`OidcIdentity`\" pulumi-lang-go=\"`oidcIdentity`\" pulumi-lang-python=\"`oidc_identity`\" pulumi-lang-yaml=\"`oidcIdentity`\" pulumi-lang-java=\"`oidcIdentity`\"\u003e`oidcIdentity`\u003c/span\u003e + \u003cspan pulumi-lang-nodejs=\"`oidcToken`\" pulumi-lang-dotnet=\"`OidcToken`\" pulumi-lang-go=\"`oidcToken`\" pulumi-lang-python=\"`oidc_token`\" pulumi-lang-yaml=\"`oidcToken`\" pulumi-lang-java=\"`oidcToken`\"\u003e`oidcToken`\u003c/span\u003e/\u003cspan pulumi-lang-nodejs=\"`oidcTokenFile`\" pulumi-lang-dotnet=\"`OidcTokenFile`\" pulumi-lang-go=\"`oidcTokenFile`\" pulumi-lang-python=\"`oidc_token_file`\" pulumi-lang-yaml=\"`oidcTokenFile`\" pulumi-lang-java=\"`oidcTokenFile`\"\u003e`oidcTokenFile`\u003c/span\u003e) may be specified.",
                 "defaultInfo": {
                     "environment": [
                         "DOPPLER_TOKEN"
@@ -70,6 +70,19 @@
                     ]
                 }
             },
+            "oidcIdentity": {
+                "type": "string",
+                "description": "The identity ID (UUID) of the Doppler service account identity for OIDC authentication. This can also be set via the DOPPLER_OIDC_IDENTITY environment variable."
+            },
+            "oidcToken": {
+                "type": "string",
+                "description": "A JWT token to use for OIDC authentication. Only one of \u003cspan pulumi-lang-nodejs=\"`oidcToken`\" pulumi-lang-dotnet=\"`OidcToken`\" pulumi-lang-go=\"`oidcToken`\" pulumi-lang-python=\"`oidc_token`\" pulumi-lang-yaml=\"`oidcToken`\" pulumi-lang-java=\"`oidcToken`\"\u003e`oidcToken`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`oidcTokenFile`\" pulumi-lang-dotnet=\"`OidcTokenFile`\" pulumi-lang-go=\"`oidcTokenFile`\" pulumi-lang-python=\"`oidc_token_file`\" pulumi-lang-yaml=\"`oidcTokenFile`\" pulumi-lang-java=\"`oidcTokenFile`\"\u003e`oidcTokenFile`\u003c/span\u003e may be set. This can also be set via the DOPPLER_OIDC_TOKEN environment variable.",
+                "secret": true
+            },
+            "oidcTokenFile": {
+                "type": "string",
+                "description": "A path to a file containing a JWT token for OIDC authentication (e.g. a Kubernetes projected service account token). Only one of \u003cspan pulumi-lang-nodejs=\"`oidcToken`\" pulumi-lang-dotnet=\"`OidcToken`\" pulumi-lang-go=\"`oidcToken`\" pulumi-lang-python=\"`oidc_token`\" pulumi-lang-yaml=\"`oidcToken`\" pulumi-lang-java=\"`oidcToken`\"\u003e`oidcToken`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`oidcTokenFile`\" pulumi-lang-dotnet=\"`OidcTokenFile`\" pulumi-lang-go=\"`oidcTokenFile`\" pulumi-lang-python=\"`oidc_token_file`\" pulumi-lang-yaml=\"`oidcTokenFile`\" pulumi-lang-java=\"`oidcTokenFile`\"\u003e`oidcTokenFile`\u003c/span\u003e may be set. This can also be set via the DOPPLER_OIDC_TOKEN_FILE environment variable."
+            },
             "verifyTls": {
                 "type": "boolean",
                 "description": "Whether or not to verify TLS. This can also be set via the DOPPLER_VERIFY_TLS environment variable.",
@@ -79,10 +92,7 @@
                     ]
                 }
             }
-        },
-        "defaults": [
-            "dopplerToken"
-        ]
+        }
     },
     "types": {
         "doppler:index/ChangeRequestPolicyRules:ChangeRequestPolicyRules": {
@@ -376,11 +386,24 @@
         "properties": {
             "dopplerToken": {
                 "type": "string",
-                "description": "A Doppler token, either a personal or service token. This can also be set via the DOPPLER_TOKEN environment variable."
+                "description": "A Doppler token, either a personal or service token. This can also be set via the DOPPLER_TOKEN environment variable. Only one of \u003cspan pulumi-lang-nodejs=\"`dopplerToken`\" pulumi-lang-dotnet=\"`DopplerToken`\" pulumi-lang-go=\"`dopplerToken`\" pulumi-lang-python=\"`doppler_token`\" pulumi-lang-yaml=\"`dopplerToken`\" pulumi-lang-java=\"`dopplerToken`\"\u003e`dopplerToken`\u003c/span\u003e or OIDC authentication (\u003cspan pulumi-lang-nodejs=\"`oidcIdentity`\" pulumi-lang-dotnet=\"`OidcIdentity`\" pulumi-lang-go=\"`oidcIdentity`\" pulumi-lang-python=\"`oidc_identity`\" pulumi-lang-yaml=\"`oidcIdentity`\" pulumi-lang-java=\"`oidcIdentity`\"\u003e`oidcIdentity`\u003c/span\u003e + \u003cspan pulumi-lang-nodejs=\"`oidcToken`\" pulumi-lang-dotnet=\"`OidcToken`\" pulumi-lang-go=\"`oidcToken`\" pulumi-lang-python=\"`oidc_token`\" pulumi-lang-yaml=\"`oidcToken`\" pulumi-lang-java=\"`oidcToken`\"\u003e`oidcToken`\u003c/span\u003e/\u003cspan pulumi-lang-nodejs=\"`oidcTokenFile`\" pulumi-lang-dotnet=\"`OidcTokenFile`\" pulumi-lang-go=\"`oidcTokenFile`\" pulumi-lang-python=\"`oidc_token_file`\" pulumi-lang-yaml=\"`oidcTokenFile`\" pulumi-lang-java=\"`oidcTokenFile`\"\u003e`oidcTokenFile`\u003c/span\u003e) may be specified."
             },
             "host": {
                 "type": "string",
                 "description": "The Doppler API host (i.e. https://api.doppler.com). This can also be set via the DOPPLER_API_HOST environment variable."
+            },
+            "oidcIdentity": {
+                "type": "string",
+                "description": "The identity ID (UUID) of the Doppler service account identity for OIDC authentication. This can also be set via the DOPPLER_OIDC_IDENTITY environment variable."
+            },
+            "oidcToken": {
+                "type": "string",
+                "description": "A JWT token to use for OIDC authentication. Only one of \u003cspan pulumi-lang-nodejs=\"`oidcToken`\" pulumi-lang-dotnet=\"`OidcToken`\" pulumi-lang-go=\"`oidcToken`\" pulumi-lang-python=\"`oidc_token`\" pulumi-lang-yaml=\"`oidcToken`\" pulumi-lang-java=\"`oidcToken`\"\u003e`oidcToken`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`oidcTokenFile`\" pulumi-lang-dotnet=\"`OidcTokenFile`\" pulumi-lang-go=\"`oidcTokenFile`\" pulumi-lang-python=\"`oidc_token_file`\" pulumi-lang-yaml=\"`oidcTokenFile`\" pulumi-lang-java=\"`oidcTokenFile`\"\u003e`oidcTokenFile`\u003c/span\u003e may be set. This can also be set via the DOPPLER_OIDC_TOKEN environment variable.",
+                "secret": true
+            },
+            "oidcTokenFile": {
+                "type": "string",
+                "description": "A path to a file containing a JWT token for OIDC authentication (e.g. a Kubernetes projected service account token). Only one of \u003cspan pulumi-lang-nodejs=\"`oidcToken`\" pulumi-lang-dotnet=\"`OidcToken`\" pulumi-lang-go=\"`oidcToken`\" pulumi-lang-python=\"`oidc_token`\" pulumi-lang-yaml=\"`oidcToken`\" pulumi-lang-java=\"`oidcToken`\"\u003e`oidcToken`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`oidcTokenFile`\" pulumi-lang-dotnet=\"`OidcTokenFile`\" pulumi-lang-go=\"`oidcTokenFile`\" pulumi-lang-python=\"`oidc_token_file`\" pulumi-lang-yaml=\"`oidcTokenFile`\" pulumi-lang-java=\"`oidcTokenFile`\"\u003e`oidcTokenFile`\u003c/span\u003e may be set. This can also be set via the DOPPLER_OIDC_TOKEN_FILE environment variable."
             },
             "verifyTls": {
                 "type": "boolean",
@@ -390,7 +413,7 @@
         "inputProperties": {
             "dopplerToken": {
                 "type": "string",
-                "description": "A Doppler token, either a personal or service token. This can also be set via the DOPPLER_TOKEN environment variable.",
+                "description": "A Doppler token, either a personal or service token. This can also be set via the DOPPLER_TOKEN environment variable. Only one of \u003cspan pulumi-lang-nodejs=\"`dopplerToken`\" pulumi-lang-dotnet=\"`DopplerToken`\" pulumi-lang-go=\"`dopplerToken`\" pulumi-lang-python=\"`doppler_token`\" pulumi-lang-yaml=\"`dopplerToken`\" pulumi-lang-java=\"`dopplerToken`\"\u003e`dopplerToken`\u003c/span\u003e or OIDC authentication (\u003cspan pulumi-lang-nodejs=\"`oidcIdentity`\" pulumi-lang-dotnet=\"`OidcIdentity`\" pulumi-lang-go=\"`oidcIdentity`\" pulumi-lang-python=\"`oidc_identity`\" pulumi-lang-yaml=\"`oidcIdentity`\" pulumi-lang-java=\"`oidcIdentity`\"\u003e`oidcIdentity`\u003c/span\u003e + \u003cspan pulumi-lang-nodejs=\"`oidcToken`\" pulumi-lang-dotnet=\"`OidcToken`\" pulumi-lang-go=\"`oidcToken`\" pulumi-lang-python=\"`oidc_token`\" pulumi-lang-yaml=\"`oidcToken`\" pulumi-lang-java=\"`oidcToken`\"\u003e`oidcToken`\u003c/span\u003e/\u003cspan pulumi-lang-nodejs=\"`oidcTokenFile`\" pulumi-lang-dotnet=\"`OidcTokenFile`\" pulumi-lang-go=\"`oidcTokenFile`\" pulumi-lang-python=\"`oidc_token_file`\" pulumi-lang-yaml=\"`oidcTokenFile`\" pulumi-lang-java=\"`oidcTokenFile`\"\u003e`oidcTokenFile`\u003c/span\u003e) may be specified.",
                 "defaultInfo": {
                     "environment": [
                         "DOPPLER_TOKEN"
@@ -405,6 +428,19 @@
                         "DOPPLER_API_HOST"
                     ]
                 }
+            },
+            "oidcIdentity": {
+                "type": "string",
+                "description": "The identity ID (UUID) of the Doppler service account identity for OIDC authentication. This can also be set via the DOPPLER_OIDC_IDENTITY environment variable."
+            },
+            "oidcToken": {
+                "type": "string",
+                "description": "A JWT token to use for OIDC authentication. Only one of \u003cspan pulumi-lang-nodejs=\"`oidcToken`\" pulumi-lang-dotnet=\"`OidcToken`\" pulumi-lang-go=\"`oidcToken`\" pulumi-lang-python=\"`oidc_token`\" pulumi-lang-yaml=\"`oidcToken`\" pulumi-lang-java=\"`oidcToken`\"\u003e`oidcToken`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`oidcTokenFile`\" pulumi-lang-dotnet=\"`OidcTokenFile`\" pulumi-lang-go=\"`oidcTokenFile`\" pulumi-lang-python=\"`oidc_token_file`\" pulumi-lang-yaml=\"`oidcTokenFile`\" pulumi-lang-java=\"`oidcTokenFile`\"\u003e`oidcTokenFile`\u003c/span\u003e may be set. This can also be set via the DOPPLER_OIDC_TOKEN environment variable.",
+                "secret": true
+            },
+            "oidcTokenFile": {
+                "type": "string",
+                "description": "A path to a file containing a JWT token for OIDC authentication (e.g. a Kubernetes projected service account token). Only one of \u003cspan pulumi-lang-nodejs=\"`oidcToken`\" pulumi-lang-dotnet=\"`OidcToken`\" pulumi-lang-go=\"`oidcToken`\" pulumi-lang-python=\"`oidc_token`\" pulumi-lang-yaml=\"`oidcToken`\" pulumi-lang-java=\"`oidcToken`\"\u003e`oidcToken`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`oidcTokenFile`\" pulumi-lang-dotnet=\"`OidcTokenFile`\" pulumi-lang-go=\"`oidcTokenFile`\" pulumi-lang-python=\"`oidc_token_file`\" pulumi-lang-yaml=\"`oidcTokenFile`\" pulumi-lang-java=\"`oidcTokenFile`\"\u003e`oidcTokenFile`\u003c/span\u003e may be set. This can also be set via the DOPPLER_OIDC_TOKEN_FILE environment variable."
             },
             "verifyTls": {
                 "type": "boolean",
@@ -1148,6 +1184,326 @@
                 "type": "object"
             }
         },
+        "doppler:index/integrationAzureDynamicServicePrincipal:IntegrationAzureDynamicServicePrincipal": {
+            "description": "Manage an Azure Dynamic Service Principal Doppler integration.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst prod = new doppler.IntegrationAzureDynamicServicePrincipal(\"prod\", {\n    name: \"Production\",\n    tenantId: \"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n    clientId: \"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n    clientSecret: \"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\",\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\n\nprod = doppler.IntegrationAzureDynamicServicePrincipal(\"prod\",\n    name=\"Production\",\n    tenant_id=\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n    client_id=\"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n    client_secret=\"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Doppler.IntegrationAzureDynamicServicePrincipal(\"prod\", new()\n    {\n        Name = \"Production\",\n        TenantId = \"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n        ClientId = \"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n        ClientSecret = \"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := doppler.NewIntegrationAzureDynamicServicePrincipal(ctx, \"prod\", \u0026doppler.IntegrationAzureDynamicServicePrincipalArgs{\n\t\t\tName:         pulumi.String(\"Production\"),\n\t\t\tTenantId:     pulumi.String(\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\"),\n\t\t\tClientId:     pulumi.String(\"77ed9112-b7f5-4d1d-a60f-198375e7f265\"),\n\t\t\tClientSecret: pulumi.String(\"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationAzureDynamicServicePrincipal;\nimport com.pulumi.doppler.IntegrationAzureDynamicServicePrincipalArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new IntegrationAzureDynamicServicePrincipal(\"prod\", IntegrationAzureDynamicServicePrincipalArgs.builder()\n            .name(\"Production\")\n            .tenantId(\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\")\n            .clientId(\"77ed9112-b7f5-4d1d-a60f-198375e7f265\")\n            .clientSecret(\"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: doppler:IntegrationAzureDynamicServicePrincipal\n    properties:\n      name: Production\n      tenantId: c77d1b3d-6350-4696-b59f-90dae3e0b41e\n      clientId: 77ed9112-b7f5-4d1d-a60f-198375e7f265\n      clientSecret: kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The application (client) ID of the managing service principal\n"
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "The client secret of the managing service principal\n",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The Azure directory (tenant) ID\n"
+                }
+            },
+            "required": [
+                "clientId",
+                "clientSecret",
+                "name",
+                "tenantId"
+            ],
+            "inputProperties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The application (client) ID of the managing service principal\n"
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "The client secret of the managing service principal\n",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The Azure directory (tenant) ID\n"
+                }
+            },
+            "requiredInputs": [
+                "clientId",
+                "clientSecret",
+                "tenantId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationAzureDynamicServicePrincipal resources.\n",
+                "properties": {
+                    "clientId": {
+                        "type": "string",
+                        "description": "The application (client) ID of the managing service principal\n"
+                    },
+                    "clientSecret": {
+                        "type": "string",
+                        "description": "The client secret of the managing service principal\n",
+                        "secret": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the integration\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "The Azure directory (tenant) ID\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "doppler:index/integrationAzureDynamicServicePrincipalOidc:IntegrationAzureDynamicServicePrincipalOidc": {
+            "description": "Manage an Azure Dynamic Service Principal Doppler integration using workload identity federation.\n\nThe managing app registration must already exist in your tenant, with a service principal, admin-consented Microsoft Graph application permissions, and ownership of the target applications it manages.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst dopplerManager = azuread.getApplication({\n    clientId: \"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n});\nconst prod = new doppler.IntegrationAzureDynamicServicePrincipalOidc(\"prod\", {\n    name: \"Production\",\n    tenantId: \"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n    clientId: dopplerManager.then(dopplerManager =\u003e dopplerManager.clientId),\n});\nconst doppler2 = new azuread.ApplicationFederatedIdentityCredential(\"doppler\", {\n    applicationId: dopplerManager.then(dopplerManager =\u003e dopplerManager.id),\n    displayName: \"doppler-production\",\n    issuer: prod.federationIssuer,\n    subject: prod.federationSubject,\n    audiences: [prod.federationAudience],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\nimport pulumi_doppler as doppler\n\ndoppler_manager = azuread.get_application(client_id=\"77ed9112-b7f5-4d1d-a60f-198375e7f265\")\nprod = doppler.IntegrationAzureDynamicServicePrincipalOidc(\"prod\",\n    name=\"Production\",\n    tenant_id=\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n    client_id=doppler_manager.client_id)\ndoppler_1 = azuread.ApplicationFederatedIdentityCredential(\"doppler\",\n    application_id=doppler_manager.id,\n    display_name=\"doppler-production\",\n    issuer=prod.federation_issuer,\n    subject=prod.federation_subject,\n    audiences=[prod.federation_audience])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dopplerManager = AzureAD.GetApplication.Invoke(new()\n    {\n        ClientId = \"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n    });\n\n    var prod = new Doppler.IntegrationAzureDynamicServicePrincipalOidc(\"prod\", new()\n    {\n        Name = \"Production\",\n        TenantId = \"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n        ClientId = dopplerManager.Apply(getApplicationResult =\u003e getApplicationResult.ClientId),\n    });\n\n    var doppler = new AzureAD.ApplicationFederatedIdentityCredential(\"doppler\", new()\n    {\n        ApplicationId = dopplerManager.Apply(getApplicationResult =\u003e getApplicationResult.Id),\n        DisplayName = \"doppler-production\",\n        Issuer = prod.FederationIssuer,\n        Subject = prod.FederationSubject,\n        Audiences = new[]\n        {\n            prod.FederationAudience,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdopplerManager, err := azuread.GetApplication(ctx, \u0026azuread.LookupApplicationArgs{\n\t\t\tClientId: pulumi.StringRef(\"77ed9112-b7f5-4d1d-a60f-198375e7f265\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tprod, err := doppler.NewIntegrationAzureDynamicServicePrincipalOidc(ctx, \"prod\", \u0026doppler.IntegrationAzureDynamicServicePrincipalOidcArgs{\n\t\t\tName:     pulumi.String(\"Production\"),\n\t\t\tTenantId: pulumi.String(\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\"),\n\t\t\tClientId: pulumi.String(pulumi.String(dopplerManager.ClientId)),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewApplicationFederatedIdentityCredential(ctx, \"doppler\", \u0026azuread.ApplicationFederatedIdentityCredentialArgs{\n\t\t\tApplicationId: pulumi.String(pulumi.String(dopplerManager.Id)),\n\t\t\tDisplayName:   pulumi.String(\"doppler-production\"),\n\t\t\tIssuer:        prod.FederationIssuer,\n\t\t\tSubject:       prod.FederationSubject,\n\t\t\tAudiences: pulumi.StringArray{\n\t\t\t\tprod.FederationAudience,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetApplicationArgs;\nimport com.pulumi.doppler.IntegrationAzureDynamicServicePrincipalOidc;\nimport com.pulumi.doppler.IntegrationAzureDynamicServicePrincipalOidcArgs;\nimport com.pulumi.azuread.ApplicationFederatedIdentityCredential;\nimport com.pulumi.azuread.ApplicationFederatedIdentityCredentialArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var dopplerManager = AzureadFunctions.getApplication(GetApplicationArgs.builder()\n            .clientId(\"77ed9112-b7f5-4d1d-a60f-198375e7f265\")\n            .build());\n\n        var prod = new IntegrationAzureDynamicServicePrincipalOidc(\"prod\", IntegrationAzureDynamicServicePrincipalOidcArgs.builder()\n            .name(\"Production\")\n            .tenantId(\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\")\n            .clientId(dopplerManager.clientId())\n            .build());\n\n        var doppler = new ApplicationFederatedIdentityCredential(\"doppler\", ApplicationFederatedIdentityCredentialArgs.builder()\n            .applicationId(dopplerManager.id())\n            .displayName(\"doppler-production\")\n            .issuer(prod.federationIssuer())\n            .subject(prod.federationSubject())\n            .audiences(prod.federationAudience())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: doppler:IntegrationAzureDynamicServicePrincipalOidc\n    properties:\n      name: Production\n      tenantId: c77d1b3d-6350-4696-b59f-90dae3e0b41e\n      clientId: ${dopplerManager.clientId}\n  doppler:\n    type: azuread:ApplicationFederatedIdentityCredential\n    properties:\n      applicationId: ${dopplerManager.id}\n      displayName: doppler-production\n      issuer: ${prod.federationIssuer}\n      subject: ${prod.federationSubject}\n      audiences:\n        - ${prod.federationAudience}\nvariables:\n  dopplerManager:\n    fn::invoke:\n      function: azuread:getApplication\n      arguments:\n        clientId: 77ed9112-b7f5-4d1d-a60f-198375e7f265\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The application (client) ID of the managing service principal\n"
+                },
+                "federationAudience": {
+                    "type": "string",
+                    "description": "The audience to configure on the federated identity credential\n"
+                },
+                "federationIssuer": {
+                    "type": "string",
+                    "description": "The issuer of the OIDC tokens Doppler issues for this integration\n"
+                },
+                "federationSubject": {
+                    "type": "string",
+                    "description": "The subject of the OIDC tokens Doppler issues for this integration\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The Azure directory (tenant) ID\n"
+                }
+            },
+            "required": [
+                "clientId",
+                "federationAudience",
+                "federationIssuer",
+                "federationSubject",
+                "name",
+                "tenantId"
+            ],
+            "inputProperties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The application (client) ID of the managing service principal\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The Azure directory (tenant) ID\n"
+                }
+            },
+            "requiredInputs": [
+                "clientId",
+                "tenantId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationAzureDynamicServicePrincipalOidc resources.\n",
+                "properties": {
+                    "clientId": {
+                        "type": "string",
+                        "description": "The application (client) ID of the managing service principal\n"
+                    },
+                    "federationAudience": {
+                        "type": "string",
+                        "description": "The audience to configure on the federated identity credential\n"
+                    },
+                    "federationIssuer": {
+                        "type": "string",
+                        "description": "The issuer of the OIDC tokens Doppler issues for this integration\n"
+                    },
+                    "federationSubject": {
+                        "type": "string",
+                        "description": "The subject of the OIDC tokens Doppler issues for this integration\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the integration\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "The Azure directory (tenant) ID\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "doppler:index/integrationAzureRotatedServicePrincipal:IntegrationAzureRotatedServicePrincipal": {
+            "description": "Manage an Azure Rotated Service Principal Doppler integration.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst prod = new doppler.IntegrationAzureRotatedServicePrincipal(\"prod\", {\n    name: \"Production\",\n    tenantId: \"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n    clientId: \"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n    clientSecret: \"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\",\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\n\nprod = doppler.IntegrationAzureRotatedServicePrincipal(\"prod\",\n    name=\"Production\",\n    tenant_id=\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n    client_id=\"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n    client_secret=\"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Doppler.IntegrationAzureRotatedServicePrincipal(\"prod\", new()\n    {\n        Name = \"Production\",\n        TenantId = \"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n        ClientId = \"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n        ClientSecret = \"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := doppler.NewIntegrationAzureRotatedServicePrincipal(ctx, \"prod\", \u0026doppler.IntegrationAzureRotatedServicePrincipalArgs{\n\t\t\tName:         pulumi.String(\"Production\"),\n\t\t\tTenantId:     pulumi.String(\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\"),\n\t\t\tClientId:     pulumi.String(\"77ed9112-b7f5-4d1d-a60f-198375e7f265\"),\n\t\t\tClientSecret: pulumi.String(\"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationAzureRotatedServicePrincipal;\nimport com.pulumi.doppler.IntegrationAzureRotatedServicePrincipalArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new IntegrationAzureRotatedServicePrincipal(\"prod\", IntegrationAzureRotatedServicePrincipalArgs.builder()\n            .name(\"Production\")\n            .tenantId(\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\")\n            .clientId(\"77ed9112-b7f5-4d1d-a60f-198375e7f265\")\n            .clientSecret(\"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: doppler:IntegrationAzureRotatedServicePrincipal\n    properties:\n      name: Production\n      tenantId: c77d1b3d-6350-4696-b59f-90dae3e0b41e\n      clientId: 77ed9112-b7f5-4d1d-a60f-198375e7f265\n      clientSecret: kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The application (client) ID of the managing service principal\n"
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "The client secret of the managing service principal\n",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The Azure directory (tenant) ID\n"
+                }
+            },
+            "required": [
+                "clientId",
+                "clientSecret",
+                "name",
+                "tenantId"
+            ],
+            "inputProperties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The application (client) ID of the managing service principal\n"
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "The client secret of the managing service principal\n",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The Azure directory (tenant) ID\n"
+                }
+            },
+            "requiredInputs": [
+                "clientId",
+                "clientSecret",
+                "tenantId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationAzureRotatedServicePrincipal resources.\n",
+                "properties": {
+                    "clientId": {
+                        "type": "string",
+                        "description": "The application (client) ID of the managing service principal\n"
+                    },
+                    "clientSecret": {
+                        "type": "string",
+                        "description": "The client secret of the managing service principal\n",
+                        "secret": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the integration\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "The Azure directory (tenant) ID\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "doppler:index/integrationAzureRotatedServicePrincipalOidc:IntegrationAzureRotatedServicePrincipalOidc": {
+            "description": "Manage an Azure Rotated Service Principal Doppler integration using workload identity federation.\n\nThe managing app registration must already exist in your tenant, with a service principal, admin-consented Microsoft Graph application permissions, and ownership of the target applications it manages.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst dopplerManager = azuread.getApplication({\n    clientId: \"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n});\nconst prod = new doppler.IntegrationAzureRotatedServicePrincipalOidc(\"prod\", {\n    name: \"Production\",\n    tenantId: \"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n    clientId: dopplerManager.then(dopplerManager =\u003e dopplerManager.clientId),\n});\nconst doppler2 = new azuread.ApplicationFederatedIdentityCredential(\"doppler\", {\n    applicationId: dopplerManager.then(dopplerManager =\u003e dopplerManager.id),\n    displayName: \"doppler-production\",\n    issuer: prod.federationIssuer,\n    subject: prod.federationSubject,\n    audiences: [prod.federationAudience],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\nimport pulumi_doppler as doppler\n\ndoppler_manager = azuread.get_application(client_id=\"77ed9112-b7f5-4d1d-a60f-198375e7f265\")\nprod = doppler.IntegrationAzureRotatedServicePrincipalOidc(\"prod\",\n    name=\"Production\",\n    tenant_id=\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n    client_id=doppler_manager.client_id)\ndoppler_1 = azuread.ApplicationFederatedIdentityCredential(\"doppler\",\n    application_id=doppler_manager.id,\n    display_name=\"doppler-production\",\n    issuer=prod.federation_issuer,\n    subject=prod.federation_subject,\n    audiences=[prod.federation_audience])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dopplerManager = AzureAD.GetApplication.Invoke(new()\n    {\n        ClientId = \"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n    });\n\n    var prod = new Doppler.IntegrationAzureRotatedServicePrincipalOidc(\"prod\", new()\n    {\n        Name = \"Production\",\n        TenantId = \"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n        ClientId = dopplerManager.Apply(getApplicationResult =\u003e getApplicationResult.ClientId),\n    });\n\n    var doppler = new AzureAD.ApplicationFederatedIdentityCredential(\"doppler\", new()\n    {\n        ApplicationId = dopplerManager.Apply(getApplicationResult =\u003e getApplicationResult.Id),\n        DisplayName = \"doppler-production\",\n        Issuer = prod.FederationIssuer,\n        Subject = prod.FederationSubject,\n        Audiences = new[]\n        {\n            prod.FederationAudience,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdopplerManager, err := azuread.GetApplication(ctx, \u0026azuread.LookupApplicationArgs{\n\t\t\tClientId: pulumi.StringRef(\"77ed9112-b7f5-4d1d-a60f-198375e7f265\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tprod, err := doppler.NewIntegrationAzureRotatedServicePrincipalOidc(ctx, \"prod\", \u0026doppler.IntegrationAzureRotatedServicePrincipalOidcArgs{\n\t\t\tName:     pulumi.String(\"Production\"),\n\t\t\tTenantId: pulumi.String(\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\"),\n\t\t\tClientId: pulumi.String(pulumi.String(dopplerManager.ClientId)),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewApplicationFederatedIdentityCredential(ctx, \"doppler\", \u0026azuread.ApplicationFederatedIdentityCredentialArgs{\n\t\t\tApplicationId: pulumi.String(pulumi.String(dopplerManager.Id)),\n\t\t\tDisplayName:   pulumi.String(\"doppler-production\"),\n\t\t\tIssuer:        prod.FederationIssuer,\n\t\t\tSubject:       prod.FederationSubject,\n\t\t\tAudiences: pulumi.StringArray{\n\t\t\t\tprod.FederationAudience,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetApplicationArgs;\nimport com.pulumi.doppler.IntegrationAzureRotatedServicePrincipalOidc;\nimport com.pulumi.doppler.IntegrationAzureRotatedServicePrincipalOidcArgs;\nimport com.pulumi.azuread.ApplicationFederatedIdentityCredential;\nimport com.pulumi.azuread.ApplicationFederatedIdentityCredentialArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var dopplerManager = AzureadFunctions.getApplication(GetApplicationArgs.builder()\n            .clientId(\"77ed9112-b7f5-4d1d-a60f-198375e7f265\")\n            .build());\n\n        var prod = new IntegrationAzureRotatedServicePrincipalOidc(\"prod\", IntegrationAzureRotatedServicePrincipalOidcArgs.builder()\n            .name(\"Production\")\n            .tenantId(\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\")\n            .clientId(dopplerManager.clientId())\n            .build());\n\n        var doppler = new ApplicationFederatedIdentityCredential(\"doppler\", ApplicationFederatedIdentityCredentialArgs.builder()\n            .applicationId(dopplerManager.id())\n            .displayName(\"doppler-production\")\n            .issuer(prod.federationIssuer())\n            .subject(prod.federationSubject())\n            .audiences(prod.federationAudience())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: doppler:IntegrationAzureRotatedServicePrincipalOidc\n    properties:\n      name: Production\n      tenantId: c77d1b3d-6350-4696-b59f-90dae3e0b41e\n      clientId: ${dopplerManager.clientId}\n  doppler:\n    type: azuread:ApplicationFederatedIdentityCredential\n    properties:\n      applicationId: ${dopplerManager.id}\n      displayName: doppler-production\n      issuer: ${prod.federationIssuer}\n      subject: ${prod.federationSubject}\n      audiences:\n        - ${prod.federationAudience}\nvariables:\n  dopplerManager:\n    fn::invoke:\n      function: azuread:getApplication\n      arguments:\n        clientId: 77ed9112-b7f5-4d1d-a60f-198375e7f265\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The application (client) ID of the managing service principal\n"
+                },
+                "federationAudience": {
+                    "type": "string",
+                    "description": "The audience to configure on the federated identity credential\n"
+                },
+                "federationIssuer": {
+                    "type": "string",
+                    "description": "The issuer of the OIDC tokens Doppler issues for this integration\n"
+                },
+                "federationSubject": {
+                    "type": "string",
+                    "description": "The subject of the OIDC tokens Doppler issues for this integration\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The Azure directory (tenant) ID\n"
+                }
+            },
+            "required": [
+                "clientId",
+                "federationAudience",
+                "federationIssuer",
+                "federationSubject",
+                "name",
+                "tenantId"
+            ],
+            "inputProperties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The application (client) ID of the managing service principal\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The Azure directory (tenant) ID\n"
+                }
+            },
+            "requiredInputs": [
+                "clientId",
+                "tenantId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationAzureRotatedServicePrincipalOidc resources.\n",
+                "properties": {
+                    "clientId": {
+                        "type": "string",
+                        "description": "The application (client) ID of the managing service principal\n"
+                    },
+                    "federationAudience": {
+                        "type": "string",
+                        "description": "The audience to configure on the federated identity credential\n"
+                    },
+                    "federationIssuer": {
+                        "type": "string",
+                        "description": "The issuer of the OIDC tokens Doppler issues for this integration\n"
+                    },
+                    "federationSubject": {
+                        "type": "string",
+                        "description": "The subject of the OIDC tokens Doppler issues for this integration\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the integration\n"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "The Azure directory (tenant) ID\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "doppler:index/integrationAzureVaultServicePrincipal:IntegrationAzureVaultServicePrincipal": {
             "description": "Manage an Azure Vault (Service Principal) Doppler integration.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst prod = new doppler.IntegrationAzureVaultServicePrincipal(\"prod\", {\n    name: \"prod\",\n    clientId: \"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n    clientSecret: \"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\",\n    tenantId: \"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\n\nprod = doppler.IntegrationAzureVaultServicePrincipal(\"prod\",\n    name=\"prod\",\n    client_id=\"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n    client_secret=\"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\",\n    tenant_id=\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Doppler.IntegrationAzureVaultServicePrincipal(\"prod\", new()\n    {\n        Name = \"prod\",\n        ClientId = \"77ed9112-b7f5-4d1d-a60f-198375e7f265\",\n        ClientSecret = \"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\",\n        TenantId = \"c77d1b3d-6350-4696-b59f-90dae3e0b41e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := doppler.NewIntegrationAzureVaultServicePrincipal(ctx, \"prod\", \u0026doppler.IntegrationAzureVaultServicePrincipalArgs{\n\t\t\tName:         pulumi.String(\"prod\"),\n\t\t\tClientId:     pulumi.String(\"77ed9112-b7f5-4d1d-a60f-198375e7f265\"),\n\t\t\tClientSecret: pulumi.String(\"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\"),\n\t\t\tTenantId:     pulumi.String(\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationAzureVaultServicePrincipal;\nimport com.pulumi.doppler.IntegrationAzureVaultServicePrincipalArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new IntegrationAzureVaultServicePrincipal(\"prod\", IntegrationAzureVaultServicePrincipalArgs.builder()\n            .name(\"prod\")\n            .clientId(\"77ed9112-b7f5-4d1d-a60f-198375e7f265\")\n            .clientSecret(\"kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\")\n            .tenantId(\"c77d1b3d-6350-4696-b59f-90dae3e0b41e\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: doppler:IntegrationAzureVaultServicePrincipal\n    properties:\n      name: prod\n      clientId: 77ed9112-b7f5-4d1d-a60f-198375e7f265\n      clientSecret: kXOQb4juoe~jEqQVQdeXEFhsgIvkmoE0Qz3jBwPo\n      tenantId: c77d1b3d-6350-4696-b59f-90dae3e0b41e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -1443,6 +1799,73 @@
                 "type": "object"
             }
         },
+        "doppler:index/integrationGcpCloudsqlMysqlOidc:IntegrationGcpCloudsqlMysqlOidc": {
+            "description": "Manage a GCP CloudSQL MySQL Doppler integration using workload identity federation.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\nimport * as gcp from \"@pulumi/gcp\";\n\nconst prod = new doppler.IntegrationGcpCloudsqlMysqlOidc(\"prod\", {\n    name: \"Production\",\n    gcpWorkloadIdentityProvider: \"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\",\n    gcpProjectId: \"your-gcp-project-id\",\n});\nconst doppler2 = new gcp.projects.IAMMember(\"doppler\", {\n    project: \"your-gcp-project-id\",\n    role: \"roles/cloudsql.admin\",\n    member: prod.federationPrincipal,\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\nimport pulumi_gcp as gcp\n\nprod = doppler.IntegrationGcpCloudsqlMysqlOidc(\"prod\",\n    name=\"Production\",\n    gcp_workload_identity_provider=\"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\",\n    gcp_project_id=\"your-gcp-project-id\")\ndoppler_1 = gcp.projects.IAMMember(\"doppler\",\n    project=\"your-gcp-project-id\",\n    role=\"roles/cloudsql.admin\",\n    member=prod.federation_principal)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\nusing Gcp = Pulumi.Gcp;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Doppler.IntegrationGcpCloudsqlMysqlOidc(\"prod\", new()\n    {\n        Name = \"Production\",\n        GcpWorkloadIdentityProvider = \"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\",\n        GcpProjectId = \"your-gcp-project-id\",\n    });\n\n    var doppler = new Gcp.Projects.IAMMember(\"doppler\", new()\n    {\n        Project = \"your-gcp-project-id\",\n        Role = \"roles/cloudsql.admin\",\n        Member = prod.FederationPrincipal,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := doppler.NewIntegrationGcpCloudsqlMysqlOidc(ctx, \"prod\", \u0026doppler.IntegrationGcpCloudsqlMysqlOidcArgs{\n\t\t\tName:                        pulumi.String(\"Production\"),\n\t\t\tGcpWorkloadIdentityProvider: pulumi.String(\"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\"),\n\t\t\tGcpProjectId:                pulumi.String(\"your-gcp-project-id\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = projects.NewIAMMember(ctx, \"doppler\", \u0026projects.IAMMemberArgs{\n\t\t\tProject: pulumi.String(\"your-gcp-project-id\"),\n\t\t\tRole:    pulumi.String(\"roles/cloudsql.admin\"),\n\t\t\tMember:  prod.FederationPrincipal,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationGcpCloudsqlMysqlOidc;\nimport com.pulumi.doppler.IntegrationGcpCloudsqlMysqlOidcArgs;\nimport com.pulumi.gcp.projects.IAMMember;\nimport com.pulumi.gcp.projects.IAMMemberArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new IntegrationGcpCloudsqlMysqlOidc(\"prod\", IntegrationGcpCloudsqlMysqlOidcArgs.builder()\n            .name(\"Production\")\n            .gcpWorkloadIdentityProvider(\"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\")\n            .gcpProjectId(\"your-gcp-project-id\")\n            .build());\n\n        var doppler = new IAMMember(\"doppler\", IAMMemberArgs.builder()\n            .project(\"your-gcp-project-id\")\n            .role(\"roles/cloudsql.admin\")\n            .member(prod.federationPrincipal())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: doppler:IntegrationGcpCloudsqlMysqlOidc\n    properties:\n      name: Production\n      gcpWorkloadIdentityProvider: //iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\n      gcpProjectId: your-gcp-project-id\n  doppler:\n    type: gcp:projects:IAMMember\n    properties:\n      project: your-gcp-project-id\n      role: roles/cloudsql.admin\n      member: ${prod.federationPrincipal}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "federationPrincipal": {
+                    "type": "string",
+                    "description": "The IAM principal identifier to grant roles to in GCP for this integration\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The ID of the GCP project the integration operates on\n"
+                },
+                "gcpWorkloadIdentityProvider": {
+                    "type": "string",
+                    "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                }
+            },
+            "required": [
+                "federationPrincipal",
+                "gcpProjectId",
+                "gcpWorkloadIdentityProvider",
+                "name"
+            ],
+            "inputProperties": {
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The ID of the GCP project the integration operates on\n"
+                },
+                "gcpWorkloadIdentityProvider": {
+                    "type": "string",
+                    "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                }
+            },
+            "requiredInputs": [
+                "gcpProjectId",
+                "gcpWorkloadIdentityProvider"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationGcpCloudsqlMysqlOidc resources.\n",
+                "properties": {
+                    "federationPrincipal": {
+                        "type": "string",
+                        "description": "The IAM principal identifier to grant roles to in GCP for this integration\n"
+                    },
+                    "gcpProjectId": {
+                        "type": "string",
+                        "description": "The ID of the GCP project the integration operates on\n"
+                    },
+                    "gcpWorkloadIdentityProvider": {
+                        "type": "string",
+                        "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the integration\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "doppler:index/integrationGcpCloudsqlPostgres:IntegrationGcpCloudsqlPostgres": {
             "description": "Manage a GCP CloudSQL Postgres Doppler integration.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst config = new pulumi.Config();\nconst gcpKey = config.get(\"gcpKey\") || `{\n      \"type\": \"service_account\",\n      \"project_id\": \"xxxxxxxxxxxxxxxxx\",\n      \"private_key_id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"private_key\": \"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\",\n      \"client_email\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"client_id\": \"xxxxxxxxxxxxxxxxxxxxx\"\n}\n`;\nconst dbPassword1 = config.get(\"dbPassword1\") || \"\";\nconst dbPassword2 = config.get(\"dbPassword2\") || \"\";\nconst iGcpMysql = new doppler.IntegrationGcpCloudsqlMysql(\"i_gcp_mysql\", {\n    name: \"TF GCP MySQL\",\n    gcpKey: gcpKey,\n});\nconst rsGcpMysql = new doppler.RotatedSecretGcpCloudsql(\"rs_gcp_mysql\", {\n    integration: iGcpMysql.id,\n    project: \"backend\",\n    config: \"dev\",\n    name: \"DB\",\n    rotationPeriodSec: 2592000,\n    databaseInstance: \"xxxxxxxxxxxx\",\n    credentials: [\n        {\n            username: \"xxxxxxxxxxxx\",\n            userHostName: \"%\",\n            password: dbPassword1,\n        },\n        {\n            username: \"xxxxxxxxxxxx\",\n            userHostName: \"%\",\n            password: dbPassword2,\n        },\n    ],\n}, {\n    ignoreChanges: [\"credentials\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\n\nconfig = pulumi.Config()\ngcp_key = config.get(\"gcpKey\")\nif gcp_key is None:\n    gcp_key = \"\"\"{\n      \"type\": \"service_account\",\n      \"project_id\": \"xxxxxxxxxxxxxxxxx\",\n      \"private_key_id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"private_key\": \"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\",\n      \"client_email\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"client_id\": \"xxxxxxxxxxxxxxxxxxxxx\"\n}\n\"\"\"\ndb_password1 = config.get(\"dbPassword1\")\nif db_password1 is None:\n    db_password1 = \"\"\ndb_password2 = config.get(\"dbPassword2\")\nif db_password2 is None:\n    db_password2 = \"\"\ni_gcp_mysql = doppler.IntegrationGcpCloudsqlMysql(\"i_gcp_mysql\",\n    name=\"TF GCP MySQL\",\n    gcp_key=gcp_key)\nrs_gcp_mysql = doppler.RotatedSecretGcpCloudsql(\"rs_gcp_mysql\",\n    integration=i_gcp_mysql.id,\n    project=\"backend\",\n    config=\"dev\",\n    name=\"DB\",\n    rotation_period_sec=2592000,\n    database_instance=\"xxxxxxxxxxxx\",\n    credentials=[\n        {\n            \"username\": \"xxxxxxxxxxxx\",\n            \"user_host_name\": \"%\",\n            \"password\": db_password1,\n        },\n        {\n            \"username\": \"xxxxxxxxxxxx\",\n            \"user_host_name\": \"%\",\n            \"password\": db_password2,\n        },\n    ],\n    opts = pulumi.ResourceOptions(ignore_changes=[\"credentials\"]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var gcpKey = config.Get(\"gcpKey\") ?? @\"{\n      \"\"type\"\": \"\"service_account\"\",\n      \"\"project_id\"\": \"\"xxxxxxxxxxxxxxxxx\"\",\n      \"\"private_key_id\"\": \"\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\",\n      \"\"private_key\"\": \"\"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\"\",\n      \"\"client_email\"\": \"\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\",\n      \"\"client_id\"\": \"\"xxxxxxxxxxxxxxxxxxxxx\"\"\n}\n\";\n    var dbPassword1 = config.Get(\"dbPassword1\") ?? \"\";\n    var dbPassword2 = config.Get(\"dbPassword2\") ?? \"\";\n    var iGcpMysql = new Doppler.IntegrationGcpCloudsqlMysql(\"i_gcp_mysql\", new()\n    {\n        Name = \"TF GCP MySQL\",\n        GcpKey = gcpKey,\n    });\n\n    var rsGcpMysql = new Doppler.RotatedSecretGcpCloudsql(\"rs_gcp_mysql\", new()\n    {\n        Integration = iGcpMysql.Id,\n        Project = \"backend\",\n        Config = \"dev\",\n        Name = \"DB\",\n        RotationPeriodSec = 2592000,\n        DatabaseInstance = \"xxxxxxxxxxxx\",\n        Credentials = new[]\n        {\n            new Doppler.Inputs.RotatedSecretGcpCloudsqlCredentialArgs\n            {\n                Username = \"xxxxxxxxxxxx\",\n                UserHostName = \"%\",\n                Password = dbPassword1,\n            },\n            new Doppler.Inputs.RotatedSecretGcpCloudsqlCredentialArgs\n            {\n                Username = \"xxxxxxxxxxxx\",\n                UserHostName = \"%\",\n                Password = dbPassword2,\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        IgnoreChanges =\n        {\n            \"credentials\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tgcpKey := `{\n      \"type\": \"service_account\",\n      \"project_id\": \"xxxxxxxxxxxxxxxxx\",\n      \"private_key_id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"private_key\": \"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\",\n      \"client_email\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"client_id\": \"xxxxxxxxxxxxxxxxxxxxx\"\n}\n`\n\t\tif param := cfg.Get(\"gcpKey\"); param != \"\" {\n\t\t\tgcpKey = param\n\t\t}\n\t\tdbPassword1 := \"\"\n\t\tif param := cfg.Get(\"dbPassword1\"); param != \"\" {\n\t\t\tdbPassword1 = param\n\t\t}\n\t\tdbPassword2 := \"\"\n\t\tif param := cfg.Get(\"dbPassword2\"); param != \"\" {\n\t\t\tdbPassword2 = param\n\t\t}\n\t\tiGcpMysql, err := doppler.NewIntegrationGcpCloudsqlMysql(ctx, \"i_gcp_mysql\", \u0026doppler.IntegrationGcpCloudsqlMysqlArgs{\n\t\t\tName:   pulumi.String(\"TF GCP MySQL\"),\n\t\t\tGcpKey: pulumi.String(pulumi.String(gcpKey)),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = doppler.NewRotatedSecretGcpCloudsql(ctx, \"rs_gcp_mysql\", \u0026doppler.RotatedSecretGcpCloudsqlArgs{\n\t\t\tIntegration:       iGcpMysql.ID(),\n\t\t\tProject:           pulumi.String(\"backend\"),\n\t\t\tConfig:            pulumi.String(\"dev\"),\n\t\t\tName:              pulumi.String(\"DB\"),\n\t\t\tRotationPeriodSec: pulumi.Int(2592000),\n\t\t\tDatabaseInstance:  pulumi.String(\"xxxxxxxxxxxx\"),\n\t\t\tCredentials: doppler.RotatedSecretGcpCloudsqlCredentialArray{\n\t\t\t\t\u0026doppler.RotatedSecretGcpCloudsqlCredentialArgs{\n\t\t\t\t\tUsername:     pulumi.String(\"xxxxxxxxxxxx\"),\n\t\t\t\t\tUserHostName: pulumi.String(\"%\"),\n\t\t\t\t\tPassword:     pulumi.String(pulumi.String(dbPassword1)),\n\t\t\t\t},\n\t\t\t\t\u0026doppler.RotatedSecretGcpCloudsqlCredentialArgs{\n\t\t\t\t\tUsername:     pulumi.String(\"xxxxxxxxxxxx\"),\n\t\t\t\t\tUserHostName: pulumi.String(\"%\"),\n\t\t\t\t\tPassword:     pulumi.String(pulumi.String(dbPassword2)),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.IgnoreChanges([]string{\n\t\t\t\"credentials\",\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationGcpCloudsqlMysql;\nimport com.pulumi.doppler.IntegrationGcpCloudsqlMysqlArgs;\nimport com.pulumi.doppler.RotatedSecretGcpCloudsql;\nimport com.pulumi.doppler.RotatedSecretGcpCloudsqlArgs;\nimport com.pulumi.doppler.inputs.RotatedSecretGcpCloudsqlCredentialArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var gcpKey = config.get(\"gcpKey\").orElse(\"\"\"\n{\n      \"type\": \"service_account\",\n      \"project_id\": \"xxxxxxxxxxxxxxxxx\",\n      \"private_key_id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"private_key\": \"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\",\n      \"client_email\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"client_id\": \"xxxxxxxxxxxxxxxxxxxxx\"\n}\n        \"\"\");\n        final var dbPassword1 = config.get(\"dbPassword1\").orElse(\"\");\n        final var dbPassword2 = config.get(\"dbPassword2\").orElse(\"\");\n        var iGcpMysql = new IntegrationGcpCloudsqlMysql(\"iGcpMysql\", IntegrationGcpCloudsqlMysqlArgs.builder()\n            .name(\"TF GCP MySQL\")\n            .gcpKey(gcpKey)\n            .build());\n\n        var rsGcpMysql = new RotatedSecretGcpCloudsql(\"rsGcpMysql\", RotatedSecretGcpCloudsqlArgs.builder()\n            .integration(iGcpMysql.id())\n            .project(\"backend\")\n            .config(\"dev\")\n            .name(\"DB\")\n            .rotationPeriodSec(2592000)\n            .databaseInstance(\"xxxxxxxxxxxx\")\n            .credentials(            \n                RotatedSecretGcpCloudsqlCredentialArgs.builder()\n                    .username(\"xxxxxxxxxxxx\")\n                    .userHostName(\"%\")\n                    .password(dbPassword1)\n                    .build(),\n                RotatedSecretGcpCloudsqlCredentialArgs.builder()\n                    .username(\"xxxxxxxxxxxx\")\n                    .userHostName(\"%\")\n                    .password(dbPassword2)\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .ignoreChanges(\"credentials\")\n                .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  # The GCP key that grants access to our CloudSQL instance. For the purposes of this example, this is provided directly.\n  gcpKey:\n    type: string\n    default: |\n      {\n            \"type\": \"service_account\",\n            \"project_id\": \"xxxxxxxxxxxxxxxxx\",\n            \"private_key_id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n            \"private_key\": \"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\",\n            \"client_email\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n            \"client_id\": \"xxxxxxxxxxxxxxxxxxxxx\"\n      }\n  # The initial password for the first db user. This will be rotated, so we provide a default and ignore changes below.\n  # Provide this with -var-file: https://developer.hashicorp.com/terraform/language/values/variables#variable-definitions-tfvars-files\n  dbPassword1:\n    type: string\n    default: \"\"\n  dbPassword2:\n    type: string\n    default: \"\"\nresources:\n  iGcpMysql:\n    type: doppler:IntegrationGcpCloudsqlMysql\n    name: i_gcp_mysql\n    properties:\n      name: TF GCP MySQL\n      gcpKey: ${gcpKey}\n  rsGcpMysql:\n    type: doppler:RotatedSecretGcpCloudsql\n    name: rs_gcp_mysql\n    properties:\n      integration: ${iGcpMysql.id}\n      project: backend\n      config: dev\n      name: DB\n      rotationPeriodSec: 2.592e+06\n      databaseInstance: xxxxxxxxxxxx\n      credentials:\n        - username: xxxxxxxxxxxx\n          userHostName: '%'\n          password: ${dbPassword1}\n        - username: xxxxxxxxxxxx\n          userHostName: '%'\n          password: ${dbPassword2}\n    options:\n      ignoreChanges:\n        - credentials\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -1490,6 +1913,73 @@
                 "type": "object"
             }
         },
+        "doppler:index/integrationGcpCloudsqlPostgresOidc:IntegrationGcpCloudsqlPostgresOidc": {
+            "description": "Manage a GCP CloudSQL Postgres Doppler integration using workload identity federation.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\nimport * as gcp from \"@pulumi/gcp\";\n\nconst prod = new doppler.IntegrationGcpCloudsqlPostgresOidc(\"prod\", {\n    name: \"Production\",\n    gcpWorkloadIdentityProvider: \"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\",\n    gcpProjectId: \"your-gcp-project-id\",\n});\nconst doppler2 = new gcp.projects.IAMMember(\"doppler\", {\n    project: \"your-gcp-project-id\",\n    role: \"roles/cloudsql.admin\",\n    member: prod.federationPrincipal,\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\nimport pulumi_gcp as gcp\n\nprod = doppler.IntegrationGcpCloudsqlPostgresOidc(\"prod\",\n    name=\"Production\",\n    gcp_workload_identity_provider=\"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\",\n    gcp_project_id=\"your-gcp-project-id\")\ndoppler_1 = gcp.projects.IAMMember(\"doppler\",\n    project=\"your-gcp-project-id\",\n    role=\"roles/cloudsql.admin\",\n    member=prod.federation_principal)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\nusing Gcp = Pulumi.Gcp;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Doppler.IntegrationGcpCloudsqlPostgresOidc(\"prod\", new()\n    {\n        Name = \"Production\",\n        GcpWorkloadIdentityProvider = \"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\",\n        GcpProjectId = \"your-gcp-project-id\",\n    });\n\n    var doppler = new Gcp.Projects.IAMMember(\"doppler\", new()\n    {\n        Project = \"your-gcp-project-id\",\n        Role = \"roles/cloudsql.admin\",\n        Member = prod.FederationPrincipal,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := doppler.NewIntegrationGcpCloudsqlPostgresOidc(ctx, \"prod\", \u0026doppler.IntegrationGcpCloudsqlPostgresOidcArgs{\n\t\t\tName:                        pulumi.String(\"Production\"),\n\t\t\tGcpWorkloadIdentityProvider: pulumi.String(\"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\"),\n\t\t\tGcpProjectId:                pulumi.String(\"your-gcp-project-id\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = projects.NewIAMMember(ctx, \"doppler\", \u0026projects.IAMMemberArgs{\n\t\t\tProject: pulumi.String(\"your-gcp-project-id\"),\n\t\t\tRole:    pulumi.String(\"roles/cloudsql.admin\"),\n\t\t\tMember:  prod.FederationPrincipal,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationGcpCloudsqlPostgresOidc;\nimport com.pulumi.doppler.IntegrationGcpCloudsqlPostgresOidcArgs;\nimport com.pulumi.gcp.projects.IAMMember;\nimport com.pulumi.gcp.projects.IAMMemberArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new IntegrationGcpCloudsqlPostgresOidc(\"prod\", IntegrationGcpCloudsqlPostgresOidcArgs.builder()\n            .name(\"Production\")\n            .gcpWorkloadIdentityProvider(\"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\")\n            .gcpProjectId(\"your-gcp-project-id\")\n            .build());\n\n        var doppler = new IAMMember(\"doppler\", IAMMemberArgs.builder()\n            .project(\"your-gcp-project-id\")\n            .role(\"roles/cloudsql.admin\")\n            .member(prod.federationPrincipal())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: doppler:IntegrationGcpCloudsqlPostgresOidc\n    properties:\n      name: Production\n      gcpWorkloadIdentityProvider: //iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\n      gcpProjectId: your-gcp-project-id\n  doppler:\n    type: gcp:projects:IAMMember\n    properties:\n      project: your-gcp-project-id\n      role: roles/cloudsql.admin\n      member: ${prod.federationPrincipal}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "federationPrincipal": {
+                    "type": "string",
+                    "description": "The IAM principal identifier to grant roles to in GCP for this integration\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The ID of the GCP project the integration operates on\n"
+                },
+                "gcpWorkloadIdentityProvider": {
+                    "type": "string",
+                    "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                }
+            },
+            "required": [
+                "federationPrincipal",
+                "gcpProjectId",
+                "gcpWorkloadIdentityProvider",
+                "name"
+            ],
+            "inputProperties": {
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The ID of the GCP project the integration operates on\n"
+                },
+                "gcpWorkloadIdentityProvider": {
+                    "type": "string",
+                    "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                }
+            },
+            "requiredInputs": [
+                "gcpProjectId",
+                "gcpWorkloadIdentityProvider"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationGcpCloudsqlPostgresOidc resources.\n",
+                "properties": {
+                    "federationPrincipal": {
+                        "type": "string",
+                        "description": "The IAM principal identifier to grant roles to in GCP for this integration\n"
+                    },
+                    "gcpProjectId": {
+                        "type": "string",
+                        "description": "The ID of the GCP project the integration operates on\n"
+                    },
+                    "gcpWorkloadIdentityProvider": {
+                        "type": "string",
+                        "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the integration\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "doppler:index/integrationGcpCloudsqlSqlserver:IntegrationGcpCloudsqlSqlserver": {
             "description": "Manage a GCP CloudSQL SQL Server Doppler integration.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst config = new pulumi.Config();\nconst gcpKey = config.get(\"gcpKey\") || `{\n      \"type\": \"service_account\",\n      \"project_id\": \"xxxxxxxxxxxxxxxxx\",\n      \"private_key_id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"private_key\": \"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\",\n      \"client_email\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"client_id\": \"xxxxxxxxxxxxxxxxxxxxx\"\n}\n`;\nconst dbPassword1 = config.get(\"dbPassword1\") || \"\";\nconst dbPassword2 = config.get(\"dbPassword2\") || \"\";\nconst iGcpMysql = new doppler.IntegrationGcpCloudsqlMysql(\"i_gcp_mysql\", {\n    name: \"TF GCP MySQL\",\n    gcpKey: gcpKey,\n});\nconst rsGcpMysql = new doppler.RotatedSecretGcpCloudsql(\"rs_gcp_mysql\", {\n    integration: iGcpMysql.id,\n    project: \"backend\",\n    config: \"dev\",\n    name: \"DB\",\n    rotationPeriodSec: 2592000,\n    databaseInstance: \"xxxxxxxxxxxx\",\n    credentials: [\n        {\n            username: \"xxxxxxxxxxxx\",\n            userHostName: \"%\",\n            password: dbPassword1,\n        },\n        {\n            username: \"xxxxxxxxxxxx\",\n            userHostName: \"%\",\n            password: dbPassword2,\n        },\n    ],\n}, {\n    ignoreChanges: [\"credentials\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\n\nconfig = pulumi.Config()\ngcp_key = config.get(\"gcpKey\")\nif gcp_key is None:\n    gcp_key = \"\"\"{\n      \"type\": \"service_account\",\n      \"project_id\": \"xxxxxxxxxxxxxxxxx\",\n      \"private_key_id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"private_key\": \"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\",\n      \"client_email\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"client_id\": \"xxxxxxxxxxxxxxxxxxxxx\"\n}\n\"\"\"\ndb_password1 = config.get(\"dbPassword1\")\nif db_password1 is None:\n    db_password1 = \"\"\ndb_password2 = config.get(\"dbPassword2\")\nif db_password2 is None:\n    db_password2 = \"\"\ni_gcp_mysql = doppler.IntegrationGcpCloudsqlMysql(\"i_gcp_mysql\",\n    name=\"TF GCP MySQL\",\n    gcp_key=gcp_key)\nrs_gcp_mysql = doppler.RotatedSecretGcpCloudsql(\"rs_gcp_mysql\",\n    integration=i_gcp_mysql.id,\n    project=\"backend\",\n    config=\"dev\",\n    name=\"DB\",\n    rotation_period_sec=2592000,\n    database_instance=\"xxxxxxxxxxxx\",\n    credentials=[\n        {\n            \"username\": \"xxxxxxxxxxxx\",\n            \"user_host_name\": \"%\",\n            \"password\": db_password1,\n        },\n        {\n            \"username\": \"xxxxxxxxxxxx\",\n            \"user_host_name\": \"%\",\n            \"password\": db_password2,\n        },\n    ],\n    opts = pulumi.ResourceOptions(ignore_changes=[\"credentials\"]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var gcpKey = config.Get(\"gcpKey\") ?? @\"{\n      \"\"type\"\": \"\"service_account\"\",\n      \"\"project_id\"\": \"\"xxxxxxxxxxxxxxxxx\"\",\n      \"\"private_key_id\"\": \"\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\",\n      \"\"private_key\"\": \"\"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\"\",\n      \"\"client_email\"\": \"\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"\",\n      \"\"client_id\"\": \"\"xxxxxxxxxxxxxxxxxxxxx\"\"\n}\n\";\n    var dbPassword1 = config.Get(\"dbPassword1\") ?? \"\";\n    var dbPassword2 = config.Get(\"dbPassword2\") ?? \"\";\n    var iGcpMysql = new Doppler.IntegrationGcpCloudsqlMysql(\"i_gcp_mysql\", new()\n    {\n        Name = \"TF GCP MySQL\",\n        GcpKey = gcpKey,\n    });\n\n    var rsGcpMysql = new Doppler.RotatedSecretGcpCloudsql(\"rs_gcp_mysql\", new()\n    {\n        Integration = iGcpMysql.Id,\n        Project = \"backend\",\n        Config = \"dev\",\n        Name = \"DB\",\n        RotationPeriodSec = 2592000,\n        DatabaseInstance = \"xxxxxxxxxxxx\",\n        Credentials = new[]\n        {\n            new Doppler.Inputs.RotatedSecretGcpCloudsqlCredentialArgs\n            {\n                Username = \"xxxxxxxxxxxx\",\n                UserHostName = \"%\",\n                Password = dbPassword1,\n            },\n            new Doppler.Inputs.RotatedSecretGcpCloudsqlCredentialArgs\n            {\n                Username = \"xxxxxxxxxxxx\",\n                UserHostName = \"%\",\n                Password = dbPassword2,\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        IgnoreChanges =\n        {\n            \"credentials\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tgcpKey := `{\n      \"type\": \"service_account\",\n      \"project_id\": \"xxxxxxxxxxxxxxxxx\",\n      \"private_key_id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"private_key\": \"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\",\n      \"client_email\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"client_id\": \"xxxxxxxxxxxxxxxxxxxxx\"\n}\n`\n\t\tif param := cfg.Get(\"gcpKey\"); param != \"\" {\n\t\t\tgcpKey = param\n\t\t}\n\t\tdbPassword1 := \"\"\n\t\tif param := cfg.Get(\"dbPassword1\"); param != \"\" {\n\t\t\tdbPassword1 = param\n\t\t}\n\t\tdbPassword2 := \"\"\n\t\tif param := cfg.Get(\"dbPassword2\"); param != \"\" {\n\t\t\tdbPassword2 = param\n\t\t}\n\t\tiGcpMysql, err := doppler.NewIntegrationGcpCloudsqlMysql(ctx, \"i_gcp_mysql\", \u0026doppler.IntegrationGcpCloudsqlMysqlArgs{\n\t\t\tName:   pulumi.String(\"TF GCP MySQL\"),\n\t\t\tGcpKey: pulumi.String(pulumi.String(gcpKey)),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = doppler.NewRotatedSecretGcpCloudsql(ctx, \"rs_gcp_mysql\", \u0026doppler.RotatedSecretGcpCloudsqlArgs{\n\t\t\tIntegration:       iGcpMysql.ID(),\n\t\t\tProject:           pulumi.String(\"backend\"),\n\t\t\tConfig:            pulumi.String(\"dev\"),\n\t\t\tName:              pulumi.String(\"DB\"),\n\t\t\tRotationPeriodSec: pulumi.Int(2592000),\n\t\t\tDatabaseInstance:  pulumi.String(\"xxxxxxxxxxxx\"),\n\t\t\tCredentials: doppler.RotatedSecretGcpCloudsqlCredentialArray{\n\t\t\t\t\u0026doppler.RotatedSecretGcpCloudsqlCredentialArgs{\n\t\t\t\t\tUsername:     pulumi.String(\"xxxxxxxxxxxx\"),\n\t\t\t\t\tUserHostName: pulumi.String(\"%\"),\n\t\t\t\t\tPassword:     pulumi.String(pulumi.String(dbPassword1)),\n\t\t\t\t},\n\t\t\t\t\u0026doppler.RotatedSecretGcpCloudsqlCredentialArgs{\n\t\t\t\t\tUsername:     pulumi.String(\"xxxxxxxxxxxx\"),\n\t\t\t\t\tUserHostName: pulumi.String(\"%\"),\n\t\t\t\t\tPassword:     pulumi.String(pulumi.String(dbPassword2)),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.IgnoreChanges([]string{\n\t\t\t\"credentials\",\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationGcpCloudsqlMysql;\nimport com.pulumi.doppler.IntegrationGcpCloudsqlMysqlArgs;\nimport com.pulumi.doppler.RotatedSecretGcpCloudsql;\nimport com.pulumi.doppler.RotatedSecretGcpCloudsqlArgs;\nimport com.pulumi.doppler.inputs.RotatedSecretGcpCloudsqlCredentialArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var gcpKey = config.get(\"gcpKey\").orElse(\"\"\"\n{\n      \"type\": \"service_account\",\n      \"project_id\": \"xxxxxxxxxxxxxxxxx\",\n      \"private_key_id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"private_key\": \"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\",\n      \"client_email\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n      \"client_id\": \"xxxxxxxxxxxxxxxxxxxxx\"\n}\n        \"\"\");\n        final var dbPassword1 = config.get(\"dbPassword1\").orElse(\"\");\n        final var dbPassword2 = config.get(\"dbPassword2\").orElse(\"\");\n        var iGcpMysql = new IntegrationGcpCloudsqlMysql(\"iGcpMysql\", IntegrationGcpCloudsqlMysqlArgs.builder()\n            .name(\"TF GCP MySQL\")\n            .gcpKey(gcpKey)\n            .build());\n\n        var rsGcpMysql = new RotatedSecretGcpCloudsql(\"rsGcpMysql\", RotatedSecretGcpCloudsqlArgs.builder()\n            .integration(iGcpMysql.id())\n            .project(\"backend\")\n            .config(\"dev\")\n            .name(\"DB\")\n            .rotationPeriodSec(2592000)\n            .databaseInstance(\"xxxxxxxxxxxx\")\n            .credentials(            \n                RotatedSecretGcpCloudsqlCredentialArgs.builder()\n                    .username(\"xxxxxxxxxxxx\")\n                    .userHostName(\"%\")\n                    .password(dbPassword1)\n                    .build(),\n                RotatedSecretGcpCloudsqlCredentialArgs.builder()\n                    .username(\"xxxxxxxxxxxx\")\n                    .userHostName(\"%\")\n                    .password(dbPassword2)\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .ignoreChanges(\"credentials\")\n                .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  # The GCP key that grants access to our CloudSQL instance. For the purposes of this example, this is provided directly.\n  gcpKey:\n    type: string\n    default: |\n      {\n            \"type\": \"service_account\",\n            \"project_id\": \"xxxxxxxxxxxxxxxxx\",\n            \"private_key_id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n            \"private_key\": \"-----BEGIN PRIVATE KEY-----...-----END PRIVATE KEY-----\",\n            \"client_email\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n            \"client_id\": \"xxxxxxxxxxxxxxxxxxxxx\"\n      }\n  # The initial password for the first db user. This will be rotated, so we provide a default and ignore changes below.\n  # Provide this with -var-file: https://developer.hashicorp.com/terraform/language/values/variables#variable-definitions-tfvars-files\n  dbPassword1:\n    type: string\n    default: \"\"\n  dbPassword2:\n    type: string\n    default: \"\"\nresources:\n  iGcpMysql:\n    type: doppler:IntegrationGcpCloudsqlMysql\n    name: i_gcp_mysql\n    properties:\n      name: TF GCP MySQL\n      gcpKey: ${gcpKey}\n  rsGcpMysql:\n    type: doppler:RotatedSecretGcpCloudsql\n    name: rs_gcp_mysql\n    properties:\n      integration: ${iGcpMysql.id}\n      project: backend\n      config: dev\n      name: DB\n      rotationPeriodSec: 2.592e+06\n      databaseInstance: xxxxxxxxxxxx\n      credentials:\n        - username: xxxxxxxxxxxx\n          userHostName: '%'\n          password: ${dbPassword1}\n        - username: xxxxxxxxxxxx\n          userHostName: '%'\n          password: ${dbPassword2}\n    options:\n      ignoreChanges:\n        - credentials\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -1528,6 +2018,73 @@
                         "type": "string",
                         "description": "The GCP service account key\n",
                         "secret": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the integration\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "doppler:index/integrationGcpCloudsqlSqlserverOidc:IntegrationGcpCloudsqlSqlserverOidc": {
+            "description": "Manage a GCP CloudSQL SQL Server Doppler integration using workload identity federation.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\nimport * as gcp from \"@pulumi/gcp\";\n\nconst prod = new doppler.IntegrationGcpCloudsqlSqlserverOidc(\"prod\", {\n    name: \"Production\",\n    gcpWorkloadIdentityProvider: \"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\",\n    gcpProjectId: \"your-gcp-project-id\",\n});\nconst doppler2 = new gcp.projects.IAMMember(\"doppler\", {\n    project: \"your-gcp-project-id\",\n    role: \"roles/cloudsql.admin\",\n    member: prod.federationPrincipal,\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\nimport pulumi_gcp as gcp\n\nprod = doppler.IntegrationGcpCloudsqlSqlserverOidc(\"prod\",\n    name=\"Production\",\n    gcp_workload_identity_provider=\"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\",\n    gcp_project_id=\"your-gcp-project-id\")\ndoppler_1 = gcp.projects.IAMMember(\"doppler\",\n    project=\"your-gcp-project-id\",\n    role=\"roles/cloudsql.admin\",\n    member=prod.federation_principal)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\nusing Gcp = Pulumi.Gcp;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var prod = new Doppler.IntegrationGcpCloudsqlSqlserverOidc(\"prod\", new()\n    {\n        Name = \"Production\",\n        GcpWorkloadIdentityProvider = \"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\",\n        GcpProjectId = \"your-gcp-project-id\",\n    });\n\n    var doppler = new Gcp.Projects.IAMMember(\"doppler\", new()\n    {\n        Project = \"your-gcp-project-id\",\n        Role = \"roles/cloudsql.admin\",\n        Member = prod.FederationPrincipal,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprod, err := doppler.NewIntegrationGcpCloudsqlSqlserverOidc(ctx, \"prod\", \u0026doppler.IntegrationGcpCloudsqlSqlserverOidcArgs{\n\t\t\tName:                        pulumi.String(\"Production\"),\n\t\t\tGcpWorkloadIdentityProvider: pulumi.String(\"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\"),\n\t\t\tGcpProjectId:                pulumi.String(\"your-gcp-project-id\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = projects.NewIAMMember(ctx, \"doppler\", \u0026projects.IAMMemberArgs{\n\t\t\tProject: pulumi.String(\"your-gcp-project-id\"),\n\t\t\tRole:    pulumi.String(\"roles/cloudsql.admin\"),\n\t\t\tMember:  prod.FederationPrincipal,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationGcpCloudsqlSqlserverOidc;\nimport com.pulumi.doppler.IntegrationGcpCloudsqlSqlserverOidcArgs;\nimport com.pulumi.gcp.projects.IAMMember;\nimport com.pulumi.gcp.projects.IAMMemberArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var prod = new IntegrationGcpCloudsqlSqlserverOidc(\"prod\", IntegrationGcpCloudsqlSqlserverOidcArgs.builder()\n            .name(\"Production\")\n            .gcpWorkloadIdentityProvider(\"//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\")\n            .gcpProjectId(\"your-gcp-project-id\")\n            .build());\n\n        var doppler = new IAMMember(\"doppler\", IAMMemberArgs.builder()\n            .project(\"your-gcp-project-id\")\n            .role(\"roles/cloudsql.admin\")\n            .member(prod.federationPrincipal())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  prod:\n    type: doppler:IntegrationGcpCloudsqlSqlserverOidc\n    properties:\n      name: Production\n      gcpWorkloadIdentityProvider: //iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/doppler-pool/providers/doppler\n      gcpProjectId: your-gcp-project-id\n  doppler:\n    type: gcp:projects:IAMMember\n    properties:\n      project: your-gcp-project-id\n      role: roles/cloudsql.admin\n      member: ${prod.federationPrincipal}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "federationPrincipal": {
+                    "type": "string",
+                    "description": "The IAM principal identifier to grant roles to in GCP for this integration\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The ID of the GCP project the integration operates on\n"
+                },
+                "gcpWorkloadIdentityProvider": {
+                    "type": "string",
+                    "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                }
+            },
+            "required": [
+                "federationPrincipal",
+                "gcpProjectId",
+                "gcpWorkloadIdentityProvider",
+                "name"
+            ],
+            "inputProperties": {
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The ID of the GCP project the integration operates on\n"
+                },
+                "gcpWorkloadIdentityProvider": {
+                    "type": "string",
+                    "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                }
+            },
+            "requiredInputs": [
+                "gcpProjectId",
+                "gcpWorkloadIdentityProvider"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationGcpCloudsqlSqlserverOidc resources.\n",
+                "properties": {
+                    "federationPrincipal": {
+                        "type": "string",
+                        "description": "The IAM principal identifier to grant roles to in GCP for this integration\n"
+                    },
+                    "gcpProjectId": {
+                        "type": "string",
+                        "description": "The ID of the GCP project the integration operates on\n"
+                    },
+                    "gcpWorkloadIdentityProvider": {
+                        "type": "string",
+                        "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
                     },
                     "name": {
                         "type": "string",
@@ -1598,6 +2155,87 @@
                 "type": "object"
             }
         },
+        "doppler:index/integrationGcpSecretManagerOidc:IntegrationGcpSecretManagerOidc": {
+            "description": "Manage a GCP Secret Manager Doppler integration using workload identity federation.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\nimport * as gcp from \"@pulumi/gcp\";\n\nconst doppler2 = new gcp.iam.WorkloadIdentityPool(\"doppler\", {workloadIdentityPoolId: \"doppler-pool\"});\nconst dopplerWorkloadIdentityPoolProvider = new gcp.iam.WorkloadIdentityPoolProvider(\"doppler\", {\n    workloadIdentityPoolId: doppler2.workloadIdentityPoolId,\n    workloadIdentityPoolProviderId: \"doppler\",\n    oidc: {\n        issuerUri: \"https://api.doppler.com\",\n    },\n    attributeMapping: {\n        \"google.subject\": \"assertion.sub\",\n    },\n    attributeCondition: \"assertion.workplace == '\u003cYOUR_WORKPLACE_SLUG\u003e'\",\n});\nconst prod = new doppler.IntegrationGcpSecretManagerOidc(\"prod\", {\n    name: \"Production\",\n    gcpWorkloadIdentityProvider: pulumi.interpolate`//iam.googleapis.com/${dopplerWorkloadIdentityPoolProvider.name}`,\n    gcpProjectId: \"your-gcp-project-id\",\n    gcpSecretPrefix: \"doppler-\",\n});\nconst dopplerIAMMember = new gcp.projects.IAMMember(\"doppler\", {\n    project: \"your-gcp-project-id\",\n    role: \"roles/secretmanager.admin\",\n    member: prod.federationPrincipal,\n    condition: {\n        title: \"doppler-prefix-only\",\n        expression: \"resource.name.startsWith(\\\"projects/\u003cYOUR_PROJECT_NUMBER\u003e/secrets/doppler-\\\")\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\nimport pulumi_gcp as gcp\n\ndoppler_1 = gcp.iam.WorkloadIdentityPool(\"doppler\", workload_identity_pool_id=\"doppler-pool\")\ndoppler_workload_identity_pool_provider = gcp.iam.WorkloadIdentityPoolProvider(\"doppler\",\n    workload_identity_pool_id=doppler_1.workload_identity_pool_id,\n    workload_identity_pool_provider_id=\"doppler\",\n    oidc={\n        \"issuer_uri\": \"https://api.doppler.com\",\n    },\n    attribute_mapping={\n        \"google.subject\": \"assertion.sub\",\n    },\n    attribute_condition=\"assertion.workplace == '\u003cYOUR_WORKPLACE_SLUG\u003e'\")\nprod = doppler.IntegrationGcpSecretManagerOidc(\"prod\",\n    name=\"Production\",\n    gcp_workload_identity_provider=doppler_workload_identity_pool_provider.name.apply(lambda name: f\"//iam.googleapis.com/{name}\"),\n    gcp_project_id=\"your-gcp-project-id\",\n    gcp_secret_prefix=\"doppler-\")\ndoppler_iam_member = gcp.projects.IAMMember(\"doppler\",\n    project=\"your-gcp-project-id\",\n    role=\"roles/secretmanager.admin\",\n    member=prod.federation_principal,\n    condition={\n        \"title\": \"doppler-prefix-only\",\n        \"expression\": \"resource.name.startsWith(\\\"projects/\u003cYOUR_PROJECT_NUMBER\u003e/secrets/doppler-\\\")\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\nusing Gcp = Pulumi.Gcp;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var doppler = new Gcp.Iam.WorkloadIdentityPool(\"doppler\", new()\n    {\n        WorkloadIdentityPoolId = \"doppler-pool\",\n    });\n\n    var dopplerWorkloadIdentityPoolProvider = new Gcp.Iam.WorkloadIdentityPoolProvider(\"doppler\", new()\n    {\n        WorkloadIdentityPoolId = doppler.WorkloadIdentityPoolId,\n        WorkloadIdentityPoolProviderId = \"doppler\",\n        Oidc = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderOidcArgs\n        {\n            IssuerUri = \"https://api.doppler.com\",\n        },\n        AttributeMapping = \n        {\n            { \"google.subject\", \"assertion.sub\" },\n        },\n        AttributeCondition = \"assertion.workplace == '\u003cYOUR_WORKPLACE_SLUG\u003e'\",\n    });\n\n    var prod = new Doppler.IntegrationGcpSecretManagerOidc(\"prod\", new()\n    {\n        Name = \"Production\",\n        GcpWorkloadIdentityProvider = dopplerWorkloadIdentityPoolProvider.Name.Apply(name =\u003e $\"//iam.googleapis.com/{name}\"),\n        GcpProjectId = \"your-gcp-project-id\",\n        GcpSecretPrefix = \"doppler-\",\n    });\n\n    var dopplerIAMMember = new Gcp.Projects.IAMMember(\"doppler\", new()\n    {\n        Project = \"your-gcp-project-id\",\n        Role = \"roles/secretmanager.admin\",\n        Member = prod.FederationPrincipal,\n        Condition = new Gcp.Projects.Inputs.IAMMemberConditionArgs\n        {\n            Title = \"doppler-prefix-only\",\n            Expression = \"resource.name.startsWith(\\\"projects/\u003cYOUR_PROJECT_NUMBER\u003e/secrets/doppler-\\\")\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam\"\n\t\"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdoppler2, err := iam.NewWorkloadIdentityPool(ctx, \"doppler\", \u0026iam.WorkloadIdentityPoolArgs{\n\t\t\tWorkloadIdentityPoolId: pulumi.String(\"doppler-pool\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdopplerWorkloadIdentityPoolProvider, err := iam.NewWorkloadIdentityPoolProvider(ctx, \"doppler\", \u0026iam.WorkloadIdentityPoolProviderArgs{\n\t\t\tWorkloadIdentityPoolId:         doppler2.WorkloadIdentityPoolId,\n\t\t\tWorkloadIdentityPoolProviderId: pulumi.String(\"doppler\"),\n\t\t\tOidc: \u0026iam.WorkloadIdentityPoolProviderOidcArgs{\n\t\t\t\tIssuerUri: pulumi.String(\"https://api.doppler.com\"),\n\t\t\t},\n\t\t\tAttributeMapping: pulumi.StringMap{\n\t\t\t\t\"google.subject\": pulumi.String(\"assertion.sub\"),\n\t\t\t},\n\t\t\tAttributeCondition: pulumi.String(\"assertion.workplace == '\u003cYOUR_WORKPLACE_SLUG\u003e'\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tprod, err := doppler.NewIntegrationGcpSecretManagerOidc(ctx, \"prod\", \u0026doppler.IntegrationGcpSecretManagerOidcArgs{\n\t\t\tName: pulumi.String(\"Production\"),\n\t\t\tGcpWorkloadIdentityProvider: dopplerWorkloadIdentityPoolProvider.Name.ApplyT(func(name string) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\"//iam.googleapis.com/%v\", name), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tGcpProjectId:    pulumi.String(\"your-gcp-project-id\"),\n\t\t\tGcpSecretPrefix: pulumi.String(\"doppler-\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = projects.NewIAMMember(ctx, \"doppler\", \u0026projects.IAMMemberArgs{\n\t\t\tProject: pulumi.String(\"your-gcp-project-id\"),\n\t\t\tRole:    pulumi.String(\"roles/secretmanager.admin\"),\n\t\t\tMember:  prod.FederationPrincipal,\n\t\t\tCondition: \u0026projects.IAMMemberConditionArgs{\n\t\t\t\tTitle:      pulumi.String(\"doppler-prefix-only\"),\n\t\t\t\tExpression: pulumi.String(\"resource.name.startsWith(\\\"projects/\u003cYOUR_PROJECT_NUMBER\u003e/secrets/doppler-\\\")\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.gcp.iam.WorkloadIdentityPool;\nimport com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;\nimport com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;\nimport com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;\nimport com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderOidcArgs;\nimport com.pulumi.doppler.IntegrationGcpSecretManagerOidc;\nimport com.pulumi.doppler.IntegrationGcpSecretManagerOidcArgs;\nimport com.pulumi.gcp.projects.IAMMember;\nimport com.pulumi.gcp.projects.IAMMemberArgs;\nimport com.pulumi.gcp.projects.inputs.IAMMemberConditionArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var doppler = new WorkloadIdentityPool(\"doppler\", WorkloadIdentityPoolArgs.builder()\n            .workloadIdentityPoolId(\"doppler-pool\")\n            .build());\n\n        var dopplerWorkloadIdentityPoolProvider = new WorkloadIdentityPoolProvider(\"dopplerWorkloadIdentityPoolProvider\", WorkloadIdentityPoolProviderArgs.builder()\n            .workloadIdentityPoolId(doppler.workloadIdentityPoolId())\n            .workloadIdentityPoolProviderId(\"doppler\")\n            .oidc(WorkloadIdentityPoolProviderOidcArgs.builder()\n                .issuerUri(\"https://api.doppler.com\")\n                .build())\n            .attributeMapping(Map.of(\"google.subject\", \"assertion.sub\"))\n            .attributeCondition(\"assertion.workplace == '\u003cYOUR_WORKPLACE_SLUG\u003e'\")\n            .build());\n\n        var prod = new IntegrationGcpSecretManagerOidc(\"prod\", IntegrationGcpSecretManagerOidcArgs.builder()\n            .name(\"Production\")\n            .gcpWorkloadIdentityProvider(dopplerWorkloadIdentityPoolProvider.name().applyValue(_name -\u003e String.format(\"//iam.googleapis.com/%s\", _name)))\n            .gcpProjectId(\"your-gcp-project-id\")\n            .gcpSecretPrefix(\"doppler-\")\n            .build());\n\n        var dopplerIAMMember = new IAMMember(\"dopplerIAMMember\", IAMMemberArgs.builder()\n            .project(\"your-gcp-project-id\")\n            .role(\"roles/secretmanager.admin\")\n            .member(prod.federationPrincipal())\n            .condition(IAMMemberConditionArgs.builder()\n                .title(\"doppler-prefix-only\")\n                .expression(\"resource.name.startsWith(\\\"projects/\u003cYOUR_PROJECT_NUMBER\u003e/secrets/doppler-\\\")\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  doppler:\n    type: gcp:iam:WorkloadIdentityPool\n    properties:\n      workloadIdentityPoolId: doppler-pool\n  dopplerWorkloadIdentityPoolProvider:\n    type: gcp:iam:WorkloadIdentityPoolProvider\n    name: doppler\n    properties:\n      workloadIdentityPoolId: ${doppler.workloadIdentityPoolId}\n      workloadIdentityPoolProviderId: doppler\n      oidc:\n        issuerUri: https://api.doppler.com\n      attributeMapping:\n        google.subject: assertion.sub\n      attributeCondition: assertion.workplace == '\u003cYOUR_WORKPLACE_SLUG\u003e'\n  prod:\n    type: doppler:IntegrationGcpSecretManagerOidc\n    properties:\n      name: Production\n      gcpWorkloadIdentityProvider: //iam.googleapis.com/${dopplerWorkloadIdentityPoolProvider.name}\n      gcpProjectId: your-gcp-project-id\n      gcpSecretPrefix: doppler-\n  dopplerIAMMember:\n    type: gcp:projects:IAMMember\n    name: doppler\n    properties:\n      project: your-gcp-project-id\n      role: roles/secretmanager.admin\n      member: ${prod.federationPrincipal}\n      condition:\n        title: doppler-prefix-only\n        expression: resource.name.startsWith(\"projects/\u003cYOUR_PROJECT_NUMBER\u003e/secrets/doppler-\")\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "federationPrincipal": {
+                    "type": "string",
+                    "description": "The IAM principal identifier to grant roles to in GCP for this integration\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The ID of the GCP project the integration operates on\n"
+                },
+                "gcpSecretPrefix": {
+                    "type": "string",
+                    "description": "The prefix added to any secret created by this integration in GCP. Cannot be changed after the integration is created.\n"
+                },
+                "gcpWorkloadIdentityProvider": {
+                    "type": "string",
+                    "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                }
+            },
+            "required": [
+                "federationPrincipal",
+                "gcpProjectId",
+                "gcpWorkloadIdentityProvider",
+                "name"
+            ],
+            "inputProperties": {
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The ID of the GCP project the integration operates on\n"
+                },
+                "gcpSecretPrefix": {
+                    "type": "string",
+                    "description": "The prefix added to any secret created by this integration in GCP. Cannot be changed after the integration is created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "gcpWorkloadIdentityProvider": {
+                    "type": "string",
+                    "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                }
+            },
+            "requiredInputs": [
+                "gcpProjectId",
+                "gcpWorkloadIdentityProvider"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationGcpSecretManagerOidc resources.\n",
+                "properties": {
+                    "federationPrincipal": {
+                        "type": "string",
+                        "description": "The IAM principal identifier to grant roles to in GCP for this integration\n"
+                    },
+                    "gcpProjectId": {
+                        "type": "string",
+                        "description": "The ID of the GCP project the integration operates on\n"
+                    },
+                    "gcpSecretPrefix": {
+                        "type": "string",
+                        "description": "The prefix added to any secret created by this integration in GCP. Cannot be changed after the integration is created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "gcpWorkloadIdentityProvider": {
+                        "type": "string",
+                        "description": "The full resource name of the workload identity pool provider Doppler federates with, e.g. `//iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider`. Note that it uses the numeric project number, not the project ID.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the integration\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "doppler:index/integrationGcpServiceAccountKeys:IntegrationGcpServiceAccountKeys": {
             "description": "Manage a GCP Service Account Keys Doppler integration.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\nimport * as gcp from \"@pulumi/gcp\";\nimport * as std from \"@pulumi/std\";\n\nconst iGcpSakExtid = new doppler.IntegrationExternalId(\"i_gcp_sak_extid\", {integrationType: \"gcp_service_account_keys\"});\nconst gcpsaDopplerImpersonate = new gcp.serviceaccount.Account(\"gcpsa_doppler_impersonate\", {\n    accountId: \"xxxxxxxxxxx\",\n    description: std.format({\n        input: \"doppler_impersonate:%s\",\n        args: [iGcpSakExtid.id],\n    }).then(invoke =\u003e invoke.result),\n    displayName: \"xxxxxxxxxx\",\n});\nconst dopplerRotationImpersonatePolicy = gcp.organizations.getIAMPolicyOutput({\n    bindings: [\n        {\n            role: \"roles/iam.serviceAccountViewer\",\n            members: [\n                gcpsaDopplerImpersonate.member,\n                \"serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\",\n            ],\n        },\n        {\n            role: \"roles/iam.serviceAccountTokenCreator\",\n            members: [\"serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\"],\n        },\n    ],\n});\nconst gcpPolicyImpersonate = new gcp.serviceaccount.IAMPolicy(\"gcp_policy_impersonate\", {\n    serviceAccountId: gcpsaDopplerImpersonate.name,\n    policyData: dopplerRotationImpersonatePolicy.apply(dopplerRotationImpersonatePolicy =\u003e dopplerRotationImpersonatePolicy.policyData),\n});\nconst gcpsaRotated = new gcp.serviceaccount.Account(\"gcpsa_rotated\", {\n    accountId: \"xxxxxxxxxxxxxxxxxx\",\n    displayName: \"xxxxxxxxxxxxxxxxxx\",\n});\nconst dopplerRotatedUserPolicy = gcp.organizations.getIAMPolicyOutput({\n    bindings: [{\n        role: \"roles/iam.serviceAccountKeyAdmin\",\n        members: [gcpsaDopplerImpersonate.member],\n    }],\n});\nconst gcpPolicyRotated = new gcp.serviceaccount.IAMPolicy(\"gcp_policy_rotated\", {\n    serviceAccountId: gcpsaRotated.name,\n    policyData: dopplerRotatedUserPolicy.apply(dopplerRotatedUserPolicy =\u003e dopplerRotatedUserPolicy.policyData),\n});\nconst iGcpSak = new doppler.IntegrationGcpServiceAccountKeys(\"i_gcp_sak\", {\n    name: \"TF GCP Service Account Keys\",\n    impersonatedServiceAccount: gcpsaDopplerImpersonate.email,\n    externalId: iGcpSakExtid.id,\n});\nconst rsGcpsak = new doppler.RotatedSecretGcpServiceAccountKeys(\"rs_gcpsak\", {\n    integration: iGcpSak.id,\n    project: \"backend\",\n    config: \"dev\",\n    name: \"GCP_SERVICE_ACCOUNT\",\n    rotationPeriodSec: 2592000,\n    serviceAccount: gcpsaRotated.email,\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\nimport pulumi_gcp as gcp\nimport pulumi_std as std\n\ni_gcp_sak_extid = doppler.IntegrationExternalId(\"i_gcp_sak_extid\", integration_type=\"gcp_service_account_keys\")\ngcpsa_doppler_impersonate = gcp.serviceaccount.Account(\"gcpsa_doppler_impersonate\",\n    account_id=\"xxxxxxxxxxx\",\n    description=std.format(input=\"doppler_impersonate:%s\",\n        args=[i_gcp_sak_extid.id]).result,\n    display_name=\"xxxxxxxxxx\")\ndoppler_rotation_impersonate_policy = gcp.organizations.get_iam_policy_output(bindings=[\n    {\n        \"role\": \"roles/iam.serviceAccountViewer\",\n        \"members\": [\n            gcpsa_doppler_impersonate.member,\n            \"serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\",\n        ],\n    },\n    {\n        \"role\": \"roles/iam.serviceAccountTokenCreator\",\n        \"members\": [\"serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\"],\n    },\n])\ngcp_policy_impersonate = gcp.serviceaccount.IAMPolicy(\"gcp_policy_impersonate\",\n    service_account_id=gcpsa_doppler_impersonate.name,\n    policy_data=doppler_rotation_impersonate_policy.policy_data)\ngcpsa_rotated = gcp.serviceaccount.Account(\"gcpsa_rotated\",\n    account_id=\"xxxxxxxxxxxxxxxxxx\",\n    display_name=\"xxxxxxxxxxxxxxxxxx\")\ndoppler_rotated_user_policy = gcp.organizations.get_iam_policy_output(bindings=[{\n    \"role\": \"roles/iam.serviceAccountKeyAdmin\",\n    \"members\": [gcpsa_doppler_impersonate.member],\n}])\ngcp_policy_rotated = gcp.serviceaccount.IAMPolicy(\"gcp_policy_rotated\",\n    service_account_id=gcpsa_rotated.name,\n    policy_data=doppler_rotated_user_policy.policy_data)\ni_gcp_sak = doppler.IntegrationGcpServiceAccountKeys(\"i_gcp_sak\",\n    name=\"TF GCP Service Account Keys\",\n    impersonated_service_account=gcpsa_doppler_impersonate.email,\n    external_id=i_gcp_sak_extid.id)\nrs_gcpsak = doppler.RotatedSecretGcpServiceAccountKeys(\"rs_gcpsak\",\n    integration=i_gcp_sak.id,\n    project=\"backend\",\n    config=\"dev\",\n    name=\"GCP_SERVICE_ACCOUNT\",\n    rotation_period_sec=2592000,\n    service_account=gcpsa_rotated.email)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\nusing Gcp = Pulumi.Gcp;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var iGcpSakExtid = new Doppler.IntegrationExternalId(\"i_gcp_sak_extid\", new()\n    {\n        IntegrationType = \"gcp_service_account_keys\",\n    });\n\n    var gcpsaDopplerImpersonate = new Gcp.ServiceAccount.Account(\"gcpsa_doppler_impersonate\", new()\n    {\n        AccountId = \"xxxxxxxxxxx\",\n        Description = Std.Format.Invoke(new()\n        {\n            Input = \"doppler_impersonate:%s\",\n            Args = new[]\n            {\n                iGcpSakExtid.Id,\n            },\n        }).Apply(invoke =\u003e invoke.Result),\n        DisplayName = \"xxxxxxxxxx\",\n    });\n\n    var dopplerRotationImpersonatePolicy = Gcp.Organizations.GetIAMPolicy.Invoke(new()\n    {\n        Bindings = new[]\n        {\n            new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs\n            {\n                Role = \"roles/iam.serviceAccountViewer\",\n                Members = new[]\n                {\n                    gcpsaDopplerImpersonate.Member,\n                    \"serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\",\n                },\n            },\n            new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs\n            {\n                Role = \"roles/iam.serviceAccountTokenCreator\",\n                Members = new[]\n                {\n                    \"serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\",\n                },\n            },\n        },\n    });\n\n    var gcpPolicyImpersonate = new Gcp.ServiceAccount.IAMPolicy(\"gcp_policy_impersonate\", new()\n    {\n        ServiceAccountId = gcpsaDopplerImpersonate.Name,\n        PolicyData = dopplerRotationImpersonatePolicy.Apply(getIAMPolicyResult =\u003e getIAMPolicyResult.PolicyData),\n    });\n\n    var gcpsaRotated = new Gcp.ServiceAccount.Account(\"gcpsa_rotated\", new()\n    {\n        AccountId = \"xxxxxxxxxxxxxxxxxx\",\n        DisplayName = \"xxxxxxxxxxxxxxxxxx\",\n    });\n\n    var dopplerRotatedUserPolicy = Gcp.Organizations.GetIAMPolicy.Invoke(new()\n    {\n        Bindings = new[]\n        {\n            new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs\n            {\n                Role = \"roles/iam.serviceAccountKeyAdmin\",\n                Members = new[]\n                {\n                    gcpsaDopplerImpersonate.Member,\n                },\n            },\n        },\n    });\n\n    var gcpPolicyRotated = new Gcp.ServiceAccount.IAMPolicy(\"gcp_policy_rotated\", new()\n    {\n        ServiceAccountId = gcpsaRotated.Name,\n        PolicyData = dopplerRotatedUserPolicy.Apply(getIAMPolicyResult =\u003e getIAMPolicyResult.PolicyData),\n    });\n\n    var iGcpSak = new Doppler.IntegrationGcpServiceAccountKeys(\"i_gcp_sak\", new()\n    {\n        Name = \"TF GCP Service Account Keys\",\n        ImpersonatedServiceAccount = gcpsaDopplerImpersonate.Email,\n        ExternalId = iGcpSakExtid.Id,\n    });\n\n    var rsGcpsak = new Doppler.RotatedSecretGcpServiceAccountKeys(\"rs_gcpsak\", new()\n    {\n        Integration = iGcpSak.Id,\n        Project = \"backend\",\n        Config = \"dev\",\n        Name = \"GCP_SERVICE_ACCOUNT\",\n        RotationPeriodSec = 2592000,\n        ServiceAccount = gcpsaRotated.Email,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations\"\n\t\"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount\"\n\t\"github.com/pulumi/pulumi-std/sdk/v2/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tiGcpSakExtid, err := doppler.NewIntegrationExternalId(ctx, \"i_gcp_sak_extid\", \u0026doppler.IntegrationExternalIdArgs{\n\t\t\tIntegrationType: pulumi.String(\"gcp_service_account_keys\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFormat, err := std.Format(ctx, \u0026std.FormatArgs{\n\t\t\tInput: \"doppler_impersonate:%s\",\n\t\t\tArgs: pulumi.StringArray{\n\t\t\t\tiGcpSakExtid.ID(),\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgcpsaDopplerImpersonate, err := serviceaccount.NewAccount(ctx, \"gcpsa_doppler_impersonate\", \u0026serviceaccount.AccountArgs{\n\t\t\tAccountId:   pulumi.String(\"xxxxxxxxxxx\"),\n\t\t\tDescription: pulumi.String(invokeFormat.Result),\n\t\t\tDisplayName: pulumi.String(\"xxxxxxxxxx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdopplerRotationImpersonatePolicy := organizations.LookupIAMPolicyOutput(ctx, organizations.GetIAMPolicyOutputArgs{\n\t\t\tBindings: organizations.GetIAMPolicyBindingArray{\n\t\t\t\t\u0026organizations.GetIAMPolicyBindingArgs{\n\t\t\t\t\tRole: pulumi.String(\"roles/iam.serviceAccountViewer\"),\n\t\t\t\t\tMembers: pulumi.StringArray{\n\t\t\t\t\t\tgcpsaDopplerImpersonate.Member,\n\t\t\t\t\t\tpulumi.String(\"serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026organizations.GetIAMPolicyBindingArgs{\n\t\t\t\t\tRole: pulumi.String(\"roles/iam.serviceAccountTokenCreator\"),\n\t\t\t\t\tMembers: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\t_, err = serviceaccount.NewIAMPolicy(ctx, \"gcp_policy_impersonate\", \u0026serviceaccount.IAMPolicyArgs{\n\t\t\tServiceAccountId: gcpsaDopplerImpersonate.Name,\n\t\t\tPolicyData: pulumi.String(dopplerRotationImpersonatePolicy.ApplyT(func(dopplerRotationImpersonatePolicy organizations.GetIAMPolicyResult) (*string, error) {\n\t\t\t\treturn \u0026dopplerRotationImpersonatePolicy.PolicyData, nil\n\t\t\t}).(pulumi.StringPtrOutput)),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgcpsaRotated, err := serviceaccount.NewAccount(ctx, \"gcpsa_rotated\", \u0026serviceaccount.AccountArgs{\n\t\t\tAccountId:   pulumi.String(\"xxxxxxxxxxxxxxxxxx\"),\n\t\t\tDisplayName: pulumi.String(\"xxxxxxxxxxxxxxxxxx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdopplerRotatedUserPolicy := organizations.LookupIAMPolicyOutput(ctx, organizations.GetIAMPolicyOutputArgs{\n\t\t\tBindings: organizations.GetIAMPolicyBindingArray{\n\t\t\t\t\u0026organizations.GetIAMPolicyBindingArgs{\n\t\t\t\t\tRole: pulumi.String(\"roles/iam.serviceAccountKeyAdmin\"),\n\t\t\t\t\tMembers: pulumi.StringArray{\n\t\t\t\t\t\tgcpsaDopplerImpersonate.Member,\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\t_, err = serviceaccount.NewIAMPolicy(ctx, \"gcp_policy_rotated\", \u0026serviceaccount.IAMPolicyArgs{\n\t\t\tServiceAccountId: gcpsaRotated.Name,\n\t\t\tPolicyData: pulumi.String(dopplerRotatedUserPolicy.ApplyT(func(dopplerRotatedUserPolicy organizations.GetIAMPolicyResult) (*string, error) {\n\t\t\t\treturn \u0026dopplerRotatedUserPolicy.PolicyData, nil\n\t\t\t}).(pulumi.StringPtrOutput)),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tiGcpSak, err := doppler.NewIntegrationGcpServiceAccountKeys(ctx, \"i_gcp_sak\", \u0026doppler.IntegrationGcpServiceAccountKeysArgs{\n\t\t\tName:                       pulumi.String(\"TF GCP Service Account Keys\"),\n\t\t\tImpersonatedServiceAccount: gcpsaDopplerImpersonate.Email,\n\t\t\tExternalId:                 iGcpSakExtid.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = doppler.NewRotatedSecretGcpServiceAccountKeys(ctx, \"rs_gcpsak\", \u0026doppler.RotatedSecretGcpServiceAccountKeysArgs{\n\t\t\tIntegration:       iGcpSak.ID(),\n\t\t\tProject:           pulumi.String(\"backend\"),\n\t\t\tConfig:            pulumi.String(\"dev\"),\n\t\t\tName:              pulumi.String(\"GCP_SERVICE_ACCOUNT\"),\n\t\t\tRotationPeriodSec: pulumi.Int(2592000),\n\t\t\tServiceAccount:    gcpsaRotated.Email,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationExternalId;\nimport com.pulumi.doppler.IntegrationExternalIdArgs;\nimport com.pulumi.gcp.serviceaccount.Account;\nimport com.pulumi.gcp.serviceaccount.AccountArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.FormatArgs;\nimport com.pulumi.gcp.organizations.OrganizationsFunctions;\nimport com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;\nimport com.pulumi.gcp.serviceaccount.IAMPolicy;\nimport com.pulumi.gcp.serviceaccount.IAMPolicyArgs;\nimport com.pulumi.doppler.IntegrationGcpServiceAccountKeys;\nimport com.pulumi.doppler.IntegrationGcpServiceAccountKeysArgs;\nimport com.pulumi.doppler.RotatedSecretGcpServiceAccountKeys;\nimport com.pulumi.doppler.RotatedSecretGcpServiceAccountKeysArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var iGcpSakExtid = new IntegrationExternalId(\"iGcpSakExtid\", IntegrationExternalIdArgs.builder()\n            .integrationType(\"gcp_service_account_keys\")\n            .build());\n\n        var gcpsaDopplerImpersonate = new Account(\"gcpsaDopplerImpersonate\", AccountArgs.builder()\n            .accountId(\"xxxxxxxxxxx\")\n            .description(StdFunctions.format(FormatArgs.builder()\n                .input(\"doppler_impersonate:%s\")\n                .args(iGcpSakExtid.id())\n                .build()).result())\n            .displayName(\"xxxxxxxxxx\")\n            .build());\n\n        final var dopplerRotationImpersonatePolicy = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()\n            .bindings(            \n                GetIAMPolicyBindingArgs.builder()\n                    .role(\"roles/iam.serviceAccountViewer\")\n                    .members(                    \n                        gcpsaDopplerImpersonate.member(),\n                        \"serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\")\n                    .build(),\n                GetIAMPolicyBindingArgs.builder()\n                    .role(\"roles/iam.serviceAccountTokenCreator\")\n                    .members(\"serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\")\n                    .build())\n            .build());\n\n        var gcpPolicyImpersonate = new IAMPolicy(\"gcpPolicyImpersonate\", IAMPolicyArgs.builder()\n            .serviceAccountId(gcpsaDopplerImpersonate.name())\n            .policyData(dopplerRotationImpersonatePolicy.applyValue(_dopplerRotationImpersonatePolicy -\u003e _dopplerRotationImpersonatePolicy.policyData()))\n            .build());\n\n        var gcpsaRotated = new Account(\"gcpsaRotated\", AccountArgs.builder()\n            .accountId(\"xxxxxxxxxxxxxxxxxx\")\n            .displayName(\"xxxxxxxxxxxxxxxxxx\")\n            .build());\n\n        final var dopplerRotatedUserPolicy = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()\n            .bindings(GetIAMPolicyBindingArgs.builder()\n                .role(\"roles/iam.serviceAccountKeyAdmin\")\n                .members(gcpsaDopplerImpersonate.member())\n                .build())\n            .build());\n\n        var gcpPolicyRotated = new IAMPolicy(\"gcpPolicyRotated\", IAMPolicyArgs.builder()\n            .serviceAccountId(gcpsaRotated.name())\n            .policyData(dopplerRotatedUserPolicy.applyValue(_dopplerRotatedUserPolicy -\u003e _dopplerRotatedUserPolicy.policyData()))\n            .build());\n\n        var iGcpSak = new IntegrationGcpServiceAccountKeys(\"iGcpSak\", IntegrationGcpServiceAccountKeysArgs.builder()\n            .name(\"TF GCP Service Account Keys\")\n            .impersonatedServiceAccount(gcpsaDopplerImpersonate.email())\n            .externalId(iGcpSakExtid.id())\n            .build());\n\n        var rsGcpsak = new RotatedSecretGcpServiceAccountKeys(\"rsGcpsak\", RotatedSecretGcpServiceAccountKeysArgs.builder()\n            .integration(iGcpSak.id())\n            .project(\"backend\")\n            .config(\"dev\")\n            .name(\"GCP_SERVICE_ACCOUNT\")\n            .rotationPeriodSec(2592000)\n            .serviceAccount(gcpsaRotated.email())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  iGcpSakExtid:\n    type: doppler:IntegrationExternalId\n    name: i_gcp_sak_extid\n    properties:\n      integrationType: gcp_service_account_keys\n  gcpsaDopplerImpersonate:\n    type: gcp:serviceaccount:Account\n    name: gcpsa_doppler_impersonate\n    properties:\n      accountId: xxxxxxxxxxx\n      description:\n        fn::invoke:\n          function: std:format\n          arguments:\n            input: doppler_impersonate:%s\n            args:\n              - ${iGcpSakExtid.id}\n          return: result\n      displayName: xxxxxxxxxx\n  gcpPolicyImpersonate:\n    type: gcp:serviceaccount:IAMPolicy\n    name: gcp_policy_impersonate\n    properties:\n      serviceAccountId: ${gcpsaDopplerImpersonate.name}\n      policyData: ${dopplerRotationImpersonatePolicy.policyData}\n  gcpsaRotated:\n    type: gcp:serviceaccount:Account\n    name: gcpsa_rotated\n    properties:\n      accountId: xxxxxxxxxxxxxxxxxx\n      displayName: xxxxxxxxxxxxxxxxxx\n  gcpPolicyRotated:\n    type: gcp:serviceaccount:IAMPolicy\n    name: gcp_policy_rotated\n    properties:\n      serviceAccountId: ${gcpsaRotated.name}\n      policyData: ${dopplerRotatedUserPolicy.policyData}\n  iGcpSak:\n    type: doppler:IntegrationGcpServiceAccountKeys\n    name: i_gcp_sak\n    properties:\n      name: TF GCP Service Account Keys\n      impersonatedServiceAccount: ${gcpsaDopplerImpersonate.email}\n      externalId: ${iGcpSakExtid.id}\n  rsGcpsak:\n    type: doppler:RotatedSecretGcpServiceAccountKeys\n    name: rs_gcpsak\n    properties:\n      integration: ${iGcpSak.id}\n      project: backend\n      config: dev\n      name: GCP_SERVICE_ACCOUNT\n      rotationPeriodSec: 2.592e+06\n      serviceAccount: ${gcpsaRotated.email}\nvariables:\n  dopplerRotationImpersonatePolicy:\n    fn::invoke:\n      function: gcp:organizations:getIAMPolicy\n      arguments:\n        bindings:\n          - role: roles/iam.serviceAccountViewer\n            members:\n              - ${gcpsaDopplerImpersonate.member}\n              - serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\n          - role: roles/iam.serviceAccountTokenCreator\n            members:\n              - serviceAccount:operator@doppler-integrations.iam.gserviceaccount.com\n  dopplerRotatedUserPolicy:\n    fn::invoke:\n      function: gcp:organizations:getIAMPolicy\n      arguments:\n        bindings:\n          - role: roles/iam.serviceAccountKeyAdmin\n            members:\n              - ${gcpsaDopplerImpersonate.member}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -1651,6 +2289,195 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the integration\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "doppler:index/integrationMemberGroup:IntegrationMemberGroup": {
+            "description": "Manage a Doppler integration group member.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst awsEngineering = new doppler.IntegrationMemberGroup(\"aws_engineering\", {\n    integration: prod.slug,\n    groupSlug: engineering.slug,\n    role: \"consumer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\n\naws_engineering = doppler.IntegrationMemberGroup(\"aws_engineering\",\n    integration=prod[\"slug\"],\n    group_slug=engineering[\"slug\"],\n    role=\"consumer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awsEngineering = new Doppler.IntegrationMemberGroup(\"aws_engineering\", new()\n    {\n        Integration = prod.Slug,\n        GroupSlug = engineering.Slug,\n        Role = \"consumer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := doppler.NewIntegrationMemberGroup(ctx, \"aws_engineering\", \u0026doppler.IntegrationMemberGroupArgs{\n\t\t\tIntegration: pulumi.Any(prod.Slug),\n\t\t\tGroupSlug:   pulumi.Any(engineering.Slug),\n\t\t\tRole:        pulumi.String(\"consumer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationMemberGroup;\nimport com.pulumi.doppler.IntegrationMemberGroupArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsEngineering = new IntegrationMemberGroup(\"awsEngineering\", IntegrationMemberGroupArgs.builder()\n            .integration(prod.slug())\n            .groupSlug(engineering.slug())\n            .role(\"consumer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsEngineering:\n    type: doppler:IntegrationMemberGroup\n    name: aws_engineering\n    properties:\n      integration: ${prod.slug}\n      groupSlug: ${engineering.slug}\n      role: consumer\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "groupSlug": {
+                    "type": "string",
+                    "description": "The slug of the Doppler group\n"
+                },
+                "integration": {
+                    "type": "string",
+                    "description": "The slug of the Doppler integration where the access is applied\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The integration role identifier for the access. Must use either one of the built-in integration role slugs (\u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`consumer`\" pulumi-lang-dotnet=\"`Consumer`\" pulumi-lang-go=\"`consumer`\" pulumi-lang-python=\"`consumer`\" pulumi-lang-yaml=\"`consumer`\" pulumi-lang-java=\"`consumer`\"\u003e`consumer`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`viewer`\" pulumi-lang-dotnet=\"`Viewer`\" pulumi-lang-go=\"`viewer`\" pulumi-lang-python=\"`viewer`\" pulumi-lang-yaml=\"`viewer`\" pulumi-lang-java=\"`viewer`\"\u003e`viewer`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`noAccess`\" pulumi-lang-dotnet=\"`NoAccess`\" pulumi-lang-go=\"`noAccess`\" pulumi-lang-python=\"`no_access`\" pulumi-lang-yaml=\"`noAccess`\" pulumi-lang-java=\"`noAccess`\"\u003e`noAccess`\u003c/span\u003e), or the slug for a custom integration role.\n"
+                }
+            },
+            "required": [
+                "groupSlug",
+                "integration",
+                "role"
+            ],
+            "inputProperties": {
+                "groupSlug": {
+                    "type": "string",
+                    "description": "The slug of the Doppler group\n",
+                    "willReplaceOnChanges": true
+                },
+                "integration": {
+                    "type": "string",
+                    "description": "The slug of the Doppler integration where the access is applied\n",
+                    "willReplaceOnChanges": true
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The integration role identifier for the access. Must use either one of the built-in integration role slugs (\u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`consumer`\" pulumi-lang-dotnet=\"`Consumer`\" pulumi-lang-go=\"`consumer`\" pulumi-lang-python=\"`consumer`\" pulumi-lang-yaml=\"`consumer`\" pulumi-lang-java=\"`consumer`\"\u003e`consumer`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`viewer`\" pulumi-lang-dotnet=\"`Viewer`\" pulumi-lang-go=\"`viewer`\" pulumi-lang-python=\"`viewer`\" pulumi-lang-yaml=\"`viewer`\" pulumi-lang-java=\"`viewer`\"\u003e`viewer`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`noAccess`\" pulumi-lang-dotnet=\"`NoAccess`\" pulumi-lang-go=\"`noAccess`\" pulumi-lang-python=\"`no_access`\" pulumi-lang-yaml=\"`noAccess`\" pulumi-lang-java=\"`noAccess`\"\u003e`noAccess`\u003c/span\u003e), or the slug for a custom integration role.\n"
+                }
+            },
+            "requiredInputs": [
+                "groupSlug",
+                "integration",
+                "role"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationMemberGroup resources.\n",
+                "properties": {
+                    "groupSlug": {
+                        "type": "string",
+                        "description": "The slug of the Doppler group\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "integration": {
+                        "type": "string",
+                        "description": "The slug of the Doppler integration where the access is applied\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The integration role identifier for the access. Must use either one of the built-in integration role slugs (\u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`consumer`\" pulumi-lang-dotnet=\"`Consumer`\" pulumi-lang-go=\"`consumer`\" pulumi-lang-python=\"`consumer`\" pulumi-lang-yaml=\"`consumer`\" pulumi-lang-java=\"`consumer`\"\u003e`consumer`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`viewer`\" pulumi-lang-dotnet=\"`Viewer`\" pulumi-lang-go=\"`viewer`\" pulumi-lang-python=\"`viewer`\" pulumi-lang-yaml=\"`viewer`\" pulumi-lang-java=\"`viewer`\"\u003e`viewer`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`noAccess`\" pulumi-lang-dotnet=\"`NoAccess`\" pulumi-lang-go=\"`noAccess`\" pulumi-lang-python=\"`no_access`\" pulumi-lang-yaml=\"`noAccess`\" pulumi-lang-java=\"`noAccess`\"\u003e`noAccess`\u003c/span\u003e), or the slug for a custom integration role.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "doppler:index/integrationMemberServiceAccount:IntegrationMemberServiceAccount": {
+            "description": "Manage a Doppler integration service account member.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst awsCi = new doppler.IntegrationMemberServiceAccount(\"aws_ci\", {\n    integration: prod.slug,\n    serviceAccountSlug: ci.slug,\n    role: \"consumer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\n\naws_ci = doppler.IntegrationMemberServiceAccount(\"aws_ci\",\n    integration=prod[\"slug\"],\n    service_account_slug=ci[\"slug\"],\n    role=\"consumer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awsCi = new Doppler.IntegrationMemberServiceAccount(\"aws_ci\", new()\n    {\n        Integration = prod.Slug,\n        ServiceAccountSlug = ci.Slug,\n        Role = \"consumer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := doppler.NewIntegrationMemberServiceAccount(ctx, \"aws_ci\", \u0026doppler.IntegrationMemberServiceAccountArgs{\n\t\t\tIntegration:        pulumi.Any(prod.Slug),\n\t\t\tServiceAccountSlug: pulumi.Any(ci.Slug),\n\t\t\tRole:               pulumi.String(\"consumer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationMemberServiceAccount;\nimport com.pulumi.doppler.IntegrationMemberServiceAccountArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsCi = new IntegrationMemberServiceAccount(\"awsCi\", IntegrationMemberServiceAccountArgs.builder()\n            .integration(prod.slug())\n            .serviceAccountSlug(ci.slug())\n            .role(\"consumer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsCi:\n    type: doppler:IntegrationMemberServiceAccount\n    name: aws_ci\n    properties:\n      integration: ${prod.slug}\n      serviceAccountSlug: ${ci.slug}\n      role: consumer\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "integration": {
+                    "type": "string",
+                    "description": "The slug of the Doppler integration where the access is applied\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The integration role identifier for the access. Must use either one of the built-in integration role slugs (\u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`consumer`\" pulumi-lang-dotnet=\"`Consumer`\" pulumi-lang-go=\"`consumer`\" pulumi-lang-python=\"`consumer`\" pulumi-lang-yaml=\"`consumer`\" pulumi-lang-java=\"`consumer`\"\u003e`consumer`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`viewer`\" pulumi-lang-dotnet=\"`Viewer`\" pulumi-lang-go=\"`viewer`\" pulumi-lang-python=\"`viewer`\" pulumi-lang-yaml=\"`viewer`\" pulumi-lang-java=\"`viewer`\"\u003e`viewer`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`noAccess`\" pulumi-lang-dotnet=\"`NoAccess`\" pulumi-lang-go=\"`noAccess`\" pulumi-lang-python=\"`no_access`\" pulumi-lang-yaml=\"`noAccess`\" pulumi-lang-java=\"`noAccess`\"\u003e`noAccess`\u003c/span\u003e), or the slug for a custom integration role.\n"
+                },
+                "serviceAccountSlug": {
+                    "type": "string",
+                    "description": "The slug of the Doppler service account\n"
+                }
+            },
+            "required": [
+                "integration",
+                "role",
+                "serviceAccountSlug"
+            ],
+            "inputProperties": {
+                "integration": {
+                    "type": "string",
+                    "description": "The slug of the Doppler integration where the access is applied\n",
+                    "willReplaceOnChanges": true
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The integration role identifier for the access. Must use either one of the built-in integration role slugs (\u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`consumer`\" pulumi-lang-dotnet=\"`Consumer`\" pulumi-lang-go=\"`consumer`\" pulumi-lang-python=\"`consumer`\" pulumi-lang-yaml=\"`consumer`\" pulumi-lang-java=\"`consumer`\"\u003e`consumer`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`viewer`\" pulumi-lang-dotnet=\"`Viewer`\" pulumi-lang-go=\"`viewer`\" pulumi-lang-python=\"`viewer`\" pulumi-lang-yaml=\"`viewer`\" pulumi-lang-java=\"`viewer`\"\u003e`viewer`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`noAccess`\" pulumi-lang-dotnet=\"`NoAccess`\" pulumi-lang-go=\"`noAccess`\" pulumi-lang-python=\"`no_access`\" pulumi-lang-yaml=\"`noAccess`\" pulumi-lang-java=\"`noAccess`\"\u003e`noAccess`\u003c/span\u003e), or the slug for a custom integration role.\n"
+                },
+                "serviceAccountSlug": {
+                    "type": "string",
+                    "description": "The slug of the Doppler service account\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "integration",
+                "role",
+                "serviceAccountSlug"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationMemberServiceAccount resources.\n",
+                "properties": {
+                    "integration": {
+                        "type": "string",
+                        "description": "The slug of the Doppler integration where the access is applied\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The integration role identifier for the access. Must use either one of the built-in integration role slugs (\u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`consumer`\" pulumi-lang-dotnet=\"`Consumer`\" pulumi-lang-go=\"`consumer`\" pulumi-lang-python=\"`consumer`\" pulumi-lang-yaml=\"`consumer`\" pulumi-lang-java=\"`consumer`\"\u003e`consumer`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`viewer`\" pulumi-lang-dotnet=\"`Viewer`\" pulumi-lang-go=\"`viewer`\" pulumi-lang-python=\"`viewer`\" pulumi-lang-yaml=\"`viewer`\" pulumi-lang-java=\"`viewer`\"\u003e`viewer`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`noAccess`\" pulumi-lang-dotnet=\"`NoAccess`\" pulumi-lang-go=\"`noAccess`\" pulumi-lang-python=\"`no_access`\" pulumi-lang-yaml=\"`noAccess`\" pulumi-lang-java=\"`noAccess`\"\u003e`noAccess`\u003c/span\u003e), or the slug for a custom integration role.\n"
+                    },
+                    "serviceAccountSlug": {
+                        "type": "string",
+                        "description": "The slug of the Doppler service account\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "doppler:index/integrationMemberUser:IntegrationMemberUser": {
+            "description": "Manage a Doppler integration user member.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst brian = doppler.getUser({\n    email: \"brian@doppler.com\",\n});\nconst awsBrian = new doppler.IntegrationMemberUser(\"aws_brian\", {\n    integration: prod.slug,\n    userSlug: brian.then(brian =\u003e brian.slug),\n    role: \"consumer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\n\nbrian = doppler.get_user(email=\"brian@doppler.com\")\naws_brian = doppler.IntegrationMemberUser(\"aws_brian\",\n    integration=prod[\"slug\"],\n    user_slug=brian.slug,\n    role=\"consumer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var brian = Doppler.GetUser.Invoke(new()\n    {\n        Email = \"brian@doppler.com\",\n    });\n\n    var awsBrian = new Doppler.IntegrationMemberUser(\"aws_brian\", new()\n    {\n        Integration = prod.Slug,\n        UserSlug = brian.Apply(getUserResult =\u003e getUserResult.Slug),\n        Role = \"consumer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbrian, err := doppler.GetUser(ctx, \u0026doppler.GetUserArgs{\n\t\t\tEmail: \"brian@doppler.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = doppler.NewIntegrationMemberUser(ctx, \"aws_brian\", \u0026doppler.IntegrationMemberUserArgs{\n\t\t\tIntegration: pulumi.Any(prod.Slug),\n\t\t\tUserSlug:    pulumi.String(pulumi.String(brian.Slug)),\n\t\t\tRole:        pulumi.String(\"consumer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.DopplerFunctions;\nimport com.pulumi.doppler.inputs.GetUserArgs;\nimport com.pulumi.doppler.IntegrationMemberUser;\nimport com.pulumi.doppler.IntegrationMemberUserArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var brian = DopplerFunctions.getUser(GetUserArgs.builder()\n            .email(\"brian@doppler.com\")\n            .build());\n\n        var awsBrian = new IntegrationMemberUser(\"awsBrian\", IntegrationMemberUserArgs.builder()\n            .integration(prod.slug())\n            .userSlug(brian.slug())\n            .role(\"consumer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsBrian:\n    type: doppler:IntegrationMemberUser\n    name: aws_brian\n    properties:\n      integration: ${prod.slug}\n      userSlug: ${brian.slug}\n      role: consumer\nvariables:\n  brian:\n    fn::invoke:\n      function: doppler:getUser\n      arguments:\n        email: brian@doppler.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "integration": {
+                    "type": "string",
+                    "description": "The slug of the Doppler integration where the access is applied\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The integration role identifier for the access. Must use either one of the built-in integration role slugs (\u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`consumer`\" pulumi-lang-dotnet=\"`Consumer`\" pulumi-lang-go=\"`consumer`\" pulumi-lang-python=\"`consumer`\" pulumi-lang-yaml=\"`consumer`\" pulumi-lang-java=\"`consumer`\"\u003e`consumer`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`viewer`\" pulumi-lang-dotnet=\"`Viewer`\" pulumi-lang-go=\"`viewer`\" pulumi-lang-python=\"`viewer`\" pulumi-lang-yaml=\"`viewer`\" pulumi-lang-java=\"`viewer`\"\u003e`viewer`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`noAccess`\" pulumi-lang-dotnet=\"`NoAccess`\" pulumi-lang-go=\"`noAccess`\" pulumi-lang-python=\"`no_access`\" pulumi-lang-yaml=\"`noAccess`\" pulumi-lang-java=\"`noAccess`\"\u003e`noAccess`\u003c/span\u003e), or the slug for a custom integration role.\n"
+                },
+                "userSlug": {
+                    "type": "string",
+                    "description": "The slug of the Doppler workplace user\n"
+                }
+            },
+            "required": [
+                "integration",
+                "role",
+                "userSlug"
+            ],
+            "inputProperties": {
+                "integration": {
+                    "type": "string",
+                    "description": "The slug of the Doppler integration where the access is applied\n",
+                    "willReplaceOnChanges": true
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The integration role identifier for the access. Must use either one of the built-in integration role slugs (\u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`consumer`\" pulumi-lang-dotnet=\"`Consumer`\" pulumi-lang-go=\"`consumer`\" pulumi-lang-python=\"`consumer`\" pulumi-lang-yaml=\"`consumer`\" pulumi-lang-java=\"`consumer`\"\u003e`consumer`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`viewer`\" pulumi-lang-dotnet=\"`Viewer`\" pulumi-lang-go=\"`viewer`\" pulumi-lang-python=\"`viewer`\" pulumi-lang-yaml=\"`viewer`\" pulumi-lang-java=\"`viewer`\"\u003e`viewer`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`noAccess`\" pulumi-lang-dotnet=\"`NoAccess`\" pulumi-lang-go=\"`noAccess`\" pulumi-lang-python=\"`no_access`\" pulumi-lang-yaml=\"`noAccess`\" pulumi-lang-java=\"`noAccess`\"\u003e`noAccess`\u003c/span\u003e), or the slug for a custom integration role.\n"
+                },
+                "userSlug": {
+                    "type": "string",
+                    "description": "The slug of the Doppler workplace user\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "integration",
+                "role",
+                "userSlug"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationMemberUser resources.\n",
+                "properties": {
+                    "integration": {
+                        "type": "string",
+                        "description": "The slug of the Doppler integration where the access is applied\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The integration role identifier for the access. Must use either one of the built-in integration role slugs (\u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`consumer`\" pulumi-lang-dotnet=\"`Consumer`\" pulumi-lang-go=\"`consumer`\" pulumi-lang-python=\"`consumer`\" pulumi-lang-yaml=\"`consumer`\" pulumi-lang-java=\"`consumer`\"\u003e`consumer`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`viewer`\" pulumi-lang-dotnet=\"`Viewer`\" pulumi-lang-go=\"`viewer`\" pulumi-lang-python=\"`viewer`\" pulumi-lang-yaml=\"`viewer`\" pulumi-lang-java=\"`viewer`\"\u003e`viewer`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`noAccess`\" pulumi-lang-dotnet=\"`NoAccess`\" pulumi-lang-go=\"`noAccess`\" pulumi-lang-python=\"`no_access`\" pulumi-lang-yaml=\"`noAccess`\" pulumi-lang-java=\"`noAccess`\"\u003e`noAccess`\u003c/span\u003e), or the slug for a custom integration role.\n"
+                    },
+                    "userSlug": {
+                        "type": "string",
+                        "description": "The slug of the Doppler workplace user\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -1712,6 +2539,53 @@
                     "publicKey": {
                         "type": "string",
                         "description": "The Public Key\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "doppler:index/integrationOpenai:IntegrationOpenai": {
+            "description": "Manage an OpenAI Doppler integration.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst iOpenai = new doppler.IntegrationOpenai(\"i_openai\", {\n    name: \"TF OpenAI\",\n    adminKey: \"sk-admin-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n});\nconst rsOpenai = new doppler.RotatedSecretOpenai(\"rs_openai\", {\n    integration: iOpenai.id,\n    project: \"backend\",\n    config: \"dev\",\n    name: \"OPENAI\",\n    rotationPeriodSec: 2592000,\n    projectId: \"proj_xxxxxxxxxxxxxxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\n\ni_openai = doppler.IntegrationOpenai(\"i_openai\",\n    name=\"TF OpenAI\",\n    admin_key=\"sk-admin-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\nrs_openai = doppler.RotatedSecretOpenai(\"rs_openai\",\n    integration=i_openai.id,\n    project=\"backend\",\n    config=\"dev\",\n    name=\"OPENAI\",\n    rotation_period_sec=2592000,\n    project_id=\"proj_xxxxxxxxxxxxxxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var iOpenai = new Doppler.IntegrationOpenai(\"i_openai\", new()\n    {\n        Name = \"TF OpenAI\",\n        AdminKey = \"sk-admin-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    });\n\n    var rsOpenai = new Doppler.RotatedSecretOpenai(\"rs_openai\", new()\n    {\n        Integration = iOpenai.Id,\n        Project = \"backend\",\n        Config = \"dev\",\n        Name = \"OPENAI\",\n        RotationPeriodSec = 2592000,\n        ProjectId = \"proj_xxxxxxxxxxxxxxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tiOpenai, err := doppler.NewIntegrationOpenai(ctx, \"i_openai\", \u0026doppler.IntegrationOpenaiArgs{\n\t\t\tName:     pulumi.String(\"TF OpenAI\"),\n\t\t\tAdminKey: pulumi.String(\"sk-admin-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = doppler.NewRotatedSecretOpenai(ctx, \"rs_openai\", \u0026doppler.RotatedSecretOpenaiArgs{\n\t\t\tIntegration:       iOpenai.ID(),\n\t\t\tProject:           pulumi.String(\"backend\"),\n\t\t\tConfig:            pulumi.String(\"dev\"),\n\t\t\tName:              pulumi.String(\"OPENAI\"),\n\t\t\tRotationPeriodSec: pulumi.Int(2592000),\n\t\t\tProjectId:         pulumi.String(\"proj_xxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.IntegrationOpenai;\nimport com.pulumi.doppler.IntegrationOpenaiArgs;\nimport com.pulumi.doppler.RotatedSecretOpenai;\nimport com.pulumi.doppler.RotatedSecretOpenaiArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var iOpenai = new IntegrationOpenai(\"iOpenai\", IntegrationOpenaiArgs.builder()\n            .name(\"TF OpenAI\")\n            .adminKey(\"sk-admin-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .build());\n\n        var rsOpenai = new RotatedSecretOpenai(\"rsOpenai\", RotatedSecretOpenaiArgs.builder()\n            .integration(iOpenai.id())\n            .project(\"backend\")\n            .config(\"dev\")\n            .name(\"OPENAI\")\n            .rotationPeriodSec(2592000)\n            .projectId(\"proj_xxxxxxxxxxxxxxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  iOpenai:\n    type: doppler:IntegrationOpenai\n    name: i_openai\n    properties:\n      name: TF OpenAI\n      adminKey: sk-admin-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n  rsOpenai:\n    type: doppler:RotatedSecretOpenai\n    name: rs_openai\n    properties:\n      integration: ${iOpenai.id}\n      project: backend\n      config: dev\n      name: OPENAI\n      rotationPeriodSec: 2.592e+06\n      projectId: proj_xxxxxxxxxxxxxxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "adminKey": {
+                    "type": "string",
+                    "description": "The OpenAI admin key\n",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                }
+            },
+            "required": [
+                "adminKey",
+                "name"
+            ],
+            "inputProperties": {
+                "adminKey": {
+                    "type": "string",
+                    "description": "The OpenAI admin key\n",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the integration\n"
+                }
+            },
+            "requiredInputs": [
+                "adminKey"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntegrationOpenai resources.\n",
+                "properties": {
+                    "adminKey": {
+                        "type": "string",
+                        "description": "The OpenAI admin key\n",
+                        "secret": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the integration\n"
                     }
                 },
                 "type": "object"
@@ -3417,6 +4291,113 @@
                 "type": "object"
             }
         },
+        "doppler:index/rotatedSecretOpenai:RotatedSecretOpenai": {
+            "properties": {
+                "config": {
+                    "type": "string",
+                    "description": "The name of the Doppler config\n"
+                },
+                "integration": {
+                    "type": "string",
+                    "description": "The slug of the integration to use for this rotated secret\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the rotated secret\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name of the Doppler project\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The OpenAI project ID to create service accounts in\n"
+                },
+                "rotationPeriodSec": {
+                    "type": "integer",
+                    "description": "How frequently to rotate the secret\n"
+                }
+            },
+            "required": [
+                "config",
+                "integration",
+                "name",
+                "project",
+                "projectId",
+                "rotationPeriodSec"
+            ],
+            "inputProperties": {
+                "config": {
+                    "type": "string",
+                    "description": "The name of the Doppler config\n",
+                    "willReplaceOnChanges": true
+                },
+                "integration": {
+                    "type": "string",
+                    "description": "The slug of the integration to use for this rotated secret\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the rotated secret\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name of the Doppler project\n",
+                    "willReplaceOnChanges": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The OpenAI project ID to create service accounts in\n",
+                    "willReplaceOnChanges": true
+                },
+                "rotationPeriodSec": {
+                    "type": "integer",
+                    "description": "How frequently to rotate the secret\n"
+                }
+            },
+            "requiredInputs": [
+                "config",
+                "integration",
+                "project",
+                "projectId",
+                "rotationPeriodSec"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RotatedSecretOpenai resources.\n",
+                "properties": {
+                    "config": {
+                        "type": "string",
+                        "description": "The name of the Doppler config\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "integration": {
+                        "type": "string",
+                        "description": "The slug of the integration to use for this rotated secret\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the rotated secret\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name of the Doppler project\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The OpenAI project ID to create service accounts in\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "rotationPeriodSec": {
+                        "type": "integer",
+                        "description": "How frequently to rotate the secret\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "doppler:index/rotatedSecretSendgrid:RotatedSecretSendgrid": {
             "properties": {
                 "config": {
@@ -3733,6 +4714,68 @@
                     "visibility": {
                         "type": "string",
                         "description": "The visibility of the secret. One of \u003cspan pulumi-lang-nodejs=\"`masked`\" pulumi-lang-dotnet=\"`Masked`\" pulumi-lang-go=\"`masked`\" pulumi-lang-python=\"`masked`\" pulumi-lang-yaml=\"`masked`\" pulumi-lang-java=\"`masked`\"\u003e`masked`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`unmasked`\" pulumi-lang-dotnet=\"`Unmasked`\" pulumi-lang-go=\"`unmasked`\" pulumi-lang-python=\"`unmasked`\" pulumi-lang-yaml=\"`unmasked`\" pulumi-lang-java=\"`unmasked`\"\u003e`unmasked`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`restricted`\" pulumi-lang-dotnet=\"`Restricted`\" pulumi-lang-go=\"`restricted`\" pulumi-lang-python=\"`restricted`\" pulumi-lang-yaml=\"`restricted`\" pulumi-lang-java=\"`restricted`\"\u003e`restricted`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`masked`\" pulumi-lang-dotnet=\"`Masked`\" pulumi-lang-go=\"`masked`\" pulumi-lang-python=\"`masked`\" pulumi-lang-yaml=\"`masked`\" pulumi-lang-java=\"`masked`\"\u003e`masked`\u003c/span\u003e.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "doppler:index/secretNote:SecretNote": {
+            "description": "Manage the note attached to a Doppler secret. Notes are scoped per project and secret name, and they apply across all configs in the project.\n\nThe note resource is independent of \u003cspan pulumi-lang-nodejs=\"`doppler.Secret`\" pulumi-lang-dotnet=\"`doppler.Secret`\" pulumi-lang-go=\"`Secret`\" pulumi-lang-python=\"`Secret`\" pulumi-lang-yaml=\"`doppler.Secret`\" pulumi-lang-java=\"`doppler.Secret`\"\u003e`doppler.Secret`\u003c/span\u003e. A note can be declared for a secret managed inside or outside Terraform, as long as the secret exists in at least one config in the project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as doppler from \"@nellisauction/pulumi-doppler\";\n\nconst stripeKey = new doppler.SecretNote(\"stripe_key\", {\n    project: \"backend\",\n    name: \"STRIPE_SECRET_KEY\",\n    note: \"Owner: payments team. Rotate quarterly via Stripe dashboard.\",\n});\n```\n```python\nimport pulumi\nimport pulumi_doppler as doppler\n\nstripe_key = doppler.SecretNote(\"stripe_key\",\n    project=\"backend\",\n    name=\"STRIPE_SECRET_KEY\",\n    note=\"Owner: payments team. Rotate quarterly via Stripe dashboard.\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Doppler = Pulumi.Doppler;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var stripeKey = new Doppler.SecretNote(\"stripe_key\", new()\n    {\n        Project = \"backend\",\n        Name = \"STRIPE_SECRET_KEY\",\n        Note = \"Owner: payments team. Rotate quarterly via Stripe dashboard.\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/nellisauction/pulumi-doppler/sdk/go/doppler\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := doppler.NewSecretNote(ctx, \"stripe_key\", \u0026doppler.SecretNoteArgs{\n\t\t\tProject: pulumi.String(\"backend\"),\n\t\t\tName:    pulumi.String(\"STRIPE_SECRET_KEY\"),\n\t\t\tNote:    pulumi.String(\"Owner: payments team. Rotate quarterly via Stripe dashboard.\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.doppler.SecretNote;\nimport com.pulumi.doppler.SecretNoteArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var stripeKey = new SecretNote(\"stripeKey\", SecretNoteArgs.builder()\n            .project(\"backend\")\n            .name(\"STRIPE_SECRET_KEY\")\n            .note(\"Owner: payments team. Rotate quarterly via Stripe dashboard.\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  stripeKey:\n    type: doppler:SecretNote\n    name: stripe_key\n    properties:\n      project: backend\n      name: STRIPE_SECRET_KEY\n      note: 'Owner: payments team. Rotate quarterly via Stripe dashboard.'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the secret. Notes are scoped per project + secret name and apply across all configs.\n"
+                },
+                "note": {
+                    "type": "string",
+                    "description": "The note content to attach to the secret\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name of the Doppler project that owns the secret\n"
+                }
+            },
+            "required": [
+                "name",
+                "note",
+                "project"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the secret. Notes are scoped per project + secret name and apply across all configs.\n",
+                    "willReplaceOnChanges": true
+                },
+                "note": {
+                    "type": "string",
+                    "description": "The note content to attach to the secret\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name of the Doppler project that owns the secret\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "note",
+                "project"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SecretNote resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the secret. Notes are scoped per project + secret name and apply across all configs.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "note": {
+                        "type": "string",
+                        "description": "The note content to attach to the secret\n"
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name of the Doppler project that owns the secret\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -4817,6 +5860,141 @@
                     "syncUnmaskedAsVariables": {
                         "type": "boolean",
                         "description": "When enabled, causes secrets with the \u003cspan pulumi-lang-nodejs=\"`unmasked`\" pulumi-lang-dotnet=\"`Unmasked`\" pulumi-lang-go=\"`unmasked`\" pulumi-lang-python=\"`unmasked`\" pulumi-lang-yaml=\"`unmasked`\" pulumi-lang-java=\"`unmasked`\"\u003e`unmasked`\u003c/span\u003e visibility type to get synced as GitHub Action Variables. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "doppler:index/secretsSyncGithubAgents:SecretsSyncGithubAgents": {
+            "description": "Manage a GitHub Copilot Agents Doppler sync.\n\n",
+            "properties": {
+                "config": {
+                    "type": "string",
+                    "description": "The name of the Doppler config\n"
+                },
+                "deleteBehavior": {
+                    "type": "string",
+                    "description": "The behavior to be performed on the secrets in the sync target when this resource is deleted or recreated. Either \u003cspan pulumi-lang-nodejs=\"`leaveInTarget`\" pulumi-lang-dotnet=\"`LeaveInTarget`\" pulumi-lang-go=\"`leaveInTarget`\" pulumi-lang-python=\"`leave_in_target`\" pulumi-lang-yaml=\"`leaveInTarget`\" pulumi-lang-java=\"`leaveInTarget`\"\u003e`leaveInTarget`\u003c/span\u003e (default) or \u003cspan pulumi-lang-nodejs=\"`deleteFromTarget`\" pulumi-lang-dotnet=\"`DeleteFromTarget`\" pulumi-lang-go=\"`deleteFromTarget`\" pulumi-lang-python=\"`delete_from_target`\" pulumi-lang-yaml=\"`deleteFromTarget`\" pulumi-lang-java=\"`deleteFromTarget`\"\u003e`deleteFromTarget`\u003c/span\u003e.\n"
+                },
+                "integration": {
+                    "type": "string",
+                    "description": "The slug of the integration to use for this sync\n"
+                },
+                "orgScope": {
+                    "type": "string",
+                    "description": "Either \"all\" or \"private\", based on the which repos you want to have access (only used when \u003cspan pulumi-lang-nodejs=\"`syncTarget`\" pulumi-lang-dotnet=\"`SyncTarget`\" pulumi-lang-go=\"`syncTarget`\" pulumi-lang-python=\"`sync_target`\" pulumi-lang-yaml=\"`syncTarget`\" pulumi-lang-java=\"`syncTarget`\"\u003e`syncTarget`\u003c/span\u003e is set to \"org\")\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name of the Doppler project\n"
+                },
+                "repoName": {
+                    "type": "string",
+                    "description": "The GitHub repo name to sync to (only used when \u003cspan pulumi-lang-nodejs=\"`syncTarget`\" pulumi-lang-dotnet=\"`SyncTarget`\" pulumi-lang-go=\"`syncTarget`\" pulumi-lang-python=\"`sync_target`\" pulumi-lang-yaml=\"`syncTarget`\" pulumi-lang-java=\"`syncTarget`\"\u003e`syncTarget`\u003c/span\u003e is set to \"repo\")\n"
+                },
+                "syncTarget": {
+                    "type": "string",
+                    "description": "Either \"repo\" or \"org\", based on the resource type to sync to\n"
+                },
+                "syncUnmaskedAsVariables": {
+                    "type": "boolean",
+                    "description": "When enabled, causes secrets with the \u003cspan pulumi-lang-nodejs=\"`unmasked`\" pulumi-lang-dotnet=\"`Unmasked`\" pulumi-lang-go=\"`unmasked`\" pulumi-lang-python=\"`unmasked`\" pulumi-lang-yaml=\"`unmasked`\" pulumi-lang-java=\"`unmasked`\"\u003e`unmasked`\u003c/span\u003e visibility type to get synced as GitHub Copilot Agents Variables. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                }
+            },
+            "required": [
+                "config",
+                "integration",
+                "project",
+                "syncTarget"
+            ],
+            "inputProperties": {
+                "config": {
+                    "type": "string",
+                    "description": "The name of the Doppler config\n",
+                    "willReplaceOnChanges": true
+                },
+                "deleteBehavior": {
+                    "type": "string",
+                    "description": "The behavior to be performed on the secrets in the sync target when this resource is deleted or recreated. Either \u003cspan pulumi-lang-nodejs=\"`leaveInTarget`\" pulumi-lang-dotnet=\"`LeaveInTarget`\" pulumi-lang-go=\"`leaveInTarget`\" pulumi-lang-python=\"`leave_in_target`\" pulumi-lang-yaml=\"`leaveInTarget`\" pulumi-lang-java=\"`leaveInTarget`\"\u003e`leaveInTarget`\u003c/span\u003e (default) or \u003cspan pulumi-lang-nodejs=\"`deleteFromTarget`\" pulumi-lang-dotnet=\"`DeleteFromTarget`\" pulumi-lang-go=\"`deleteFromTarget`\" pulumi-lang-python=\"`delete_from_target`\" pulumi-lang-yaml=\"`deleteFromTarget`\" pulumi-lang-java=\"`deleteFromTarget`\"\u003e`deleteFromTarget`\u003c/span\u003e.\n"
+                },
+                "integration": {
+                    "type": "string",
+                    "description": "The slug of the integration to use for this sync\n",
+                    "willReplaceOnChanges": true
+                },
+                "orgScope": {
+                    "type": "string",
+                    "description": "Either \"all\" or \"private\", based on the which repos you want to have access (only used when \u003cspan pulumi-lang-nodejs=\"`syncTarget`\" pulumi-lang-dotnet=\"`SyncTarget`\" pulumi-lang-go=\"`syncTarget`\" pulumi-lang-python=\"`sync_target`\" pulumi-lang-yaml=\"`syncTarget`\" pulumi-lang-java=\"`syncTarget`\"\u003e`syncTarget`\u003c/span\u003e is set to \"org\")\n",
+                    "willReplaceOnChanges": true
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The name of the Doppler project\n",
+                    "willReplaceOnChanges": true
+                },
+                "repoName": {
+                    "type": "string",
+                    "description": "The GitHub repo name to sync to (only used when \u003cspan pulumi-lang-nodejs=\"`syncTarget`\" pulumi-lang-dotnet=\"`SyncTarget`\" pulumi-lang-go=\"`syncTarget`\" pulumi-lang-python=\"`sync_target`\" pulumi-lang-yaml=\"`syncTarget`\" pulumi-lang-java=\"`syncTarget`\"\u003e`syncTarget`\u003c/span\u003e is set to \"repo\")\n",
+                    "willReplaceOnChanges": true
+                },
+                "syncTarget": {
+                    "type": "string",
+                    "description": "Either \"repo\" or \"org\", based on the resource type to sync to\n",
+                    "willReplaceOnChanges": true
+                },
+                "syncUnmaskedAsVariables": {
+                    "type": "boolean",
+                    "description": "When enabled, causes secrets with the \u003cspan pulumi-lang-nodejs=\"`unmasked`\" pulumi-lang-dotnet=\"`Unmasked`\" pulumi-lang-go=\"`unmasked`\" pulumi-lang-python=\"`unmasked`\" pulumi-lang-yaml=\"`unmasked`\" pulumi-lang-java=\"`unmasked`\"\u003e`unmasked`\u003c/span\u003e visibility type to get synced as GitHub Copilot Agents Variables. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "config",
+                "integration",
+                "project",
+                "syncTarget"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SecretsSyncGithubAgents resources.\n",
+                "properties": {
+                    "config": {
+                        "type": "string",
+                        "description": "The name of the Doppler config\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "deleteBehavior": {
+                        "type": "string",
+                        "description": "The behavior to be performed on the secrets in the sync target when this resource is deleted or recreated. Either \u003cspan pulumi-lang-nodejs=\"`leaveInTarget`\" pulumi-lang-dotnet=\"`LeaveInTarget`\" pulumi-lang-go=\"`leaveInTarget`\" pulumi-lang-python=\"`leave_in_target`\" pulumi-lang-yaml=\"`leaveInTarget`\" pulumi-lang-java=\"`leaveInTarget`\"\u003e`leaveInTarget`\u003c/span\u003e (default) or \u003cspan pulumi-lang-nodejs=\"`deleteFromTarget`\" pulumi-lang-dotnet=\"`DeleteFromTarget`\" pulumi-lang-go=\"`deleteFromTarget`\" pulumi-lang-python=\"`delete_from_target`\" pulumi-lang-yaml=\"`deleteFromTarget`\" pulumi-lang-java=\"`deleteFromTarget`\"\u003e`deleteFromTarget`\u003c/span\u003e.\n"
+                    },
+                    "integration": {
+                        "type": "string",
+                        "description": "The slug of the integration to use for this sync\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "orgScope": {
+                        "type": "string",
+                        "description": "Either \"all\" or \"private\", based on the which repos you want to have access (only used when \u003cspan pulumi-lang-nodejs=\"`syncTarget`\" pulumi-lang-dotnet=\"`SyncTarget`\" pulumi-lang-go=\"`syncTarget`\" pulumi-lang-python=\"`sync_target`\" pulumi-lang-yaml=\"`syncTarget`\" pulumi-lang-java=\"`syncTarget`\"\u003e`syncTarget`\u003c/span\u003e is set to \"org\")\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "project": {
+                        "type": "string",
+                        "description": "The name of the Doppler project\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "repoName": {
+                        "type": "string",
+                        "description": "The GitHub repo name to sync to (only used when \u003cspan pulumi-lang-nodejs=\"`syncTarget`\" pulumi-lang-dotnet=\"`SyncTarget`\" pulumi-lang-go=\"`syncTarget`\" pulumi-lang-python=\"`sync_target`\" pulumi-lang-yaml=\"`syncTarget`\" pulumi-lang-java=\"`syncTarget`\"\u003e`syncTarget`\u003c/span\u003e is set to \"repo\")\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "syncTarget": {
+                        "type": "string",
+                        "description": "Either \"repo\" or \"org\", based on the resource type to sync to\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "syncUnmaskedAsVariables": {
+                        "type": "boolean",
+                        "description": "When enabled, causes secrets with the \u003cspan pulumi-lang-nodejs=\"`unmasked`\" pulumi-lang-dotnet=\"`Unmasked`\" pulumi-lang-go=\"`unmasked`\" pulumi-lang-python=\"`unmasked`\" pulumi-lang-yaml=\"`unmasked`\" pulumi-lang-java=\"`unmasked`\"\u003e`unmasked`\u003c/span\u003e visibility type to get synced as GitHub Copilot Agents Variables. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     }
                 },
