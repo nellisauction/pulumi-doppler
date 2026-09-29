@@ -26,13 +26,25 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * A Doppler token, either a personal or service token. This can also be set via the DOPPLER_TOKEN environment variable.
+     * A Doppler token, either a personal or service token. This can also be set via the DOPPLER_TOKEN environment variable. Only one of `dopplerToken` or OIDC authentication (`oidcIdentity` + `oidcToken`/`oidcTokenFile`) may be specified.
      */
     declare public readonly dopplerToken: pulumi.Output<string | undefined>;
     /**
      * The Doppler API host (i.e. https://api.doppler.com). This can also be set via the DOPPLER_API_HOST environment variable.
      */
     declare public readonly host: pulumi.Output<string | undefined>;
+    /**
+     * The identity ID (UUID) of the Doppler service account identity for OIDC authentication. This can also be set via the DOPPLER_OIDC_IDENTITY environment variable.
+     */
+    declare public readonly oidcIdentity: pulumi.Output<string | undefined>;
+    /**
+     * A JWT token to use for OIDC authentication. Only one of `oidcToken` or `oidcTokenFile` may be set. This can also be set via the DOPPLER_OIDC_TOKEN environment variable.
+     */
+    declare public readonly oidcToken: pulumi.Output<string | undefined>;
+    /**
+     * A path to a file containing a JWT token for OIDC authentication (e.g. a Kubernetes projected service account token). Only one of `oidcToken` or `oidcTokenFile` may be set. This can also be set via the DOPPLER_OIDC_TOKEN_FILE environment variable.
+     */
+    declare public readonly oidcTokenFile: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -47,9 +59,14 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["dopplerToken"] = (args?.dopplerToken) ?? utilities.getEnv("DOPPLER_TOKEN");
             resourceInputs["host"] = (args?.host) ?? utilities.getEnv("DOPPLER_API_HOST");
+            resourceInputs["oidcIdentity"] = args?.oidcIdentity;
+            resourceInputs["oidcToken"] = args?.oidcToken ? pulumi.secret(args.oidcToken) : undefined;
+            resourceInputs["oidcTokenFile"] = args?.oidcTokenFile;
             resourceInputs["verifyTls"] = pulumi.output((args?.verifyTls) ?? utilities.getEnvBoolean("DOPPLER_VERIFY_TLS")).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["oidcToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 
@@ -68,13 +85,25 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * A Doppler token, either a personal or service token. This can also be set via the DOPPLER_TOKEN environment variable.
+     * A Doppler token, either a personal or service token. This can also be set via the DOPPLER_TOKEN environment variable. Only one of `dopplerToken` or OIDC authentication (`oidcIdentity` + `oidcToken`/`oidcTokenFile`) may be specified.
      */
     dopplerToken?: pulumi.Input<string | undefined>;
     /**
      * The Doppler API host (i.e. https://api.doppler.com). This can also be set via the DOPPLER_API_HOST environment variable.
      */
     host?: pulumi.Input<string | undefined>;
+    /**
+     * The identity ID (UUID) of the Doppler service account identity for OIDC authentication. This can also be set via the DOPPLER_OIDC_IDENTITY environment variable.
+     */
+    oidcIdentity?: pulumi.Input<string | undefined>;
+    /**
+     * A JWT token to use for OIDC authentication. Only one of `oidcToken` or `oidcTokenFile` may be set. This can also be set via the DOPPLER_OIDC_TOKEN environment variable.
+     */
+    oidcToken?: pulumi.Input<string | undefined>;
+    /**
+     * A path to a file containing a JWT token for OIDC authentication (e.g. a Kubernetes projected service account token). Only one of `oidcToken` or `oidcTokenFile` may be set. This can also be set via the DOPPLER_OIDC_TOKEN_FILE environment variable.
+     */
+    oidcTokenFile?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to verify TLS. This can also be set via the DOPPLER_VERIFY_TLS environment variable.
      */

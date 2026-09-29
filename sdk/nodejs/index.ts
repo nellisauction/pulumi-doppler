@@ -85,6 +85,26 @@ export type IntegrationAwsSecretsManager = import("./integrationAwsSecretsManage
 export const IntegrationAwsSecretsManager: typeof import("./integrationAwsSecretsManager").IntegrationAwsSecretsManager = null as any;
 utilities.lazyLoad(exports, ["IntegrationAwsSecretsManager"], () => require("./integrationAwsSecretsManager"));
 
+export { IntegrationAzureDynamicServicePrincipalArgs, IntegrationAzureDynamicServicePrincipalState } from "./integrationAzureDynamicServicePrincipal";
+export type IntegrationAzureDynamicServicePrincipal = import("./integrationAzureDynamicServicePrincipal").IntegrationAzureDynamicServicePrincipal;
+export const IntegrationAzureDynamicServicePrincipal: typeof import("./integrationAzureDynamicServicePrincipal").IntegrationAzureDynamicServicePrincipal = null as any;
+utilities.lazyLoad(exports, ["IntegrationAzureDynamicServicePrincipal"], () => require("./integrationAzureDynamicServicePrincipal"));
+
+export { IntegrationAzureDynamicServicePrincipalOidcArgs, IntegrationAzureDynamicServicePrincipalOidcState } from "./integrationAzureDynamicServicePrincipalOidc";
+export type IntegrationAzureDynamicServicePrincipalOidc = import("./integrationAzureDynamicServicePrincipalOidc").IntegrationAzureDynamicServicePrincipalOidc;
+export const IntegrationAzureDynamicServicePrincipalOidc: typeof import("./integrationAzureDynamicServicePrincipalOidc").IntegrationAzureDynamicServicePrincipalOidc = null as any;
+utilities.lazyLoad(exports, ["IntegrationAzureDynamicServicePrincipalOidc"], () => require("./integrationAzureDynamicServicePrincipalOidc"));
+
+export { IntegrationAzureRotatedServicePrincipalArgs, IntegrationAzureRotatedServicePrincipalState } from "./integrationAzureRotatedServicePrincipal";
+export type IntegrationAzureRotatedServicePrincipal = import("./integrationAzureRotatedServicePrincipal").IntegrationAzureRotatedServicePrincipal;
+export const IntegrationAzureRotatedServicePrincipal: typeof import("./integrationAzureRotatedServicePrincipal").IntegrationAzureRotatedServicePrincipal = null as any;
+utilities.lazyLoad(exports, ["IntegrationAzureRotatedServicePrincipal"], () => require("./integrationAzureRotatedServicePrincipal"));
+
+export { IntegrationAzureRotatedServicePrincipalOidcArgs, IntegrationAzureRotatedServicePrincipalOidcState } from "./integrationAzureRotatedServicePrincipalOidc";
+export type IntegrationAzureRotatedServicePrincipalOidc = import("./integrationAzureRotatedServicePrincipalOidc").IntegrationAzureRotatedServicePrincipalOidc;
+export const IntegrationAzureRotatedServicePrincipalOidc: typeof import("./integrationAzureRotatedServicePrincipalOidc").IntegrationAzureRotatedServicePrincipalOidc = null as any;
+utilities.lazyLoad(exports, ["IntegrationAzureRotatedServicePrincipalOidc"], () => require("./integrationAzureRotatedServicePrincipalOidc"));
+
 export { IntegrationAzureVaultServicePrincipalArgs, IntegrationAzureVaultServicePrincipalState } from "./integrationAzureVaultServicePrincipal";
 export type IntegrationAzureVaultServicePrincipal = import("./integrationAzureVaultServicePrincipal").IntegrationAzureVaultServicePrincipal;
 export const IntegrationAzureVaultServicePrincipal: typeof import("./integrationAzureVaultServicePrincipal").IntegrationAzureVaultServicePrincipal = null as any;
@@ -115,30 +135,70 @@ export type IntegrationGcpCloudsqlMysql = import("./integrationGcpCloudsqlMysql"
 export const IntegrationGcpCloudsqlMysql: typeof import("./integrationGcpCloudsqlMysql").IntegrationGcpCloudsqlMysql = null as any;
 utilities.lazyLoad(exports, ["IntegrationGcpCloudsqlMysql"], () => require("./integrationGcpCloudsqlMysql"));
 
+export { IntegrationGcpCloudsqlMysqlOidcArgs, IntegrationGcpCloudsqlMysqlOidcState } from "./integrationGcpCloudsqlMysqlOidc";
+export type IntegrationGcpCloudsqlMysqlOidc = import("./integrationGcpCloudsqlMysqlOidc").IntegrationGcpCloudsqlMysqlOidc;
+export const IntegrationGcpCloudsqlMysqlOidc: typeof import("./integrationGcpCloudsqlMysqlOidc").IntegrationGcpCloudsqlMysqlOidc = null as any;
+utilities.lazyLoad(exports, ["IntegrationGcpCloudsqlMysqlOidc"], () => require("./integrationGcpCloudsqlMysqlOidc"));
+
 export { IntegrationGcpCloudsqlPostgresArgs, IntegrationGcpCloudsqlPostgresState } from "./integrationGcpCloudsqlPostgres";
 export type IntegrationGcpCloudsqlPostgres = import("./integrationGcpCloudsqlPostgres").IntegrationGcpCloudsqlPostgres;
 export const IntegrationGcpCloudsqlPostgres: typeof import("./integrationGcpCloudsqlPostgres").IntegrationGcpCloudsqlPostgres = null as any;
 utilities.lazyLoad(exports, ["IntegrationGcpCloudsqlPostgres"], () => require("./integrationGcpCloudsqlPostgres"));
+
+export { IntegrationGcpCloudsqlPostgresOidcArgs, IntegrationGcpCloudsqlPostgresOidcState } from "./integrationGcpCloudsqlPostgresOidc";
+export type IntegrationGcpCloudsqlPostgresOidc = import("./integrationGcpCloudsqlPostgresOidc").IntegrationGcpCloudsqlPostgresOidc;
+export const IntegrationGcpCloudsqlPostgresOidc: typeof import("./integrationGcpCloudsqlPostgresOidc").IntegrationGcpCloudsqlPostgresOidc = null as any;
+utilities.lazyLoad(exports, ["IntegrationGcpCloudsqlPostgresOidc"], () => require("./integrationGcpCloudsqlPostgresOidc"));
 
 export { IntegrationGcpCloudsqlSqlserverArgs, IntegrationGcpCloudsqlSqlserverState } from "./integrationGcpCloudsqlSqlserver";
 export type IntegrationGcpCloudsqlSqlserver = import("./integrationGcpCloudsqlSqlserver").IntegrationGcpCloudsqlSqlserver;
 export const IntegrationGcpCloudsqlSqlserver: typeof import("./integrationGcpCloudsqlSqlserver").IntegrationGcpCloudsqlSqlserver = null as any;
 utilities.lazyLoad(exports, ["IntegrationGcpCloudsqlSqlserver"], () => require("./integrationGcpCloudsqlSqlserver"));
 
+export { IntegrationGcpCloudsqlSqlserverOidcArgs, IntegrationGcpCloudsqlSqlserverOidcState } from "./integrationGcpCloudsqlSqlserverOidc";
+export type IntegrationGcpCloudsqlSqlserverOidc = import("./integrationGcpCloudsqlSqlserverOidc").IntegrationGcpCloudsqlSqlserverOidc;
+export const IntegrationGcpCloudsqlSqlserverOidc: typeof import("./integrationGcpCloudsqlSqlserverOidc").IntegrationGcpCloudsqlSqlserverOidc = null as any;
+utilities.lazyLoad(exports, ["IntegrationGcpCloudsqlSqlserverOidc"], () => require("./integrationGcpCloudsqlSqlserverOidc"));
+
 export { IntegrationGcpSecretManagerArgs, IntegrationGcpSecretManagerState } from "./integrationGcpSecretManager";
 export type IntegrationGcpSecretManager = import("./integrationGcpSecretManager").IntegrationGcpSecretManager;
 export const IntegrationGcpSecretManager: typeof import("./integrationGcpSecretManager").IntegrationGcpSecretManager = null as any;
 utilities.lazyLoad(exports, ["IntegrationGcpSecretManager"], () => require("./integrationGcpSecretManager"));
+
+export { IntegrationGcpSecretManagerOidcArgs, IntegrationGcpSecretManagerOidcState } from "./integrationGcpSecretManagerOidc";
+export type IntegrationGcpSecretManagerOidc = import("./integrationGcpSecretManagerOidc").IntegrationGcpSecretManagerOidc;
+export const IntegrationGcpSecretManagerOidc: typeof import("./integrationGcpSecretManagerOidc").IntegrationGcpSecretManagerOidc = null as any;
+utilities.lazyLoad(exports, ["IntegrationGcpSecretManagerOidc"], () => require("./integrationGcpSecretManagerOidc"));
 
 export { IntegrationGcpServiceAccountKeysArgs, IntegrationGcpServiceAccountKeysState } from "./integrationGcpServiceAccountKeys";
 export type IntegrationGcpServiceAccountKeys = import("./integrationGcpServiceAccountKeys").IntegrationGcpServiceAccountKeys;
 export const IntegrationGcpServiceAccountKeys: typeof import("./integrationGcpServiceAccountKeys").IntegrationGcpServiceAccountKeys = null as any;
 utilities.lazyLoad(exports, ["IntegrationGcpServiceAccountKeys"], () => require("./integrationGcpServiceAccountKeys"));
 
+export { IntegrationMemberGroupArgs, IntegrationMemberGroupState } from "./integrationMemberGroup";
+export type IntegrationMemberGroup = import("./integrationMemberGroup").IntegrationMemberGroup;
+export const IntegrationMemberGroup: typeof import("./integrationMemberGroup").IntegrationMemberGroup = null as any;
+utilities.lazyLoad(exports, ["IntegrationMemberGroup"], () => require("./integrationMemberGroup"));
+
+export { IntegrationMemberServiceAccountArgs, IntegrationMemberServiceAccountState } from "./integrationMemberServiceAccount";
+export type IntegrationMemberServiceAccount = import("./integrationMemberServiceAccount").IntegrationMemberServiceAccount;
+export const IntegrationMemberServiceAccount: typeof import("./integrationMemberServiceAccount").IntegrationMemberServiceAccount = null as any;
+utilities.lazyLoad(exports, ["IntegrationMemberServiceAccount"], () => require("./integrationMemberServiceAccount"));
+
+export { IntegrationMemberUserArgs, IntegrationMemberUserState } from "./integrationMemberUser";
+export type IntegrationMemberUser = import("./integrationMemberUser").IntegrationMemberUser;
+export const IntegrationMemberUser: typeof import("./integrationMemberUser").IntegrationMemberUser = null as any;
+utilities.lazyLoad(exports, ["IntegrationMemberUser"], () => require("./integrationMemberUser"));
+
 export { IntegrationMongodbAtlasArgs, IntegrationMongodbAtlasState } from "./integrationMongodbAtlas";
 export type IntegrationMongodbAtlas = import("./integrationMongodbAtlas").IntegrationMongodbAtlas;
 export const IntegrationMongodbAtlas: typeof import("./integrationMongodbAtlas").IntegrationMongodbAtlas = null as any;
 utilities.lazyLoad(exports, ["IntegrationMongodbAtlas"], () => require("./integrationMongodbAtlas"));
+
+export { IntegrationOpenaiArgs, IntegrationOpenaiState } from "./integrationOpenai";
+export type IntegrationOpenai = import("./integrationOpenai").IntegrationOpenai;
+export const IntegrationOpenai: typeof import("./integrationOpenai").IntegrationOpenai = null as any;
+utilities.lazyLoad(exports, ["IntegrationOpenai"], () => require("./integrationOpenai"));
 
 export { IntegrationSendgridArgs, IntegrationSendgridState } from "./integrationSendgrid";
 export type IntegrationSendgrid = import("./integrationSendgrid").IntegrationSendgrid;
@@ -223,6 +283,11 @@ export type RotatedSecretMongodbAtlas = import("./rotatedSecretMongodbAtlas").Ro
 export const RotatedSecretMongodbAtlas: typeof import("./rotatedSecretMongodbAtlas").RotatedSecretMongodbAtlas = null as any;
 utilities.lazyLoad(exports, ["RotatedSecretMongodbAtlas"], () => require("./rotatedSecretMongodbAtlas"));
 
+export { RotatedSecretOpenaiArgs, RotatedSecretOpenaiState } from "./rotatedSecretOpenai";
+export type RotatedSecretOpenai = import("./rotatedSecretOpenai").RotatedSecretOpenai;
+export const RotatedSecretOpenai: typeof import("./rotatedSecretOpenai").RotatedSecretOpenai = null as any;
+utilities.lazyLoad(exports, ["RotatedSecretOpenai"], () => require("./rotatedSecretOpenai"));
+
 export { RotatedSecretSendgridArgs, RotatedSecretSendgridState } from "./rotatedSecretSendgrid";
 export type RotatedSecretSendgrid = import("./rotatedSecretSendgrid").RotatedSecretSendgrid;
 export const RotatedSecretSendgrid: typeof import("./rotatedSecretSendgrid").RotatedSecretSendgrid = null as any;
@@ -237,6 +302,11 @@ export { SecretArgs, SecretState } from "./secret";
 export type Secret = import("./secret").Secret;
 export const Secret: typeof import("./secret").Secret = null as any;
 utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
+
+export { SecretNoteArgs, SecretNoteState } from "./secretNote";
+export type SecretNote = import("./secretNote").SecretNote;
+export const SecretNote: typeof import("./secretNote").SecretNote = null as any;
+utilities.lazyLoad(exports, ["SecretNote"], () => require("./secretNote"));
 
 export { SecretsSyncAwsParameterStoreArgs, SecretsSyncAwsParameterStoreState } from "./secretsSyncAwsParameterStore";
 export type SecretsSyncAwsParameterStore = import("./secretsSyncAwsParameterStore").SecretsSyncAwsParameterStore;
@@ -272,6 +342,11 @@ export { SecretsSyncGithubActionsArgs, SecretsSyncGithubActionsState } from "./s
 export type SecretsSyncGithubActions = import("./secretsSyncGithubActions").SecretsSyncGithubActions;
 export const SecretsSyncGithubActions: typeof import("./secretsSyncGithubActions").SecretsSyncGithubActions = null as any;
 utilities.lazyLoad(exports, ["SecretsSyncGithubActions"], () => require("./secretsSyncGithubActions"));
+
+export { SecretsSyncGithubAgentsArgs, SecretsSyncGithubAgentsState } from "./secretsSyncGithubAgents";
+export type SecretsSyncGithubAgents = import("./secretsSyncGithubAgents").SecretsSyncGithubAgents;
+export const SecretsSyncGithubAgents: typeof import("./secretsSyncGithubAgents").SecretsSyncGithubAgents = null as any;
+utilities.lazyLoad(exports, ["SecretsSyncGithubAgents"], () => require("./secretsSyncGithubAgents"));
 
 export { SecretsSyncGithubCodespacesArgs, SecretsSyncGithubCodespacesState } from "./secretsSyncGithubCodespaces";
 export type SecretsSyncGithubCodespaces = import("./secretsSyncGithubCodespaces").SecretsSyncGithubCodespaces;
@@ -361,6 +436,14 @@ const _module = {
                 return new IntegrationAwsPostgres(name, <any>undefined, { urn })
             case "doppler:index/integrationAwsSecretsManager:IntegrationAwsSecretsManager":
                 return new IntegrationAwsSecretsManager(name, <any>undefined, { urn })
+            case "doppler:index/integrationAzureDynamicServicePrincipal:IntegrationAzureDynamicServicePrincipal":
+                return new IntegrationAzureDynamicServicePrincipal(name, <any>undefined, { urn })
+            case "doppler:index/integrationAzureDynamicServicePrincipalOidc:IntegrationAzureDynamicServicePrincipalOidc":
+                return new IntegrationAzureDynamicServicePrincipalOidc(name, <any>undefined, { urn })
+            case "doppler:index/integrationAzureRotatedServicePrincipal:IntegrationAzureRotatedServicePrincipal":
+                return new IntegrationAzureRotatedServicePrincipal(name, <any>undefined, { urn })
+            case "doppler:index/integrationAzureRotatedServicePrincipalOidc:IntegrationAzureRotatedServicePrincipalOidc":
+                return new IntegrationAzureRotatedServicePrincipalOidc(name, <any>undefined, { urn })
             case "doppler:index/integrationAzureVaultServicePrincipal:IntegrationAzureVaultServicePrincipal":
                 return new IntegrationAzureVaultServicePrincipal(name, <any>undefined, { urn })
             case "doppler:index/integrationCircleci:IntegrationCircleci":
@@ -373,16 +456,32 @@ const _module = {
                 return new IntegrationFlyio(name, <any>undefined, { urn })
             case "doppler:index/integrationGcpCloudsqlMysql:IntegrationGcpCloudsqlMysql":
                 return new IntegrationGcpCloudsqlMysql(name, <any>undefined, { urn })
+            case "doppler:index/integrationGcpCloudsqlMysqlOidc:IntegrationGcpCloudsqlMysqlOidc":
+                return new IntegrationGcpCloudsqlMysqlOidc(name, <any>undefined, { urn })
             case "doppler:index/integrationGcpCloudsqlPostgres:IntegrationGcpCloudsqlPostgres":
                 return new IntegrationGcpCloudsqlPostgres(name, <any>undefined, { urn })
+            case "doppler:index/integrationGcpCloudsqlPostgresOidc:IntegrationGcpCloudsqlPostgresOidc":
+                return new IntegrationGcpCloudsqlPostgresOidc(name, <any>undefined, { urn })
             case "doppler:index/integrationGcpCloudsqlSqlserver:IntegrationGcpCloudsqlSqlserver":
                 return new IntegrationGcpCloudsqlSqlserver(name, <any>undefined, { urn })
+            case "doppler:index/integrationGcpCloudsqlSqlserverOidc:IntegrationGcpCloudsqlSqlserverOidc":
+                return new IntegrationGcpCloudsqlSqlserverOidc(name, <any>undefined, { urn })
             case "doppler:index/integrationGcpSecretManager:IntegrationGcpSecretManager":
                 return new IntegrationGcpSecretManager(name, <any>undefined, { urn })
+            case "doppler:index/integrationGcpSecretManagerOidc:IntegrationGcpSecretManagerOidc":
+                return new IntegrationGcpSecretManagerOidc(name, <any>undefined, { urn })
             case "doppler:index/integrationGcpServiceAccountKeys:IntegrationGcpServiceAccountKeys":
                 return new IntegrationGcpServiceAccountKeys(name, <any>undefined, { urn })
+            case "doppler:index/integrationMemberGroup:IntegrationMemberGroup":
+                return new IntegrationMemberGroup(name, <any>undefined, { urn })
+            case "doppler:index/integrationMemberServiceAccount:IntegrationMemberServiceAccount":
+                return new IntegrationMemberServiceAccount(name, <any>undefined, { urn })
+            case "doppler:index/integrationMemberUser:IntegrationMemberUser":
+                return new IntegrationMemberUser(name, <any>undefined, { urn })
             case "doppler:index/integrationMongodbAtlas:IntegrationMongodbAtlas":
                 return new IntegrationMongodbAtlas(name, <any>undefined, { urn })
+            case "doppler:index/integrationOpenai:IntegrationOpenai":
+                return new IntegrationOpenai(name, <any>undefined, { urn })
             case "doppler:index/integrationSendgrid:IntegrationSendgrid":
                 return new IntegrationSendgrid(name, <any>undefined, { urn })
             case "doppler:index/integrationTerraformCloud:IntegrationTerraformCloud":
@@ -415,12 +514,16 @@ const _module = {
                 return new RotatedSecretGcpServiceAccountKeys(name, <any>undefined, { urn })
             case "doppler:index/rotatedSecretMongodbAtlas:RotatedSecretMongodbAtlas":
                 return new RotatedSecretMongodbAtlas(name, <any>undefined, { urn })
+            case "doppler:index/rotatedSecretOpenai:RotatedSecretOpenai":
+                return new RotatedSecretOpenai(name, <any>undefined, { urn })
             case "doppler:index/rotatedSecretSendgrid:RotatedSecretSendgrid":
                 return new RotatedSecretSendgrid(name, <any>undefined, { urn })
             case "doppler:index/rotatedSecretTwilio:RotatedSecretTwilio":
                 return new RotatedSecretTwilio(name, <any>undefined, { urn })
             case "doppler:index/secret:Secret":
                 return new Secret(name, <any>undefined, { urn })
+            case "doppler:index/secretNote:SecretNote":
+                return new SecretNote(name, <any>undefined, { urn })
             case "doppler:index/secretsSyncAwsParameterStore:SecretsSyncAwsParameterStore":
                 return new SecretsSyncAwsParameterStore(name, <any>undefined, { urn })
             case "doppler:index/secretsSyncAwsSecretsManager:SecretsSyncAwsSecretsManager":
@@ -435,6 +538,8 @@ const _module = {
                 return new SecretsSyncGcpSecretManager(name, <any>undefined, { urn })
             case "doppler:index/secretsSyncGithubActions:SecretsSyncGithubActions":
                 return new SecretsSyncGithubActions(name, <any>undefined, { urn })
+            case "doppler:index/secretsSyncGithubAgents:SecretsSyncGithubAgents":
+                return new SecretsSyncGithubAgents(name, <any>undefined, { urn })
             case "doppler:index/secretsSyncGithubCodespaces:SecretsSyncGithubCodespaces":
                 return new SecretsSyncGithubCodespaces(name, <any>undefined, { urn })
             case "doppler:index/secretsSyncGithubDependabot:SecretsSyncGithubDependabot":
@@ -472,17 +577,29 @@ pulumi.runtime.registerResourceModule("doppler", "index/integrationAwsMysql", _m
 pulumi.runtime.registerResourceModule("doppler", "index/integrationAwsParameterStore", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationAwsPostgres", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationAwsSecretsManager", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationAzureDynamicServicePrincipal", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationAzureDynamicServicePrincipalOidc", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationAzureRotatedServicePrincipal", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationAzureRotatedServicePrincipalOidc", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationAzureVaultServicePrincipal", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationCircleci", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationCloudflareTokens", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationExternalId", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationFlyio", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationGcpCloudsqlMysql", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationGcpCloudsqlMysqlOidc", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationGcpCloudsqlPostgres", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationGcpCloudsqlPostgresOidc", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationGcpCloudsqlSqlserver", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationGcpCloudsqlSqlserverOidc", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationGcpSecretManager", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationGcpSecretManagerOidc", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationGcpServiceAccountKeys", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationMemberGroup", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationMemberServiceAccount", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationMemberUser", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationMongodbAtlas", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/integrationOpenai", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationSendgrid", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationTerraformCloud", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/integrationTwilio", _module)
@@ -499,9 +616,11 @@ pulumi.runtime.registerResourceModule("doppler", "index/rotatedSecretCloudflareT
 pulumi.runtime.registerResourceModule("doppler", "index/rotatedSecretGcpCloudsql", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/rotatedSecretGcpServiceAccountKeys", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/rotatedSecretMongodbAtlas", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/rotatedSecretOpenai", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/rotatedSecretSendgrid", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/rotatedSecretTwilio", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/secret", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/secretNote", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/secretsSyncAwsParameterStore", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/secretsSyncAwsSecretsManager", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/secretsSyncAzureVault", _module)
@@ -509,6 +628,7 @@ pulumi.runtime.registerResourceModule("doppler", "index/secretsSyncCircleci", _m
 pulumi.runtime.registerResourceModule("doppler", "index/secretsSyncFlyio", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/secretsSyncGcpSecretManager", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/secretsSyncGithubActions", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/secretsSyncGithubAgents", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/secretsSyncGithubCodespaces", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/secretsSyncGithubDependabot", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/secretsSyncTerraformCloud", _module)

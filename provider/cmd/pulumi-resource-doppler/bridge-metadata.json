@@ -89,6 +89,18 @@
             "doppler_integration_aws_secrets_manager": {
                 "current": "doppler:index/integrationAwsSecretsManager:IntegrationAwsSecretsManager"
             },
+            "doppler_integration_azure_dynamic_service_principal": {
+                "current": "doppler:index/integrationAzureDynamicServicePrincipal:IntegrationAzureDynamicServicePrincipal"
+            },
+            "doppler_integration_azure_dynamic_service_principal_oidc": {
+                "current": "doppler:index/integrationAzureDynamicServicePrincipalOidc:IntegrationAzureDynamicServicePrincipalOidc"
+            },
+            "doppler_integration_azure_rotated_service_principal": {
+                "current": "doppler:index/integrationAzureRotatedServicePrincipal:IntegrationAzureRotatedServicePrincipal"
+            },
+            "doppler_integration_azure_rotated_service_principal_oidc": {
+                "current": "doppler:index/integrationAzureRotatedServicePrincipalOidc:IntegrationAzureRotatedServicePrincipalOidc"
+            },
             "doppler_integration_azure_vault_service_principal": {
                 "current": "doppler:index/integrationAzureVaultServicePrincipal:IntegrationAzureVaultServicePrincipal"
             },
@@ -107,20 +119,44 @@
             "doppler_integration_gcp_cloudsql_mysql": {
                 "current": "doppler:index/integrationGcpCloudsqlMysql:IntegrationGcpCloudsqlMysql"
             },
+            "doppler_integration_gcp_cloudsql_mysql_oidc": {
+                "current": "doppler:index/integrationGcpCloudsqlMysqlOidc:IntegrationGcpCloudsqlMysqlOidc"
+            },
             "doppler_integration_gcp_cloudsql_postgres": {
                 "current": "doppler:index/integrationGcpCloudsqlPostgres:IntegrationGcpCloudsqlPostgres"
+            },
+            "doppler_integration_gcp_cloudsql_postgres_oidc": {
+                "current": "doppler:index/integrationGcpCloudsqlPostgresOidc:IntegrationGcpCloudsqlPostgresOidc"
             },
             "doppler_integration_gcp_cloudsql_sqlserver": {
                 "current": "doppler:index/integrationGcpCloudsqlSqlserver:IntegrationGcpCloudsqlSqlserver"
             },
+            "doppler_integration_gcp_cloudsql_sqlserver_oidc": {
+                "current": "doppler:index/integrationGcpCloudsqlSqlserverOidc:IntegrationGcpCloudsqlSqlserverOidc"
+            },
             "doppler_integration_gcp_secret_manager": {
                 "current": "doppler:index/integrationGcpSecretManager:IntegrationGcpSecretManager"
+            },
+            "doppler_integration_gcp_secret_manager_oidc": {
+                "current": "doppler:index/integrationGcpSecretManagerOidc:IntegrationGcpSecretManagerOidc"
             },
             "doppler_integration_gcp_service_account_keys": {
                 "current": "doppler:index/integrationGcpServiceAccountKeys:IntegrationGcpServiceAccountKeys"
             },
+            "doppler_integration_member_group": {
+                "current": "doppler:index/integrationMemberGroup:IntegrationMemberGroup"
+            },
+            "doppler_integration_member_service_account": {
+                "current": "doppler:index/integrationMemberServiceAccount:IntegrationMemberServiceAccount"
+            },
+            "doppler_integration_member_user": {
+                "current": "doppler:index/integrationMemberUser:IntegrationMemberUser"
+            },
             "doppler_integration_mongodb_atlas": {
                 "current": "doppler:index/integrationMongodbAtlas:IntegrationMongodbAtlas"
+            },
+            "doppler_integration_openai": {
+                "current": "doppler:index/integrationOpenai:IntegrationOpenai"
             },
             "doppler_integration_sendgrid": {
                 "current": "doppler:index/integrationSendgrid:IntegrationSendgrid"
@@ -220,6 +256,9 @@
                     }
                 }
             },
+            "doppler_rotated_secret_openai": {
+                "current": "doppler:index/rotatedSecretOpenai:RotatedSecretOpenai"
+            },
             "doppler_rotated_secret_sendgrid": {
                 "current": "doppler:index/rotatedSecretSendgrid:RotatedSecretSendgrid",
                 "fields": {
@@ -233,6 +272,9 @@
             },
             "doppler_secret": {
                 "current": "doppler:index/secret:Secret"
+            },
+            "doppler_secret_note": {
+                "current": "doppler:index/secretNote:SecretNote"
             },
             "doppler_secrets_sync_aws_parameter_store": {
                 "current": "doppler:index/secretsSyncAwsParameterStore:SecretsSyncAwsParameterStore"
@@ -259,6 +301,9 @@
             },
             "doppler_secrets_sync_github_actions": {
                 "current": "doppler:index/secretsSyncGithubActions:SecretsSyncGithubActions"
+            },
+            "doppler_secrets_sync_github_agents": {
+                "current": "doppler:index/secretsSyncGithubAgents:SecretsSyncGithubAgents"
             },
             "doppler_secrets_sync_github_codespaces": {
                 "current": "doppler:index/secretsSyncGithubCodespaces:SecretsSyncGithubCodespaces"
