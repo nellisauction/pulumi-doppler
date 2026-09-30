@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as doppler from "@nellisauction/pulumi-doppler";
  * import * as tfe from "@pulumi/tfe";
  *
- * const prod = tfe.Workspace({
+ * const prod = tfe.workspace({
  *     name: "my-workspace-name",
  *     organization: "my-org-name",
  * });
