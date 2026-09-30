@@ -41,7 +41,7 @@ import * as utilities from "./utilities";
  * });
  * const gcpPolicyImpersonate = new gcp.serviceaccount.IAMPolicy("gcp_policy_impersonate", {
  *     serviceAccountId: gcpsaDopplerImpersonate.name,
- *     policyData: dopplerRotationImpersonatePolicy.apply(dopplerRotationImpersonatePolicy => dopplerRotationImpersonatePolicy.policyData),
+ *     policyData: dopplerRotationImpersonatePolicy.policyData,
  * });
  * const gcpsaRotated = new gcp.serviceaccount.Account("gcpsa_rotated", {
  *     accountId: "xxxxxxxxxxxxxxxxxx",
@@ -55,7 +55,7 @@ import * as utilities from "./utilities";
  * });
  * const gcpPolicyRotated = new gcp.serviceaccount.IAMPolicy("gcp_policy_rotated", {
  *     serviceAccountId: gcpsaRotated.name,
- *     policyData: dopplerRotatedUserPolicy.apply(dopplerRotatedUserPolicy => dopplerRotatedUserPolicy.policyData),
+ *     policyData: dopplerRotatedUserPolicy.policyData,
  * });
  * const iGcpSak = new doppler.IntegrationGcpServiceAccountKeys("i_gcp_sak", {
  *     name: "TF GCP Service Account Keys",
