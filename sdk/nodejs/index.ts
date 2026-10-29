@@ -225,20 +225,40 @@ export type ProjectMemberGroup = import("./projectMemberGroup").ProjectMemberGro
 export const ProjectMemberGroup: typeof import("./projectMemberGroup").ProjectMemberGroup = null as any;
 utilities.lazyLoad(exports, ["ProjectMemberGroup"], () => require("./projectMemberGroup"));
 
+export { ProjectMemberGroupRoleAssignmentArgs, ProjectMemberGroupRoleAssignmentState } from "./projectMemberGroupRoleAssignment";
+export type ProjectMemberGroupRoleAssignment = import("./projectMemberGroupRoleAssignment").ProjectMemberGroupRoleAssignment;
+export const ProjectMemberGroupRoleAssignment: typeof import("./projectMemberGroupRoleAssignment").ProjectMemberGroupRoleAssignment = null as any;
+utilities.lazyLoad(exports, ["ProjectMemberGroupRoleAssignment"], () => require("./projectMemberGroupRoleAssignment"));
+
 export { ProjectMemberServiceAccountArgs, ProjectMemberServiceAccountState } from "./projectMemberServiceAccount";
 export type ProjectMemberServiceAccount = import("./projectMemberServiceAccount").ProjectMemberServiceAccount;
 export const ProjectMemberServiceAccount: typeof import("./projectMemberServiceAccount").ProjectMemberServiceAccount = null as any;
 utilities.lazyLoad(exports, ["ProjectMemberServiceAccount"], () => require("./projectMemberServiceAccount"));
+
+export { ProjectMemberServiceAccountRoleAssignmentArgs, ProjectMemberServiceAccountRoleAssignmentState } from "./projectMemberServiceAccountRoleAssignment";
+export type ProjectMemberServiceAccountRoleAssignment = import("./projectMemberServiceAccountRoleAssignment").ProjectMemberServiceAccountRoleAssignment;
+export const ProjectMemberServiceAccountRoleAssignment: typeof import("./projectMemberServiceAccountRoleAssignment").ProjectMemberServiceAccountRoleAssignment = null as any;
+utilities.lazyLoad(exports, ["ProjectMemberServiceAccountRoleAssignment"], () => require("./projectMemberServiceAccountRoleAssignment"));
 
 export { ProjectMemberUserArgs, ProjectMemberUserState } from "./projectMemberUser";
 export type ProjectMemberUser = import("./projectMemberUser").ProjectMemberUser;
 export const ProjectMemberUser: typeof import("./projectMemberUser").ProjectMemberUser = null as any;
 utilities.lazyLoad(exports, ["ProjectMemberUser"], () => require("./projectMemberUser"));
 
+export { ProjectMemberUserRoleAssignmentArgs, ProjectMemberUserRoleAssignmentState } from "./projectMemberUserRoleAssignment";
+export type ProjectMemberUserRoleAssignment = import("./projectMemberUserRoleAssignment").ProjectMemberUserRoleAssignment;
+export const ProjectMemberUserRoleAssignment: typeof import("./projectMemberUserRoleAssignment").ProjectMemberUserRoleAssignment = null as any;
+utilities.lazyLoad(exports, ["ProjectMemberUserRoleAssignment"], () => require("./projectMemberUserRoleAssignment"));
+
 export { ProjectRoleArgs, ProjectRoleState } from "./projectRole";
 export type ProjectRole = import("./projectRole").ProjectRole;
 export const ProjectRole: typeof import("./projectRole").ProjectRole = null as any;
 utilities.lazyLoad(exports, ["ProjectRole"], () => require("./projectRole"));
+
+export { ProjectTagArgs, ProjectTagState } from "./projectTag";
+export type ProjectTag = import("./projectTag").ProjectTag;
+export const ProjectTag: typeof import("./projectTag").ProjectTag = null as any;
+utilities.lazyLoad(exports, ["ProjectTag"], () => require("./projectTag"));
 
 export * from "./provider";
 import { Provider } from "./provider";
@@ -383,6 +403,11 @@ export type ServiceToken = import("./serviceToken").ServiceToken;
 export const ServiceToken: typeof import("./serviceToken").ServiceToken = null as any;
 utilities.lazyLoad(exports, ["ServiceToken"], () => require("./serviceToken"));
 
+export { TagArgs, TagState } from "./tag";
+export type Tag = import("./tag").Tag;
+export const Tag: typeof import("./tag").Tag = null as any;
+utilities.lazyLoad(exports, ["Tag"], () => require("./tag"));
+
 export { TrustedIpsArgs, TrustedIpsState } from "./trustedIps";
 export type TrustedIps = import("./trustedIps").TrustedIps;
 export const TrustedIps: typeof import("./trustedIps").TrustedIps = null as any;
@@ -492,12 +517,20 @@ const _module = {
                 return new Project(name, <any>undefined, { urn })
             case "doppler:index/projectMemberGroup:ProjectMemberGroup":
                 return new ProjectMemberGroup(name, <any>undefined, { urn })
+            case "doppler:index/projectMemberGroupRoleAssignment:ProjectMemberGroupRoleAssignment":
+                return new ProjectMemberGroupRoleAssignment(name, <any>undefined, { urn })
             case "doppler:index/projectMemberServiceAccount:ProjectMemberServiceAccount":
                 return new ProjectMemberServiceAccount(name, <any>undefined, { urn })
+            case "doppler:index/projectMemberServiceAccountRoleAssignment:ProjectMemberServiceAccountRoleAssignment":
+                return new ProjectMemberServiceAccountRoleAssignment(name, <any>undefined, { urn })
             case "doppler:index/projectMemberUser:ProjectMemberUser":
                 return new ProjectMemberUser(name, <any>undefined, { urn })
+            case "doppler:index/projectMemberUserRoleAssignment:ProjectMemberUserRoleAssignment":
+                return new ProjectMemberUserRoleAssignment(name, <any>undefined, { urn })
             case "doppler:index/projectRole:ProjectRole":
                 return new ProjectRole(name, <any>undefined, { urn })
+            case "doppler:index/projectTag:ProjectTag":
+                return new ProjectTag(name, <any>undefined, { urn })
             case "doppler:index/rotatedSecretAwsIamUserKeys:RotatedSecretAwsIamUserKeys":
                 return new RotatedSecretAwsIamUserKeys(name, <any>undefined, { urn })
             case "doppler:index/rotatedSecretAwsMssql:RotatedSecretAwsMssql":
@@ -554,6 +587,8 @@ const _module = {
                 return new ServiceAccountToken(name, <any>undefined, { urn })
             case "doppler:index/serviceToken:ServiceToken":
                 return new ServiceToken(name, <any>undefined, { urn })
+            case "doppler:index/tag:Tag":
+                return new Tag(name, <any>undefined, { urn })
             case "doppler:index/trustedIps:TrustedIps":
                 return new TrustedIps(name, <any>undefined, { urn })
             case "doppler:index/webhook:Webhook":
@@ -605,9 +640,13 @@ pulumi.runtime.registerResourceModule("doppler", "index/integrationTerraformClou
 pulumi.runtime.registerResourceModule("doppler", "index/integrationTwilio", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/project", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/projectMemberGroup", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/projectMemberGroupRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/projectMemberServiceAccount", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/projectMemberServiceAccountRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/projectMemberUser", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/projectMemberUserRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/projectRole", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/projectTag", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/rotatedSecretAwsIamUserKeys", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/rotatedSecretAwsMssql", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/rotatedSecretAwsMysql", _module)
@@ -636,6 +675,7 @@ pulumi.runtime.registerResourceModule("doppler", "index/serviceAccount", _module
 pulumi.runtime.registerResourceModule("doppler", "index/serviceAccountIdentity", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/serviceAccountToken", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/serviceToken", _module)
+pulumi.runtime.registerResourceModule("doppler", "index/tag", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/trustedIps", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/webhook", _module)
 pulumi.runtime.registerResourceModule("doppler", "index/workplaceRole", _module)

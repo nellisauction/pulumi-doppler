@@ -178,8 +178,24 @@
                     }
                 }
             },
+            "doppler_project_member_group_role_assignment": {
+                "current": "doppler:index/projectMemberGroupRoleAssignment:ProjectMemberGroupRoleAssignment",
+                "fields": {
+                    "environments": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "doppler_project_member_service_account": {
                 "current": "doppler:index/projectMemberServiceAccount:ProjectMemberServiceAccount",
+                "fields": {
+                    "environments": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "doppler_project_member_service_account_role_assignment": {
+                "current": "doppler:index/projectMemberServiceAccountRoleAssignment:ProjectMemberServiceAccountRoleAssignment",
                 "fields": {
                     "environments": {
                         "maxItemsOne": false
@@ -194,6 +210,14 @@
                     }
                 }
             },
+            "doppler_project_member_user_role_assignment": {
+                "current": "doppler:index/projectMemberUserRoleAssignment:ProjectMemberUserRoleAssignment",
+                "fields": {
+                    "environments": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "doppler_project_role": {
                 "current": "doppler:index/projectRole:ProjectRole",
                 "fields": {
@@ -201,6 +225,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "doppler_project_tag": {
+                "current": "doppler:index/projectTag:ProjectTag"
             },
             "doppler_rotated_secret_aws_iam_user_keys": {
                 "current": "doppler:index/rotatedSecretAwsIamUserKeys:RotatedSecretAwsIamUserKeys"
@@ -349,6 +376,9 @@
             },
             "doppler_service_token": {
                 "current": "doppler:index/serviceToken:ServiceToken"
+            },
+            "doppler_tag": {
+                "current": "doppler:index/tag:Tag"
             },
             "doppler_trusted_ips": {
                 "current": "doppler:index/trustedIps:TrustedIps",

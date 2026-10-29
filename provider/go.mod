@@ -5,7 +5,7 @@ go 1.27.1
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20260318212141-5525259d096b
 
 require (
-	github.com/DopplerHQ/terraform-provider-doppler v1.21.5
+	github.com/DopplerHQ/terraform-provider-doppler v1.23.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.140.0
 	github.com/pulumi/pulumi/sdk/v3 v3.263.0
 )

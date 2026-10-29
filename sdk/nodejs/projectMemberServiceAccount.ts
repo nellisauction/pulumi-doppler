@@ -7,6 +7,10 @@ import * as utilities from "./utilities";
 /**
  * Manage a Doppler project service account member.
  *
+ * **Note:** The `doppler.ProjectMemberServiceAccount` resource will clear/replace all existing roles the member holds on the project.
+ * Combinations of `doppler.ProjectMemberServiceAccount` and `doppler.ProjectMemberServiceAccountRoleAssignment` for the same member will produce inconsistent behavior.
+ * To give a member several roles, use `doppler.ProjectMemberServiceAccountRoleAssignment` only.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -62,7 +66,7 @@ export class ProjectMemberServiceAccount extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The project role identifier for the access. Must use either one of the built-in project role slugs (`admin`, `owner`, `collaborator`, or `noAccess`), or the slug for a custom project role.
+     * The project role identifier for the access. Must use either one of the built-in project role slugs (`admin`, `collaborator`, `viewer`, or `noAccess`), or the slug for a custom project role.
      */
     declare public readonly role: pulumi.Output<string>;
     /**
@@ -121,7 +125,7 @@ export interface ProjectMemberServiceAccountState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The project role identifier for the access. Must use either one of the built-in project role slugs (`admin`, `owner`, `collaborator`, or `noAccess`), or the slug for a custom project role.
+     * The project role identifier for the access. Must use either one of the built-in project role slugs (`admin`, `collaborator`, `viewer`, or `noAccess`), or the slug for a custom project role.
      */
     role?: pulumi.Input<string | undefined>;
     /**
@@ -143,7 +147,7 @@ export interface ProjectMemberServiceAccountArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * The project role identifier for the access. Must use either one of the built-in project role slugs (`admin`, `owner`, `collaborator`, or `noAccess`), or the slug for a custom project role.
+     * The project role identifier for the access. Must use either one of the built-in project role slugs (`admin`, `collaborator`, `viewer`, or `noAccess`), or the slug for a custom project role.
      */
     role: pulumi.Input<string>;
     /**
